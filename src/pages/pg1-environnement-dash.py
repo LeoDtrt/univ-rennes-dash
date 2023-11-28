@@ -73,7 +73,8 @@ cd .venv/Scripts
 # Désactiver l'environnement
 deactivate""",
         language="python",
-        colorScheme="dark"),
+        colorScheme="dark",
+        className="code"),
     html.P("Création et activation de l’environnement virtuel .venv sur Mac :"),
     dmc.Prism(
         children=
@@ -90,7 +91,7 @@ source .venv/bin/activate
 deactivate""",
         language="python",
         colorScheme="dark",
-        className="tab"),
+        className="code"),
     html.P("Liste non exhaustive des packages à installer pour l’utilisation de dash :"),
     dmc.Prism(
         children=
@@ -103,8 +104,8 @@ pip install dash-mantine-components
 pip list""",
         language="python",
         colorScheme="dark",
-        className="tab"),
-    html.Img(src="assets/img/pip-list.png", className= "img"),
+        className="code"),
+    html.Img(src="assets/img/pip-list.png", className="img-pip-list"),
     html.P("⚠ Remarque : Il est nécessaire d’activer un environnement virtuel pour pouvoir ensuite y installer des librairies."),
 
    
@@ -146,7 +147,7 @@ source bin/activate
 deactivate""",
         language="python",
         colorScheme="dark",
-        className="tab")
+        className="code")
         ])
     ),
 
@@ -168,14 +169,15 @@ cd projet
 cd ..""",
             language="python",
             colorScheme="dark",
-            className="tab"),
+            className="code"),
         html.Li("Activer un environnement virtuel python avec toutes les librairies nécessaires au lancement de l’application"),
         html.Li("Taper la commande suivante dans le terminal pour lancer l'application app.py :"),
         dmc.Prism(
             children="""python app.py""",
             language="python",
-            colorScheme="dark"),
-        html.Img(src="assets/img/run-app.png", className= "img"),
+            colorScheme="dark",
+            className="code"),
+        html.Img(src="assets/img/run-app.png", className= "img-run-app"),
     ]),
    
    

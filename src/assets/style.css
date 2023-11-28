@@ -28,10 +28,16 @@
     padding-top: 1rem;
     padding-bottom: 2rem;
     width: 70%;
-    /*border-style: solid;*/
     height: 500px;
     overflow-y: auto;
 }
+
+.code {
+    padding-bottom: 2rem;
+    width: 70%;
+    overflow: auto;
+}
+
 
 h1 {
     color: #5A7B9C;
@@ -72,9 +78,22 @@ h3 {
 
 
 .img {
-    align-items: center;
-    background-color: blue;
-    height: 400px;
+    height: 70%;
+    width: 70%;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.img-pip-list {
+    margin-left: 15%;
+    height: 40%;
+    width: 40%;
+}
+
+.img-run-app {
+    margin-left: 10%;
+    height: 50%;
+    width: 50%;
 }
 
 .kri-box-description {

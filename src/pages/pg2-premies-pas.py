@@ -455,14 +455,6 @@ if __name__ == "__main__":
         colorScheme="dark")
     
 ])
- 
- 
- 
- 
- 
- 
-
-
 
 
 #-----------------------------------------------------------------------#
@@ -534,7 +526,7 @@ layout = html.Div([
     html.H2("2.6 Callback"),
     
     dbc.Tabs([
-            dbc.Tab(label="Présentation", tab_id="callback-pres", children=callback_pres, className="tab"),
+            dbc.Tab(label="Présentation", tab_id="callback-pres", children=callback_pres, className="presentation"),
             dbc.Tab(label="Exemple"     , tab_id="callback-ex"  , children=callback_ex  , className="tab"),
             dbc.Tab(label="Code"        , tab_id="callback-code", children=callback_code, className="tab")
         ],
