@@ -96,6 +96,14 @@ h3 {
     width: 50%;
 }
 
+p {
+    width: 70%;
+}
+
+t {
+    color:red;
+}
+
 .kri-box-description {
     grid-column: 1 / 3;
     grid-row: 1;
