@@ -1225,6 +1225,110 @@ if __name__ == '__main__':
 
 
 
+#---------------------------------------------------------#
+# 4.5 Project Structure                                   #
+#---------------------------------------------------------#
+
+
+
+
+SIDEBAR_STYLE = {
+    "top": 0,
+    "left": 0,
+    "bottom": 0,
+    "width": "20%",
+    "padding": "1rem 1rem",
+    "background-color": "orange",
+}
+
+CONTENT_STYLE = {
+    "top": 0,
+    "right": 0,
+    "bottom": 0,
+    "width": "80%",
+    "padding": "1rem 1rem",
+    "background-color":"green"
+}
+
+
+#----------------------------------------------------------------#
+# 2. Interface                                                   #
+#----------------------------------------------------------------#
+
+ps_ex_sidebar = html.Div(
+    [
+        html.H2("Sidebar"),
+        html.Hr(),
+        html.P("A simple sidebar layout with navigation links"),
+        dbc.Nav(
+            children=[
+                dbc.NavLink("Home", id="pg4-ps-home", active="exact"),
+                dbc.NavLink("Page 1", id="pg4-ps-page1", active="exact"),
+                dbc.NavLink("Page 2", id="pg4-ps-page2", active="exact")
+            ],
+            vertical=True,
+            pills=True,
+            id="pg4-ps-ex-nav",
+        ),
+    ],
+    style=SIDEBAR_STYLE,
+)
+
+ps_ex_content = html.Div(id="ps-ex-page-content", style=CONTENT_STYLE)
+
+# Content Example
+ps_ex = html.Div([ps_ex_sidebar, ps_ex_content])
+    
+
+# Content Code
+ps_code = html.Div([
+    
+    dmc.Prism(
+        children=
+"""
+""",
+        language="python",
+        colorScheme="dark")
+
+])
+
+
+# Source Exercice
+
+
+# Content Exercice
+ps_exo = html.Div([
+    
+    html.Div([
+        
+        html.P(["Objectif : Répliquer l'application ci-dessous en reprenant les deux graphiques réalisés dans la section 2.2 Graph. Créer un navbar avec trois composantes :"]),
+
+        html.Ol([
+            html.Li(["Iris Scatter Plot : lien dans l’application vers le titre du même nom"]),
+            html.Li(["Iris Parrallel Coordinates : lien dans l’application vers le titre du même nom"]),
+            html.Li(["Un menu déroulant avec un lien vers l'ENT Rennes 1 et un lien vers Github"]),
+        ])
+    ]),
+    
+    # Titre de l'application
+
+])
+
+
+
+# Content Correction
+ps_cor = html.Div([
+    
+    dmc.Prism(
+        children=
+"""
+""",
+        language="python",
+        colorScheme="dark")
+
+])
+
+
 
 #-----------------------------------------------------------------------#
 # Interface                                                             #
@@ -1294,6 +1398,18 @@ layout = html.Div([
         ],
         id="navbar",
         active_tab="navbar-ex"
+    ),
+    
+    html.H2("4.6 Project Structure"),
+    
+    dbc.Tabs([
+            dbc.Tab(label="Exemple"   , tab_id="ps-ex"  , children=ps_ex  , className="tab"),
+            dbc.Tab(label="Code"      , tab_id="ps-code", children=ps_code, className="tab"),
+            dbc.Tab(label="Exercice"  , tab_id="ps-exo" , children=ps_exo , className="tab"),
+            dbc.Tab(label="Correction", tab_id="ps-cor" , children=ps_cor , className="tab")
+        ],
+        id="ps",
+        active_tab="ps-ex"
     ),
     
 ])
@@ -1394,3 +1510,16 @@ def update_graph(year_value, continent_value, log_boolean):
     fig.update_yaxes(range=[20, 100])
 
     return fig
+
+
+#---------------------------------------------------------#
+# 4.6 Project Structure                                   #
+#---------------------------------------------------------#
+
+
+@callback(
+    Output("ps-ex-page-content", "children"),
+    Input("pg4-ps-home","n_clicks")
+    )
+def render_page_content(home):
+    return(html.P("Paragraphe."))

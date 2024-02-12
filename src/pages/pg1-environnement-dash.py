@@ -26,36 +26,36 @@ layout = html.Div([
     html.H1('1. Environnement Dash'),
     
     html.H2('1.1 Intérêts'),
-    html.P("Pourquoi faire du Dash ?"),
+    html.P(children=["Pourquoi faire du ", html.Span("Dash", className="h"),"?"]),
     html.Ul([
         html.Li("Faire de la visualisation de données et créer des dashboards automatisés"),
         html.Li("Effectuer des tâches sur une interface en clique bouton"),
         html.Li("Automatisation des processus de traitement de données via une interface web"),
         html.Li("Alternative simplifiée pour faire du développement web: pas de javascript"),
         html.Li("La librairie Dash est une librairie équivalente à R Shiny mais en Python"),
-        html.Li("Dash c’est beaucoup trop cool")
+        html.Li([html.Span("Dash", className="h")," c’est beaucoup trop ", html.I("cool")])
     ]),
 
 
     html.H2('1.2 Installation de Python'),   
-    html.P("Python est téléchargeable à l’adresse suivante : https://www.python.org/downloads/"),
+    html.P([html.Span("Python", className="h")," est téléchargeable à l’adresse suivante : ",html.A("https://www.python.org/downloads/", href="https://www.python.org/downloads/", target='_blank')]),
     html.Img(src="assets/img/download-python.png", className= "img"),
  
  
     html.H2('1.3 Installation de VSCode'),   
-    html.P("Visual Studio Code est téléchargeable à l’adresse suivante : https://code.visualstudio.com/download"),
+    html.P([html.Span("Visual Studio Code", className="h")," est téléchargeable à l’adresse suivante : ", html.A("https://code.visualstudio.com/download", href="https://code.visualstudio.com/download", target='_blank')]),
     html.Img(src="assets/img/download-vsc.png", className= "img"),
 
 
     html.H2('1.4 Installation de VSCode'),   
     html.P("La page d’accueil de VSCode ressemble à ceci :"),
     html.Img(src="assets/img/vsc-accueil.png", className= "img"),
-    html.P("Entrer le raccourci clavier CTRL+Shift+X sur Windows ou Cmd+Shift+X sur Mac puis installer python sur VSCode :"),
+    html.P(["Entrer le raccourci clavier ",html.B("CTRL+Shift+X")," sur Windows ou ",html.B("Cmd+Shift+X")," sur Mac puis installer python sur VSCode :"]),
     html.Img(src="assets/img/vsc-install-python.png", className= "img"),
    
    
     html.H2('1.5 Créer un environnement virtuel via le terminal'),
-    html.P("Création et activation de l’environnement virtuel .venv sur Windows :"),
+    html.P(["Création et activation de l’environnement virtuel ",html.Span(".venv sur Windows",className="h")," :"]),
     dmc.Prism(
         children=
 """# Installer virtualenv sur VSCode
@@ -75,7 +75,7 @@ deactivate""",
         language="python",
         colorScheme="dark",
         className="code"),
-    html.P("Création et activation de l’environnement virtuel .venv sur Mac :"),
+    html.P(["Création et activation de l’environnement virtuel ",html.Span(".venv sur Mac",className="h")," :"]),
     dmc.Prism(
         children=
 """# Installer virtualenv sur VSCode
@@ -92,7 +92,7 @@ deactivate""",
         language="python",
         colorScheme="dark",
         className="code"),
-    html.P("Liste non exhaustive des packages à installer pour l’utilisation de dash :"),
+    html.P(["Liste non exhaustive des packages à installer pour l’utilisation de ",html.Span("Dash", className="h")," :"]),
     dmc.Prism(
         children=
 """pip install dash
@@ -106,18 +106,18 @@ pip list""",
         colorScheme="dark",
         className="code"),
     html.Img(src="assets/img/pip-list.png", className="img-pip-list"),
-    html.P("⚠ Remarque : Il est nécessaire d’activer un environnement virtuel pour pouvoir ensuite y installer des librairies."),
+    html.P(["⚠ ", html.U("Remarque :")," Il est nécessaire d’activer un environnement virtuel pour pouvoir ensuite y installer des librairies."]),
 
    
     html.H2("1.6 Automatiser la création d'un environnement virtuel"),   
     html.P("Avant de pouvoir créer un environnement virtuel sous VSCode, il faut exécuter les tâches suivantes :"),
     html.Ol([
-        html.Li("Aller dans File > Preferences > Settings"),
-        html.Li("Entrer “venv path” dans la bar de recherche"),
-        html.Li("Puis saisir : “${workspaceFolder}/.venv”") 
+        html.Li(["Aller dans ", html.I("File > Preferences > Settings")]),
+        html.Li(["Entrer ", html.B("“venv path”")," dans la bar de recherche"]),
+        html.Li(["Puis saisir : ", html.B("“${workspaceFolder}/.venv”")]) 
     ]),
     html.Img(src="assets/img/setting-venv.png", className= "img"),
-    html.P("⚠ Remarque : Les actions décrites ci-dessus permettent à VSCode d’activer un environnement contenu dans un dossier .venv à la racine du répertoire d’un projet."),
+    html.P(["⚠ ", html.U("Remarque :")," Les actions décrites ci-dessus permettent à VSCode d’activer un environnement contenu dans un dossier .venv à la racine du répertoire d’un projet."]),
    
     html.P("La création d’un environnement virtuel suppose la création d’un dossier qui contiendra l’ensemble de votre projet. Ce dossier contiendra donc également l’environnement virtuel python associé."),
     

@@ -53,6 +53,18 @@ h3 {
     color: black;
 }
 
+.h {
+    color: #003366;
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight: bold;
+}
+  
+.w {
+    color: #dd1515;
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight: bold;
+}
+
 .radio {
     width:20%;
 }
@@ -148,3 +160,4 @@ t {
 .dropdown{
     width:20%
 }
+
