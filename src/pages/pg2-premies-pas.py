@@ -479,13 +479,13 @@ layout = html.Div([
 
     html.H2("2.2 Graph"),
     
-    dcc.Input(value=".", type="password",  debounce=True, placeholder="Pwd to get correction", id="pwd"),
+    dcc.Input(type="password", debounce=True, placeholder="Pwd to get correction", id="pg2-input-pwd-graph-cor"),
     
     dbc.Tabs([
             dbc.Tab(label="Exemple"   , tab_id="graph-ex"  , children=graph_ex  , className="tab"),
             dbc.Tab(label="Code"      , tab_id="graph-code", children=graph_code, className="tab"),
             dbc.Tab(label="Exercice"  , tab_id="graph-exo" , children=graph_exo , className="tab"),
-            dbc.Tab(label="Correction", tab_id="graph-cor" , children=graph_cor , className="tab", id="test", disabled=True)
+            dbc.Tab(label="Correction", tab_id="graph-cor" , children=graph_cor , className="tab", id="pg2-pwd-graph-cor", disabled=True)
         ],
         id="graph",
         active_tab="graph-ex"
@@ -558,11 +558,11 @@ def update_objet_en_sortie(value):
 
 
 @callback(
-    Output("test", "disabled"),
-    Input("pwd","value")
+    Output("pg2-pwd-graph-cor", "disabled"),
+    Input("pg2-input-pwd-graph-cor","value")
 )
 def password(pwd):
-    if pwd=="test":
+    if pwd=="mdp":
         return(False)
     else:
         return(True)

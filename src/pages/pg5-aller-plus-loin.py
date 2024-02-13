@@ -383,11 +383,13 @@ layout = html.Div([
     
     html.H2("5.1 Cartographie"),
     
+    dcc.Input(type="password", debounce=True, placeholder="Pwd to get correction", id="pg5-input-pwd-carto-cor"),
+    
     dbc.Tabs([
             dbc.Tab(label="Exemple"   , tab_id="carto-ex"  , children=carto_ex  , className="tab"),
             dbc.Tab(label="Code"      , tab_id="carto-code", children=carto_code, className="tab"),
             dbc.Tab(label="Exercice"  , tab_id="carto-exo" , children=carto_exo , className="tab"),
-            dbc.Tab(label="Correction", tab_id="carto-cor" , children=carto_cor , className="tab")
+            dbc.Tab(label="Correction", tab_id="carto-cor" , children=carto_cor , className="tab", id="pg5-pwd-carto-cor", disabled=True)
         ],
         id="carto",
         active_tab="carto-ex"
@@ -396,9 +398,11 @@ layout = html.Div([
     
     html.H2("5.2 Jeu des portes"),
     
+    dcc.Input(type="password", debounce=True, placeholder="Pwd to get correction", id="pg5-input-pwd-jdp-cor"),
+    
     dbc.Tabs([
             dbc.Tab(label="Exercice"  , tab_id="jdp-exo" , children=jdp_exo , className="tab"),
-            dbc.Tab(label="Correction", tab_id="jdp-cor" , children=jdp_cor , className="tab")
+            dbc.Tab(label="Correction", tab_id="jdp-cor" , children=jdp_cor , className="tab", id="pg5-pwd-jdp-cor", disabled=True)
         ],
         id="jdp",
         active_tab="jdp-exo"
@@ -464,6 +468,15 @@ def display_choropleth(color_min, color_max):
     
     return fig
 
+@callback(
+    Output("pg5-pwd-carto-cor", "disabled"),
+    Input("pg5-input-pwd-carto-cor","value")
+)
+def password(pwd):
+    if pwd=="mdp":
+        return(False)
+    else:
+        return(True)
 
 #---------------------------------------------------------#
 # 5.2 Jeu des portes                                      #
@@ -500,3 +513,12 @@ def update(opt, n, radio_value):
     else:
         return opt, radio_value
 
+@callback(
+    Output("pg5-pwd-jdp-cor", "disabled"),
+    Input("pg5-input-pwd-jdp-cor","value")
+)
+def password(pwd):
+    if pwd=="mdp":
+        return(False)
+    else:
+        return(True)

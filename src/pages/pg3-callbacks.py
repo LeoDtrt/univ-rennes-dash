@@ -1293,11 +1293,13 @@ layout = html.Div([
     
     html.H2("3.1 Dropdown"),
     
+    dcc.Input(type="password", debounce=True, placeholder="Pwd to get correction", id="pg3-input-pwd-dropdown-cor"),
+    
     dbc.Tabs([
             dbc.Tab(label="Exemple"   , tab_id="dropdown-ex"  , children=dropdown_ex  , className="tab"),
             dbc.Tab(label="Code"      , tab_id="dropdown-code", children=dropdown_code, className="tab"),
             dbc.Tab(label="Exercice"  , tab_id="dropdown-exo" , children=dropdown_exo , className="tab"),
-            dbc.Tab(label="Correction", tab_id="dropdown-cor" , children=dropdown_cor , className="tab")
+            dbc.Tab(label="Correction", tab_id="dropdown-cor" , children=dropdown_cor , className="tab", id="pg3-pwd-dropdown-cor", disabled=True)
 
         ],
         id="dropdown",
@@ -1307,13 +1309,17 @@ layout = html.Div([
     
     html.H2("3.2 Slider"),
     
+    dcc.Input(type="password", debounce=True, placeholder="Pwd to get correction 1", id="pg3-input-pwd-slider-cor"),
+    
+    dcc.Input(type="password", debounce=True, placeholder="Pwd to get correction 2", id="pg3-input-pwd-slider-cor2"),
+    
     dbc.Tabs([
             dbc.Tab(label="Exemple"     , tab_id="slider-ex"   , children=slider_ex   , className="tab"),
             dbc.Tab(label="Code"        , tab_id="slider-code" , children=slider_code , className="tab"),
             dbc.Tab(label="Exercice"    , tab_id="slider-exo"  , children=slider_exo  , className="tab"),
-            dbc.Tab(label="Correction"  , tab_id="slider-cor"  , children=slider_cor  , className="tab"),
+            dbc.Tab(label="Correction"  , tab_id="slider-cor"  , children=slider_cor  , className="tab", id="pg3-pwd-slider-cor", disabled=True),
             dbc.Tab(label="Exercice 2"  , tab_id="slider-exo2" , children=slider_exo2 , className="tab"),
-            dbc.Tab(label="Correction 2", tab_id="slider-cor2" , children=slider_cor2 , className="tab")
+            dbc.Tab(label="Correction 2", tab_id="slider-cor2" , children=slider_cor2 , className="tab", id="pg3-pwd-slider-cor2", disabled=True)
         ],
         id="slider",
         active_tab="slider-ex"
@@ -1322,11 +1328,13 @@ layout = html.Div([
     
     html.H2("3.3 Checklist"),
     
+    dcc.Input(type="password", debounce=True, placeholder="Pwd to get correction", id="pg3-input-pwd-checklist-cor"),
+        
     dbc.Tabs([
             dbc.Tab(label="Exemple"     , tab_id="checklist-ex"   , children=checklist_ex   , className="tab"),
             dbc.Tab(label="Code"        , tab_id="checklist-code" , children=checklist_code , className="tab"),
             dbc.Tab(label="Exercice"    , tab_id="checklist-exo"  , children=checklist_exo  , className="tab"),
-            dbc.Tab(label="Correction"  , tab_id="checklist-cor"  , children=checklist_cor  , className="tab")
+            dbc.Tab(label="Correction"  , tab_id="checklist-cor"  , children=checklist_cor  , className="tab", id="pg3-pwd-checklist-cor", disabled=True)
         ],
         id="checklist",
         active_tab="checklist-ex"
@@ -1335,11 +1343,13 @@ layout = html.Div([
 
     html.H2("3.4 Radio Items"),
     
+    dcc.Input(type="password", debounce=True, placeholder="Pwd to get correction", id="pg3-input-pwd-radio-cor"),
+    
     dbc.Tabs([
             dbc.Tab(label="Exemple"     , tab_id="radio-ex"   , children=radio_ex   , className="tab"),
             dbc.Tab(label="Code"        , tab_id="radio-code" , children=radio_code , className="tab"),
             dbc.Tab(label="Exercice"    , tab_id="radio-exo"  , children=radio_exo  , className="tab"),
-            dbc.Tab(label="Correction"  , tab_id="radio-cor"  , children=radio_cor  , className="tab")
+            dbc.Tab(label="Correction"  , tab_id="radio-cor"  , children=radio_cor  , className="tab", id="pg3-pwd-radio-cor", disabled=True)
         ],
         id="radio",
         active_tab="radio-ex"
@@ -1348,11 +1358,13 @@ layout = html.Div([
     
     html.H2("3.5 Input"),
     
+    dcc.Input(type="password", debounce=True, placeholder="Pwd to get correction", id="pg3-input-pwd-input-cor"),
+    
     dbc.Tabs([
             dbc.Tab(label="Exemple"     , tab_id="input-ex"   , children=input_ex   , className="tab"),
             dbc.Tab(label="Code"        , tab_id="input-code" , children=input_code , className="tab"),
             dbc.Tab(label="Exercice"    , tab_id="input-exo"  , children=input_exo  , className="tab"),
-            dbc.Tab(label="Correction"  , tab_id="input-cor"  , children=input_cor  , className="tab")
+            dbc.Tab(label="Correction"  , tab_id="input-cor"  , children=input_cor  , className="tab", id="pg3-pwd-input-cor", disabled=True)
         ],
         id="input",
         active_tab="input-ex"
@@ -1361,11 +1373,13 @@ layout = html.Div([
     
     html.H2("3.6 Download"),
     
+    dcc.Input(type="password", debounce=True, placeholder="Pwd to get correction", id="pg3-input-pwd-download-cor"),
+    
     dbc.Tabs([
             dbc.Tab(label="Exemple"     , tab_id="download-ex"   , children=download_ex   , className="tab"),
             dbc.Tab(label="Code"        , tab_id="download-code" , children=download_code , className="tab"),
             dbc.Tab(label="Exercice"    , tab_id="download-exo"  , children=download_exo  , className="tab"),
-            dbc.Tab(label="Correction"  , tab_id="download-cor"  , children=download_cor  , className="tab")
+            dbc.Tab(label="Correction"  , tab_id="download-cor"  , children=download_cor  , className="tab", id="pg3-pwd-download-cor", disabled=True)
         ],
         id="download",
         active_tab="download-ex"
@@ -1374,11 +1388,13 @@ layout = html.Div([
     
     html.H2("3.7 Upload"),
     
+    dcc.Input(type="password", debounce=True, placeholder="Pwd to get correction", id="pg3-input-pwd-upload-cor"),
+    
     dbc.Tabs([
             dbc.Tab(label="Exemple"     , tab_id="upload-ex"   , children=upload_ex   , className="tab"),
             dbc.Tab(label="Code"        , tab_id="upload-code" , children=upload_code , className="tab"),
             dbc.Tab(label="Exercice"    , tab_id="upload-exo"  , children=upload_exo  , className="tab"),
-            dbc.Tab(label="Correction"  , tab_id="upload-cor"  , children=upload_cor  , className="tab")
+            dbc.Tab(label="Correction"  , tab_id="upload-cor"  , children=upload_cor  , className="tab", id="pg3-pwd-upload-cor", disabled=True)
         ],
         id="upload",
         active_tab="upload-ex"
@@ -1411,6 +1427,16 @@ def update_graph(x, y):
                      title="Scatter Plot of the Iris Dataset")
     return fig
 
+@callback(
+    Output("pg3-pwd-dropdown-cor", "disabled"),
+    Input("pg3-input-pwd-dropdown-cor","value")
+)
+def password(pwd):
+    if pwd=="mdp":
+        return(False)
+    else:
+        return(True)
+
 
 #---------------------------------------------------------#
 # 3.2 Slider                                              #
@@ -1433,7 +1459,6 @@ def update_graph(value):
                      title='Life expectancy by GDP per capita and population in 2007')
     return fig
 
-
 @callback(
     Output(component_id='pg3-scatter-gdp', component_property='figure'),
     Input(component_id='pg3-year', component_property="value"),
@@ -1450,6 +1475,26 @@ def update_graph(year_value, continent_value):
                      size_max=60,
                      title=f'Life expectancy by GDP per capita and population in {year_value}')
     return fig
+
+@callback(
+    Output("pg3-pwd-slider-cor", "disabled"),
+    Input("pg3-input-pwd-slider-cor","value")
+)
+def password(pwd):
+    if pwd=="mdp":
+        return(False)
+    else:
+        return(True)
+
+@callback(
+    Output("pg3-pwd-slider-cor2", "disabled"),
+    Input("pg3-input-pwd-slider-cor2","value")
+)
+def password(pwd):
+    if pwd=="mdp":
+        return(False)
+    else:
+        return(True)
 
 
 #---------------------------------------------------------#
@@ -1484,6 +1529,15 @@ def update_graph(year_value, continent_value):
     fig.update_yaxes(range=[0, 100])
     return fig
 
+@callback(
+    Output("pg3-pwd-checklist-cor", "disabled"),
+    Input("pg3-input-pwd-checklist-cor","value")
+)
+def password(pwd):
+    if pwd=="mdp":
+        return(False)
+    else:
+        return(True)
 
 #---------------------------------------------------------#
 # 3.4 Radio-items                                         #
@@ -1527,6 +1581,15 @@ def update_graph(year_value, continent_value, log_boolean):
 
     return fig
 
+@callback(
+    Output("pg3-pwd-radio-cor", "disabled"),
+    Input("pg3-input-pwd-radio-cor","value")
+)
+def password(pwd):
+    if pwd=="mdp":
+        return(False)
+    else:
+        return(True)
 
 #---------------------------------------------------------#
 # 3.5 Input                                               #
@@ -1552,6 +1615,15 @@ def create_txt(value):
         pg3_txt.append(html.Li(value))
         return pg3_txt
     
+@callback(
+    Output("pg3-pwd-input-cor", "disabled"),
+    Input("pg3-input-pwd-input-cor","value")
+)
+def password(pwd):
+    if pwd=="mdp":
+        return(False)
+    else:
+        return(True)
 
 #---------------------------------------------------------#
 # 3.6 Download                                            #
@@ -1595,7 +1667,16 @@ def download_txt(n_clicks, text, filename):
                 dnl_exo_txt = '\n'.join(dnl_exo_txt)
                 dnl_exo_n.append(n_clicks)
                 return dict(content=dnl_exo_txt, filename=filename+".txt")
-            
+
+@callback(
+    Output("pg3-pwd-download-cor", "disabled"),
+    Input("pg3-input-pwd-download-cor","value")
+)
+def password(pwd):
+    if pwd=="mdp":
+        return(False)
+    else:
+        return(True)            
           
 #---------------------------------------------------------#
 # 3.7 Upload                                              #
@@ -1670,3 +1751,14 @@ def upload_txt(c,n):
         for ligne in df_upl_exo[0]:
             upl_exo_txt.append(html.Li(ligne))
         return upl_exo_txt
+
+
+@callback(
+    Output("pg3-pwd-upload-cor", "disabled"),
+    Input("pg3-input-pwd-upload-cor","value")
+)
+def password(pwd):
+    if pwd=="mdp":
+        return(False)
+    else:
+        return(True)

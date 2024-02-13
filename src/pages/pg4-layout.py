@@ -1341,11 +1341,13 @@ layout = html.Div([
     
     html.H2("4.1 Segmentation"),
     
+    dcc.Input(type="password", debounce=True, placeholder="Pwd to get correction", id="pg4-input-pwd-segmentation-cor"),
+    
     dbc.Tabs([
             dbc.Tab(label="Exemple"   , tab_id="segmentation-ex"  , children=segmentation_ex  , className="tab"),
             dbc.Tab(label="Code"      , tab_id="segmentation-code", children=segmentation_code, className="tab"),
             dbc.Tab(label="Exercice"  , tab_id="segmentation-exo" , children=segmentation_exo , className="tab"),
-            dbc.Tab(label="Correction", tab_id="segmentation-cor" , children=segmentation_cor , className="tab")
+            dbc.Tab(label="Correction", tab_id="segmentation-cor" , children=segmentation_cor , className="tab", id="pg4-pwd-segmentation-cor", disabled=True)
         ],
         id="segmentation",
         active_tab="segmentation-ex"
@@ -1354,11 +1356,13 @@ layout = html.Div([
     
     html.H2("4.2 Accordion"),
     
+    dcc.Input(type="password", debounce=True, placeholder="Pwd to get correction", id="pg4-input-pwd-accordion-cor"),
+    
     dbc.Tabs([
             dbc.Tab(label="Exemple"   , tab_id="accordion-ex"  , children=accordion_ex  , className="tab"),
             dbc.Tab(label="Code"      , tab_id="accordion-code", children=accordion_code, className="tab"),
             dbc.Tab(label="Exercice"  , tab_id="accordion-exo" , children=accordion_exo , className="tab"),
-            dbc.Tab(label="Correction", tab_id="accordion-cor" , children=accordion_cor , className="tab")
+            dbc.Tab(label="Correction", tab_id="accordion-cor" , children=accordion_cor , className="tab", id="pg4-pwd-accordion-cor", disabled=True)
         ],
         id="accordion",
         active_tab="accordion-ex"
@@ -1366,11 +1370,13 @@ layout = html.Div([
 
     html.H2("4.3 Tabs"),
     
+    dcc.Input(type="password", debounce=True, placeholder="Pwd to get correction", id="pg4-input-pwd-tabs-cor"),
+    
     dbc.Tabs([
             dbc.Tab(label="Exemple"   , tab_id="tabs-ex"  , children=tabs_ex  , className="tab"),
             dbc.Tab(label="Code"      , tab_id="tabs-code", children=tabs_code, className="tab"),
             dbc.Tab(label="Exercice"  , tab_id="tabs-exo" , children=tabs_exo , className="tab"),
-            dbc.Tab(label="Correction", tab_id="tabs-cor" , children=tabs_cor , className="tab")
+            dbc.Tab(label="Correction", tab_id="tabs-cor" , children=tabs_cor , className="tab", id="pg4-pwd-tabs-cor", disabled=True)
         ],
         id="tabs",
         active_tab="tabs-ex"
@@ -1378,11 +1384,13 @@ layout = html.Div([
 
     html.H2("4.4 Navlink"),
     
+    dcc.Input(type="password", debounce=True, placeholder="Pwd to get correction", id="pg4-input-pwd-navlink-cor"),
+    
     dbc.Tabs([
             dbc.Tab(label="Exemple"   , tab_id="navlink-ex"  , children=navlink_ex  , className="tab"),
             dbc.Tab(label="Code"      , tab_id="navlink-code", children=navlink_code, className="tab"),
             dbc.Tab(label="Exercice"  , tab_id="navlink-exo" , children=navlink_exo , className="tab"),
-            dbc.Tab(label="Correction", tab_id="navlink-cor" , children=navlink_cor , className="tab")
+            dbc.Tab(label="Correction", tab_id="navlink-cor" , children=navlink_cor , className="tab", id="pg4-pwd-navlink-cor", disabled=True)
         ],
         id="navlink",
         active_tab="navlink-ex"
@@ -1390,11 +1398,13 @@ layout = html.Div([
     
     html.H2("4.5 Navbar"),
     
+    dcc.Input(type="password", debounce=True, placeholder="Pwd to get correction", id="pg4-input-pwd-navbar-cor"),
+    
     dbc.Tabs([
             dbc.Tab(label="Exemple"   , tab_id="navbar-ex"  , children=navbar_ex  , className="tab"),
             dbc.Tab(label="Code"      , tab_id="navbar-code", children=navbar_code, className="tab"),
             dbc.Tab(label="Exercice"  , tab_id="navbar-exo" , children=navbar_exo , className="tab"),
-            dbc.Tab(label="Correction", tab_id="navbar-cor" , children=navbar_cor , className="tab")
+            dbc.Tab(label="Correction", tab_id="navbar-cor" , children=navbar_cor , className="tab", id="pg4-pwd-navbar-cor", disabled=True)
         ],
         id="navbar",
         active_tab="navbar-ex"
@@ -1402,11 +1412,13 @@ layout = html.Div([
     
     html.H2("4.6 Project Structure"),
     
+    dcc.Input(type="password", debounce=True, placeholder="Pwd to get correction", id="pg4-input-pwd-ps-cor"),
+    
     dbc.Tabs([
             dbc.Tab(label="Exemple"   , tab_id="ps-ex"  , children=ps_ex  , className="tab"),
             dbc.Tab(label="Code"      , tab_id="ps-code", children=ps_code, className="tab"),
             dbc.Tab(label="Exercice"  , tab_id="ps-exo" , children=ps_exo , className="tab"),
-            dbc.Tab(label="Correction", tab_id="ps-cor" , children=ps_cor , className="tab")
+            dbc.Tab(label="Correction", tab_id="ps-cor" , children=ps_cor , className="tab", id="pg4-pwd-ps-cor", disabled=True)
         ],
         id="ps",
         active_tab="ps-ex"
@@ -1449,6 +1461,15 @@ def update_graph(year_value, continent_value, log_boolean):
 
     return fig
 
+@callback(
+    Output("pg4-pwd-segmentation-cor", "disabled"),
+    Input("pg4-input-pwd-segmentation-cor","value")
+)
+def password(pwd):
+    if pwd=="mdp":
+        return(False)
+    else:
+        return(True)
 
 #---------------------------------------------------------#
 # 4.2 Accordion                                           #
@@ -1480,6 +1501,15 @@ def update_graph(year_value, continent_value, log_boolean):
 
     return fig
 
+@callback(
+    Output("pg4-pwd-accordion-cor", "disabled"),
+    Input("pg4-input-pwd-accordion-cor","value")
+)
+def password(pwd):
+    if pwd=="mdp":
+        return(False)
+    else:
+        return(True)
 
 #---------------------------------------------------------#
 # 4.3 Tabs                                                #
@@ -1511,6 +1541,44 @@ def update_graph(year_value, continent_value, log_boolean):
 
     return fig
 
+@callback(
+    Output("pg4-pwd-tabs-cor", "disabled"),
+    Input("pg4-input-pwd-tabs-cor","value")
+)
+def password(pwd):
+    if pwd=="mdp":
+        return(False)
+    else:
+        return(True)
+
+
+#---------------------------------------------------------#
+# 4.4 Navlink                                             #
+#---------------------------------------------------------#
+
+@callback(
+    Output("pg4-pwd-navlink-cor", "disabled"),
+    Input("pg4-input-pwd-navlink-cor","value")
+)
+def password(pwd):
+    if pwd=="mdp":
+        return(False)
+    else:
+        return(True)
+
+#---------------------------------------------------------#
+# 4.5 Navbar                                              #
+#---------------------------------------------------------#
+
+@callback(
+    Output("pg4-pwd-navbar-cor", "disabled"),
+    Input("pg4-input-pwd-navbar-cor","value")
+)
+def password(pwd):
+    if pwd=="mdp":
+        return(False)
+    else:
+        return(True)
 
 #---------------------------------------------------------#
 # 4.6 Project Structure                                   #
@@ -1523,3 +1591,13 @@ def update_graph(year_value, continent_value, log_boolean):
     )
 def render_page_content(home):
     return(html.P("Paragraphe."))
+
+@callback(
+    Output("pg4-pwd-ps-cor", "disabled"),
+    Input("pg4-input-pwd-ps-cor","value")
+)
+def password(pwd):
+    if pwd=="mdp":
+        return(False)
+    else:
+        return(True)
