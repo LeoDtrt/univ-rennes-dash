@@ -24,8 +24,9 @@ sidebar = html.Div([
         ],
         vertical=True,
         pills=True)
-], className='sidebar')
+], id='sidebar', className='sidebar')
 
+sidebar_closed = html.Div(id='sidebar', className='sidebarClose')
 
 content = html.Div([
     
@@ -34,7 +35,7 @@ content = html.Div([
     html.Div([
         page_container
     ])
-], className='body')
+], id='body', className='body')
 
 
 app.layout = html.Div([sidebar, content], id="app")
@@ -42,14 +43,18 @@ app.layout = html.Div([sidebar, content], id="app")
 
 @callback(
     Output("app", "children"),
+    Output("sidebar", "className"),
+    Output("body", "className"),
     Input("closing-sidebar","n_clicks")
 )
 def closing_sidebar(click):
+    
     n_clicks_closing_sidebar.append(click)    
+    
     if len(n_clicks_closing_sidebar) % 2 == 0:
-        return [content]
+        return [[sidebar_closed, content],"sidebarClose","bodyFull"]
     else:
-        return [sidebar, content]
+        return [[sidebar, content],"sidebar","body"]
 
 
 if __name__ == "__main__":
