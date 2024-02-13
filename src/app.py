@@ -52,9 +52,10 @@ def closing_sidebar(click):
     n_clicks_closing_sidebar.append(click)    
     
     if len(n_clicks_closing_sidebar) % 2 == 0:
-        return [[sidebar_closed, content],"sidebarClose","bodyFull"]
-    else:
         return [[sidebar, content],"sidebar","body"]
+    else:
+        return [[sidebar_closed, content],"sidebarClose","bodyFull"]
+
 
 
 if __name__ == "__main__":
