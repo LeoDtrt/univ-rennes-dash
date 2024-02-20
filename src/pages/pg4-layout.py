@@ -1,4 +1,4 @@
-from dash import Dash, html, dcc, callback, Input, Output, register_page, dash_table
+from dash import Dash, html, dcc, callback, Input, Output, register_page, dash_table, ctx
 import dash_bootstrap_components as dbc
 import dash_mantine_components as dmc
 import plotly.express as px
@@ -57,19 +57,19 @@ app.layout = html.Div([
     
     html.Header([
         html.H1('Segmentation de ma page Web :')
-        ]),
+    ]),
     
     dbc.Row([
         dbc.Col(html.Div("Zone A"), align="start" , style={'backgroundColor':'green'}),
         dbc.Col(html.Div("Zone B"), align="center", style={'backgroundColor':'red'}),
         dbc.Col(html.Div("Zone C"), align="end"   , style={'backgroundColor':'pink'}),
-        ], style={'height': '120px', 'borderStyle': 'dotted'}),
+    ], style={'height': '120px', 'borderStyle': 'dotted'}),
     
     dbc.Row([
-                dbc.Col(html.Div("Zone D"), align="start" , style={'backgroundColor':'blue', 'height': '100%'}, width=2),
-                dbc.Col(html.Center("Zone E"), align="center", style={'backgroundColor':'yellow', 'height': '50%'}, width=9),
-                dbc.Col(html.Div("Zone F"), align="end"   , style={'backgroundColor':'orange'}, width=1),
-            ], style={'height': '200px', 'borderStyle': 'double'})
+        dbc.Col(html.Div("Zone D"), align="start" , style={'backgroundColor':'blue', 'height': '100%'}, width=2),
+        dbc.Col(html.Center("Zone E"), align="center", style={'backgroundColor':'yellow', 'height': '50%'}, width=9),
+        dbc.Col(html.Div("Zone F"), align="end"   , style={'backgroundColor':'orange'}, width=1),
+    ], style={'height': '200px', 'borderStyle': 'double'})
     
 ])
 
@@ -226,64 +226,54 @@ opt_log = [{'label': 'Activée', 'value': True}, {'label': 'Désactivée', 'valu
 
 app.layout = html.Div([    
     
-    html.Header(
-        children=[html.H1('Gapminder dataset')]
-    ),
+    html.Header(html.H1('Gapminder dataset')),
     
-    dbc.Row(
-        children=[
+    dbc.Row([
         
-            # Affichage du graphique LifeExp by GDPperCap
-            dbc.Col(
-                children=[dcc.Graph(id='graph-gdp', figure={})],
-                align="start",
-                width=7
-            ),
+        # Affichage du graphique LifeExp by GDPperCap
+        dbc.Col([
+            
+            dcc.Graph(id='graph-gdp', figure={})
+            
+        ], align="start", width=7),
         
-            # Affichage des composantes de selection
-            dbc.Col(
+        # Affichage des composantes de selection
+        dbc.Col([
                 
-                children=[
-                    
-                    # Ligne contenant le choix des continents et de la transformation log
-                    dbc.Row(
-                        children=[
+            # Ligne contenant le choix des continents et de la transformation log
+            dbc.Row(children=[
                             
-                            # Choix des continents
-                            dbc.Col(
-                                children=[
-                                    html.H6("Choix des Continents :"),
-                                    dcc.Checklist(id='checklist', options=opt_continent, value=opt_continent)
-                                ],
-                                width = 6
-                            ),
+                # Choix des continents
+                dbc.Col([
+                    
+                    html.H6("Choix des Continents :"),
+                    dcc.Checklist(id='checklist', options=opt_continent, value=opt_continent)
+                
+                ], width = 6),
                             
-                            # Transformation logarithmique
-                            dbc.Col(
-                                children=[
-                                    html.H6("Transformation Log (PIB par tête) :"),
-                                    dcc.RadioItems(id='radio', options=opt_log, value=True)
-                                ],
-                                width = 6
-                            )
-                        ]
-                    ),
+                # Transformation logarithmique
+                dbc.Col([
                     
-                    html.Br(),
+                    html.H6("Transformation Log (PIB par tête) :"),
+                    dcc.RadioItems(id='radio', options=opt_log, value=True)
+                
+                ], width = 6)
+                
+            ]),
                     
-                    # Ligne contenant le choix de l'annee
-                    dbc.Row(
-                        children=[
-                            html.H6("Sélection de l'année :"),
-                            dcc.Slider(id='slider', min=min_year , max=max_year , value=max_year, marks=slider_marks, step = None)
-                        ]
-                    )
-                ],
-                align="center",
-                width=4
-            )
-        ]
-    )   
+            html.Br(),
+                    
+            # Ligne contenant le choix de l'annee
+            dbc.Row([
+                
+                html.H6("Sélection de l'année :"),
+                dcc.Slider(id='slider', min=min_year , max=max_year , value=max_year, marks=slider_marks, step = None)
+            ])
+            
+        ], align="center", width=4)
+        
+    ])
+       
 ])
 
 #-----------------------------------------------------------------------#
@@ -371,29 +361,32 @@ import dash_bootstrap_components as dbc
 
 app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 
-app.layout = html.Div([]
+app.layout = html.Div([
+    
     dbc.Accordion([
-        dbc.AccordionItem(
-            title="Item 1", 
-            children=[
-                html.P("This is the content of the first section"),
-                dbc.Button("Click here")
-            ]
-        ),
         
-        dbc.AccordionItem(
-            title="Item 2",
-            children=[
-                html.P("This is the content of the second section"),
-                dbc.Button("Don't click me!", color="danger"),
-            ]
-        ),
+        dbc.AccordionItem(title="Item 1", children=[
+            
+            html.P("This is the content of the first section"),
+            dbc.Button("Click here")
+            
+        ]),
         
-        dbc.AccordionItem(
-            title="Item 3",
-            children="This is the content of the third section"
-        )
+        dbc.AccordionItem(title="Item 2", children=[
+            
+            html.P("This is the content of the second section"),
+            dbc.Button("Don't click me!", color="danger")
+            
+        ]),
+        
+        dbc.AccordionItem(title="Item 3", children=[
+            
+            html.P("This is the content of the third section")
+            
+        ])
+        
     ])
+    
 ])
 
 if __name__ == '__main__':
@@ -602,32 +595,30 @@ from dash import Dash, html
 
 app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 
-tab1_content = dbc.Card(
-    dbc.CardBody([
+tab1_content = dbc.Card(className="mt-3", children=[
+    
+    dbc.CardBody([    
             html.P("This is tab 1!", className="card-text"),
-            dbc.Button("Click here", color="success"),
-        ]),
-    className="mt-3"
-)
+            dbc.Button("Click here", color="success")            
+    ])
+])
 
-tab2_content = dbc.Card(
-    dbc.CardBody([
+tab2_content = dbc.Card(className="mt-3", children=[
+
+    dbc.CardBody([        
             html.P("This is tab 2!", className="card-text"),
-            dbc.Button("Don't click here", color="danger"),
-        ]),
-    className="mt-3",
-)
+            dbc.Button("Don't click here", color="danger")
+    ])    
+])
 
 app.layout = html.Div([
-    
-    dbc.Tabs([
+
+    dbc.Tabs(id="tabs", active_tab="tab-1", children=[
+        
             dbc.Tab(label="Tab 1", tab_id="tab-1", children=tab1_content),
-            dbc.Tab(label="Tab 2", tab_id="tab-2", children=tab2_content),
-        ],
-        id="tabs",
-        active_tab="tab-1"
-    )
-    
+            dbc.Tab(label="Tab 2", tab_id="tab-2", children=tab2_content)
+            
+    ])
 ])
 
 if __name__ == '__main__':
@@ -739,46 +730,37 @@ opt_log = [{'label': 'Activée', 'value': True}, {'label': 'Désactivée', 'valu
 # Interface                                                             #
 #-----------------------------------------------------------------------#
 
-tab1_content = dbc.Card(
-    dbc.CardBody(
-        className="mt-3",
-        children=[dcc.Checklist(id='checklist', options=opt_continent, value=opt_continent, inline=True)]
-    )
-)
+tab1_content = dbc.Card([
+    dbc.CardBody(className="mt-3", children=[    
+        dcc.Checklist(id='checklist', options=opt_continent, value=opt_continent, inline=True)
+    ])    
+])
 
-tab2_content = dbc.Card(
-    dbc.CardBody(
-        className="mt-3",
-        children=[dcc.RadioItems(id='radio', options=opt_log, value=True)]
-    )
-)
+tab2_content = dbc.Card([
+    dbc.CardBody(className="mt-3", children=[   
+        dcc.RadioItems(id='radio', options=opt_log, value=True)
+    ])    
+])
 
-tab3_content = dbc.Card(
-    dbc.CardBody(
-        className="mt-3",
-        children=[dcc.Slider(id='slider', min=min_year , max=max_year , value=max_year,
-                             marks=slider_marks, step = None)]
-    )
-)
-
-
+tab3_content = dbc.Card([
+    dbc.CardBody(className="mt-3", children=[
+        dcc.Slider(id='slider', min=min_year , max=max_year , value=max_year, marks=slider_marks, step = None)
+    ])
+])
 
 app.layout = html.Div([
     
     # Titre de l'application
     html.H1("Gapminder dataset : Checklist & Slider"),
     
-    dbc.Tabs(
-        id="tabs",
-        children=[
-            dbc.Tab(label="Sélection des continents", tab_id="tab-1",
-                    children=tab1_content),
-            dbc.Tab(label="Transformation logarithmique du PIB par tête (gdpPercap)", tab_id="tab-2",
-                    children=tab2_content),
-            dbc.Tab(label="Sélection de l'année", tab_id="tab-3",
-                    children=tab3_content)
-        ],
-        active_tab="tab-1")
+    # Tabs contenant les composantes dynamiques de l'application
+    dbc.Tabs(id="tabs", active_tab="tab-1", children=[
+        
+        dbc.Tab(tab1_content, tab_id="tab-1", label="Sélection des continents"),
+        dbc.Tab(tab2_content, tab_id="tab-2", label="Transformation logarithmique du PIB par tête (gdpPercap)"),
+        dbc.Tab(tab3_content, tab_id="tab-3", label="Sélection de l'année")
+        
+    ]),
     
     # Affichage du graphique LifeExp by GDPperCap
     dcc.Graph(id='graph-gdp', figure={}),
@@ -788,7 +770,6 @@ app.layout = html.Div([
 #-----------------------------------------------------------------------#
 # Serveur                                                               #
 #-----------------------------------------------------------------------#
-
 
 @callback(
     Output('graph-gdp', 'figure'),
@@ -868,24 +849,45 @@ import dash_bootstrap_components as dbc
 
 app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 
+# Barre de navigation
 nav = dbc.Nav([
-        dbc.NavItem(dbc.NavLink("Doc Dash", active=True, href="https://dash.plotly.com/")),
-        dbc.NavItem(dbc.NavLink("Target 1", href="#target1", external_link=True)),
-        dbc.NavItem(dbc.NavLink("Target 2", href="#target2", external_link=True)),
-        dbc.NavItem(dbc.NavLink("Disabled", disabled=True, href="#")),
-        dbc.DropdownMenu(
-            [dbc.DropdownMenuItem("Github", href="https://github.com/"),
-             dbc.DropdownMenuItem("Gitlab", href="https://about.gitlab.com/")],
-            label="Dropdown",
-            nav=True,
-        ),
+    
+    # Lien vers la documentation de dash
+    dbc.NavItem(dbc.NavLink("Doc Dash", active=True, href="https://dash.plotly.com/")),
+        
+    # Lien vers le titre "Target 1"
+    dbc.NavItem(dbc.NavLink("Target 1", href="#target1", external_link=True)),
+        
+    # Lien vers le titre "Target 2"
+    dbc.NavItem(dbc.NavLink("Target 2", href="#target2", external_link=True)),
+    
+    # Lien inactif
+    dbc.NavItem(dbc.NavLink("Disabled", disabled=True, href="#")),
+    
+    # Menu déroulant
+    dbc.DropdownMenu(label="Dropdown", nav=True, children=[
+        
+        # Lien vers Github
+        dbc.DropdownMenuItem("Github", href="https://github.com/"),
+        
+        # Lien vers Gitlab
+        dbc.DropdownMenuItem("Gitlab", href="https://about.gitlab.com/")
+        
     ])
+            
+])
 
+# Contenu de la page
 content = html.Div([
+    
     html.Div([html.H1("Titre") for x in range(20)]),
+    
     html.H1('Target 1', id='target1'),
+    
     html.Div([html.H1("Titre") for x in range(20)]),
-    html.H1('Target 2', id='target2'),
+    
+    html.H1('Target 2', id='target2')
+    
 ])
 
 app.layout = html.Div([nav, content])
@@ -959,13 +961,15 @@ navlink_cor = html.Div([
 import dash_bootstrap_components as dbc
 import plotly.express as px
 
+#-----------------------------------------------------------------------#
+# Initialisation                                                        #
+#-----------------------------------------------------------------------#
+
 app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 
-nav = dbc.Nav([
-        dbc.NavItem(dbc.NavLink("ENT Rennes 1", href="https://ent.univ-rennes1.fr")),
-        dbc.NavItem(dbc.NavLink("Iris Scatter Plot", href="#iris", external_link=True)),
-        dbc.NavItem(dbc.NavLink("Iris Parrallel Coordinates", href="#parrallel", external_link=True)),
-])
+#-----------------------------------------------------------------------#
+# Sources                                                               #
+#-----------------------------------------------------------------------#
 
 df = px.data.iris()
 
@@ -981,32 +985,44 @@ fig2 = px.parallel_coordinates(df, color="species_id", labels=lab,
                     color_continuous_scale=px.colors.diverging.Tropic, 
                     color_continuous_midpoint=2)
 
-iris_scatter_content = html.Div(children=[
-    html.H3(children='Hello Dash'),
+#-----------------------------------------------------------------------#
+# Interface                                                             #
+#-----------------------------------------------------------------------#
 
-    html.Div(children='''
+nav = dbc.Nav([
+        dbc.NavItem(dbc.NavLink("ENT Rennes 1", href="https://ent.univ-rennes1.fr")),
+        dbc.NavItem(dbc.NavLink("Iris Scatter Plot", href="#scatter", external_link=True)),
+        dbc.NavItem(dbc.NavLink("Iris Parrallel Coordinates", href="#parrallel", external_link=True))
+])
+
+content = html.Div([
+    
+    # Rubrique Scatter Plot
+    html.H1('Iris Scatter Plot', id='scatter'),
+    
+    html.H3('Hello Dash'),
+
+    html.Div('''
         Dash: A web application framework for your data.
     '''),
 
-    dcc.Graph(id='graph1', figure=fig1)
-])
-
-
-iris_parrallel_content = html.Div([
+    dcc.Graph(id='graph1', figure=fig1),
+    
+    
+    # Rubrique Parrallel Coordinates
+    html.H1('Iris Parrallel Coordinates', id='parrallel'),
     
     html.H3('Iris dataset : Parrallel coordinates'),
+    
     dcc.Graph(id='graph2', figure=fig2)
 
 ])
 
-content = html.Div([
-    html.H1('Iris Scatter Plot', id='iris'),
-    html.Div(iris_scatter_content),
-    html.H1('Iris Parrallel Coordinates', id='parrallel'),
-    html.Div(iris_parrallel_content)
-])
-
 app.layout = html.Div([nav, content])
+
+#-----------------------------------------------------------------------#
+# Run                                                                   #
+#-----------------------------------------------------------------------#
 
 if __name__ == '__main__':
     app.run(debug=True)""",
@@ -1057,27 +1073,23 @@ import dash_bootstrap_components as dbc
 
 app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 
-navbar = dbc.NavbarSimple(
-    children=[
-        dbc.NavItem(dbc.NavLink("Page 1", href="#")),
-        dbc.DropdownMenu(
-            children=[
-                dbc.DropdownMenuItem("More pages", header=True),
-                dbc.DropdownMenuItem("Page 2", href="#"),
-                dbc.DropdownMenuItem("Page 3", href="#"),
-            ],
-            nav=True,
-            in_navbar=True,
-            label="More",
-        ),
-    ],
-    brand="NavbarSimple",
-    brand_href="#",
-    color="primary",
-    dark=True,
-)
+app.layout = html.Div([
+    
+    dbc.NavbarSimple(brand="NavbarSimple", brand_href="#", color="primary", dark=True, children=[
 
-app.layout = html.Div([navbar])
+        dbc.NavLink("Page 1", href="#"),
+                    
+        dbc.NavLink("Page 2", href="#"),
+        
+        dbc.DropdownMenu(nav=True, in_navbar=True, label="More", children=[
+
+            dbc.DropdownMenuItem("More pages", header=True),
+            dbc.DropdownMenuItem("Page 2", href="#"),
+            dbc.DropdownMenuItem("Page 3", href="#")
+
+        ])
+    ])     
+])
 
 if __name__ == '__main__':
     app.run(debug=True)""",
@@ -1150,33 +1162,19 @@ navbar_cor = html.Div([
 import dash_bootstrap_components as dbc
 import plotly.express as px
 
+#-----------------------------------------------------------------------#
+# Initialisation                                                        #
+#-----------------------------------------------------------------------#
+
 app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 
-navbar = dbc.NavbarSimple(
-    children=[
-        dbc.NavItem(dbc.NavLink("Iris Scatter", href="#scatter", external_link=True)),
-        dbc.NavItem(dbc.NavLink("Iris Parallel", href="#parrallel", external_link=True)),
-        dbc.DropdownMenu(
-            children=[
-                dbc.DropdownMenuItem("ENT Rennes 1", href="https://ent.univ-rennes1.fr"),
-                dbc.DropdownMenuItem("Github", href="https://github.com/"),
-            ],
-            nav=True,
-            in_navbar=True,
-            label="Liens Utiles",
-        ),
-    ],
-    brand="Iris",
-    brand_href="#scatter",
-    brand_external_link=True,
-    color="primary",
-    dark=True,
-)
+#-----------------------------------------------------------------------#
+# Sources                                                               #
+#-----------------------------------------------------------------------#
 
 df = px.data.iris()
 
 fig1 = px.scatter(df, x="sepal_width", y="petal_length", color="species")
-
 
 lab = {"species_id"   : "Species"       ,
        "sepal_width"  : "Sepal Width"   ,
@@ -1188,33 +1186,54 @@ fig2 = px.parallel_coordinates(df, color="species_id", labels=lab,
                     color_continuous_scale=px.colors.diverging.Tropic, 
                     color_continuous_midpoint=2)
 
+#-----------------------------------------------------------------------#
+# Interface                                                             #
+#-----------------------------------------------------------------------#
 
-iris_scatter_content = html.Div(children=[
-    html.H3(children='Hello Dash'),
+navbar = dbc.NavbarSimple(brand="Iris", brand_href="#scatter", brand_external_link=True,
+                        color="primary", dark=True, children=[
 
-    html.Div(children='''
+    dbc.NavLink("Iris Scatter", href="#scatter", external_link=True),
+
+    dbc.NavLink("Iris Parallel", href="#parrallel", external_link=True),
+    
+    dbc.DropdownMenu(nav=True, in_navbar=True, label="Liens Utiles", children=[
+        
+        dbc.DropdownMenuItem("ENT Rennes 1", href="https://ent.univ-rennes1.fr"),
+        dbc.DropdownMenuItem("Github", href="https://github.com/")
+        
+    ])
+    
+])
+
+content = html.Div([
+    
+    # Rubrique Scatter Plot
+    html.H1('Iris Scatter Plot', id='scatter'),
+    
+    html.H3('Hello Dash'),
+
+    html.Div('''
         Dash: A web application framework for your data.
     '''),
 
-    dcc.Graph(id='graph1', figure=fig1)
-])
-
-iris_parrallel_content = html.Div([
+    dcc.Graph(id='graph1', figure=fig1),
+    
+    
+    # Rubrique Parrallel Coordinates
+    html.H1('Iris Parrallel Coordinates', id='parrallel'),
     
     html.H3('Iris dataset : Parrallel coordinates'),
+    
     dcc.Graph(id='graph2', figure=fig2)
 
 ])
 
-
-content = html.Div([
-    html.H1('Iris Scatter Plot', id='scatter'),
-    html.Div(iris_scatter_content),
-    html.H1('Iris Parrallel Coordinates', id='parrallel'),
-    html.Div(iris_parrallel_content)
-])
-
 app.layout = html.Div([navbar, content])
+
+#-----------------------------------------------------------------------#
+# Run                                                                   #
+#-----------------------------------------------------------------------#
 
 if __name__ == '__main__':
     app.run(debug=True)""",
@@ -1226,25 +1245,28 @@ if __name__ == '__main__':
 
 
 #---------------------------------------------------------#
-# 4.5 Project Structure                                   #
+# 4.6 Project Structure                                   #
 #---------------------------------------------------------#
 
 
 
 
-SIDEBAR_STYLE = {
+ps_SIDEBAR_STYLE = {
     "top": 0,
     "left": 0,
     "bottom": 0,
+    "height":"450px",
     "width": "20%",
     "padding": "1rem 1rem",
     "background-color": "orange",
 }
 
-CONTENT_STYLE = {
+
+ps_CONTENT_STYLE = {
     "top": 0,
-    "right": 0,
+    "left": "20%",
     "bottom": 0,
+    "height":"450px",
     "width": "80%",
     "padding": "1rem 1rem",
     "background-color":"green"
@@ -1257,38 +1279,159 @@ CONTENT_STYLE = {
 
 ps_ex_sidebar = html.Div(
     [
-        html.H2("Sidebar"),
+        html.Img(src='assets/img/logo-univ-rennes.png', className="logo"),
         html.Hr(),
-        html.P("A simple sidebar layout with navigation links"),
         dbc.Nav(
             children=[
-                dbc.NavLink("Home", id="pg4-ps-home", active="exact"),
-                dbc.NavLink("Page 1", id="pg4-ps-page1", active="exact"),
-                dbc.NavLink("Page 2", id="pg4-ps-page2", active="exact")
+                dbc.Button("Home", id="pg4-ps-home", color="orange", n_clicks=0),
+                dbc.Button("Page 1", id="pg4-ps-page1", color="orange", n_clicks=0),
+                dbc.Button("Page 2", id="pg4-ps-page2", color="orange", n_clicks=0)
             ],
             vertical=True,
-            pills=True,
             id="pg4-ps-ex-nav",
         ),
     ],
-    style=SIDEBAR_STYLE,
+    style=ps_SIDEBAR_STYLE,
 )
 
-ps_ex_content = html.Div(id="ps-ex-page-content", style=CONTENT_STYLE)
+ps_ex_home = html.Div("Home page.",id="ps-ex-page-content", style=ps_CONTENT_STYLE)
 
 # Content Example
-ps_ex = html.Div([ps_ex_sidebar, ps_ex_content])
+ps_ex = html.Div([ps_ex_sidebar, ps_ex_home], style={"display":"flex"})
+
+
+ps_st = dmc.Prism(
+        children=
+"""PROJECT STRUCTURE
+app.py
+assets/
+    - img/logo.png
+    - style.css
+pages/
+    - home.py
+    - page1.py
+    - page2.py""",
+        language="python",
+        colorScheme="dark")
+
+ps_ap = dmc.Prism(
+        children=
+"""from dash import html, Dash, page_registry, page_container
+import dash_bootstrap_components as dbc
+
+app = Dash(__name__,
+    use_pages=True,
+    external_stylesheets=[dbc.themes.BOOTSTRAP]
+)
+
+sidebar = html.Div([
+    html.Img(src='assets/img/logo.png', className="logo"),
+    html.Hr(),
+    dbc.Nav([
+            dbc.NavLink(
+                children=[html.Div(page["name"], className="ms-2")],
+                href=page["path"],
+                active="exact"
+            )
+            for page in page_registry.values()
+        ],
+        vertical=True)
+], className='sidebar')
+
+content = html.Div(page_container, className='body')
+
+app.layout = html.Div([sidebar, content])
+
+if __name__ == "__main__":
+    app.run(debug=True)""",
+        language="python",
+        colorScheme="dark")
+
+ps_hm = dmc.Prism(
+        children=
+"""from dash import html, register_page
+
+register_page(__name__, path='/', name='Home')
+
+layout = html.Div([
     
+    html.P('Home page')
+    
+])""",
+        language="python",
+        colorScheme="dark")
+
+ps_p1 = dmc.Prism(
+        children=
+"""from dash import html, register_page
+
+register_page(__name__, name='Page 1')
+
+layout = html.Div([
+    
+    html.P('Content of page 1')
+    
+])""",
+        language="python",
+        colorScheme="dark")
+
+ps_p2 = dmc.Prism(
+        children=
+"""from dash import html, register_page
+
+register_page(__name__, name='Page 2')
+
+layout = html.Div([
+    
+    html.P('Content of page 2')
+    
+])""",
+        language="python",
+        colorScheme="dark")
+
+
+ps_cs = dmc.Prism(
+        children=
+""".sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 18rem;
+    padding: 2rem 1rem;
+    background-color: orange;
+}
+
+.body {
+    background-color:green;
+    position:fixed;
+    margin-left: 18rem;
+    margin-right: 2rem;
+    padding: 2rem 1rem;
+    width:100%;
+    height:100%;
+}
+
+.logo {
+    width:80%;
+}""",
+        language="python",
+        colorScheme="dark")
 
 # Content Code
 ps_code = html.Div([
     
-    dmc.Prism(
-        children=
-"""
-""",
-        language="python",
-        colorScheme="dark")
+        dbc.Tabs([
+            dbc.Tab(label="Structure"       , tab_id="ps-st", children=ps_st, className="tab"),
+            dbc.Tab(label="app.py"          , tab_id="ps-ap", children=ps_ap, className="tab"),
+            dbc.Tab(label="pages/home.py"   , tab_id="ps-hm", children=ps_hm, className="tab"),
+            dbc.Tab(label="pages/page1.py"  , tab_id="ps-p1", children=ps_p1, className="tab"),
+            dbc.Tab(label="pages/page2.py"  , tab_id="ps-p2", children=ps_p2, className="tab"),
+            dbc.Tab(label="assets/style.css", tab_id="ps-cs", children=ps_cs, className="tab")
+        ],
+        id="ps-tab",
+        active_tab="ps-st"
+    )
 
 ])
 
@@ -1422,7 +1565,7 @@ layout = html.Div([
         ],
         id="ps",
         active_tab="ps-ex"
-    ),
+    )
     
 ])
 
@@ -1587,10 +1730,20 @@ def password(pwd):
 
 @callback(
     Output("ps-ex-page-content", "children"),
-    Input("pg4-ps-home","n_clicks")
+    Input("pg4-ps-home","n_clicks"),
+    Input("pg4-ps-page1","n_clicks"),
+    Input("pg4-ps-page2","n_clicks")
     )
-def render_page_content(home):
-    return(html.P("Paragraphe."))
+def render_page_content(home,pg1,pg2):
+    msg = "Home page"
+    if "pg4-ps-home" == ctx.triggered_id:
+        msg = "Home page"
+    elif "pg4-ps-page1" == ctx.triggered_id:
+        msg = "Content of page 1"
+    elif "pg4-ps-page2" == ctx.triggered_id:
+        msg = "Content of page 2"
+    return html.Div(msg)
+
 
 @callback(
     Output("pg4-pwd-ps-cor", "disabled"),

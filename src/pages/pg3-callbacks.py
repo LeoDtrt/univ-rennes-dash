@@ -48,11 +48,13 @@ app = Dash(__name__)
 opt = ['Choix 1', 'Choix 2', 'Choix 3']
 
 app.layout = html.Div([
+    
     html.H1("Simple dropdown choice :"),
     dcc.Dropdown(id="dropdown", options=opt, value=opt[0]),
     
     html.H1("Multi dropdown choice :"),
     dcc.Dropdown(id="dropdown-multi", options=opt, value=opt[0], multi=True)
+    
 ])
 
 if __name__ == "__main__":
@@ -121,8 +123,8 @@ app.layout = html.Div(children=[
     dcc.Dropdown(id='y', options=var, value=var[1]['value']),
     
     dcc.Graph(figure={}, id='scatter')
+    
 ])
-
 
 @callback(
     Output(component_id='scatter', component_property='figure'),
@@ -137,7 +139,6 @@ def update_graph(x, y):
                         },
                      title="Scatter Plot of the Iris Dataset")
     return fig
-
 
 if __name__ == '__main__':
     app.run(debug=True)""",
@@ -235,6 +236,7 @@ app.layout = html.Div([
     dcc.Graph(id='graph-gdp', figure={}),
     
     dcc.RangeSlider(id='range-slider', min =min_pop , max=max_pop , value=[min_pop, max_pop], pushable=True)
+    
 ])
 
 @callback(
@@ -601,6 +603,7 @@ app.layout = html.Div([
     dcc.RadioItems(id='radio', options=opt, value=None),
     
     html.P(id='out')
+    
 ])
 
 @callback(
@@ -717,6 +720,7 @@ app.layout = html.Div([
     # Slider permettant de selectionner l'annee
     dcc.Slider(id='slider', min=min_year , max=max_year , value=max_year,
                marks=slider_marks, step = None)
+               
 ])
 
 #-----------------------------------------------------------------------#
@@ -796,7 +800,8 @@ input_types = ("text", "number", "password", "email",
                "search", "tel", "url", "range", "hidden")
 
 app.layout = html.Div([
-     html.Div([
+    
+    html.Div([
         dcc.Input(
             id="input_{}".format(x),
             type=x,
@@ -804,7 +809,9 @@ app.layout = html.Div([
         )
         for x in input_types
     ]),
+    
     html.Div(id="out-all-types")   
+    
 ])
 
 @callback(
@@ -813,7 +820,6 @@ app.layout = html.Div([
 )
 def cb_render(*vals):
     return " | ".join((str(val) for val in vals if val))
-
 
 if __name__ == "__main__":
     app.run(debug=True)""",
@@ -856,9 +862,13 @@ app = Dash(__name__)
 txt = []
 
 app.layout = html.Div([
+    
     html.H1("Ecriture d'un texte :"),
+    
     dcc.Input(id='input-text',type='text', debounce=True),
+    
     html.P(id='out',children='')
+    
 ])
 
 @callback(
@@ -904,11 +914,14 @@ download_code = html.Div([
 app = Dash(__name__)
 
 app.layout = html.Div([
+    
     html.H1('Download example:'),
+    
     html.Button(id='btn-download-txt', children='Download Text'),
+    
     dcc.Download(id='download-text')
+    
 ])
-
 
 @callback(
     Output('download-text', 'data'),
@@ -917,7 +930,6 @@ app.layout = html.Div([
 )
 def func(n_clicks):
     return dict(content='Hello world!', filename="hello.txt")
-
 
 if __name__ == '__main__':
     app.run(debug=True)""",
@@ -1001,6 +1013,7 @@ app.layout = html.Div([
     html.H4("Saisie du texte:"),
     dcc.Input(id='input-text', type='text', debounce=True),
     html.P(id='text',children='')
+    
 ])
 
 #------------------------------------------------------------#
@@ -1210,6 +1223,7 @@ app.layout = html.Div([
     html.H4("Saisie du texte:"),
     dcc.Input(id='input-text', type='text', debounce=True),
     html.P(id='text',children='')
+    
 ])
 
 #------------------------------------------------------------#
@@ -1241,7 +1255,7 @@ def download_txt(n_clicks, text, filename):
         if n_clicks > len(n):
             if text is not None:
                 txt = [x['props']['children'] for x in text]
-                txt = '\n'.join(txt)
+                txt = '\\n'.join(txt)
                 n.append(n_clicks)
                 return dict(content=txt, filename=filename+".txt")
 

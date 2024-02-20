@@ -72,8 +72,8 @@ app.layout = html.Div([
     ),
     
     dcc.Graph(id="graph")
+    
 ])
-
 
 @callback(
     Output("graph", "figure"), 
@@ -172,15 +172,12 @@ import json
 import dash_daq as daq
 import dash_bootstrap_components as dbc
 
-
 file1 = "./dep_fr.geojson"
 file2 = "./FD_MAR_2018.csv"
-
 
 # Importation fichier geojson
 with open(file1) as f:
     geo = json.load(f)
-    
 
 # Importation du dataframe 
 df = pd.read_csv(file2, sep=";", low_memory=False) 
@@ -188,7 +185,6 @@ df = df.groupby(['DEPMAR'])['DEPMAR'].count()
 df = pd.DataFrame(df)
 df.rename(columns={'DEPMAR':'NBMAR'}, inplace=True)
 df.reset_index(inplace=True)
-
 
 # Initialisation de l'app
 app = Dash(__name__, external_stylesheets=dbc.themes.CERULEAN)
@@ -202,8 +198,7 @@ app.layout = dbc.Container([
         html.H4('Cartographie GEOJSON'),
         html.P('Nombre de mariages en France par département en 2018')
     ]),
-    
-    
+      
     dbc.Row([
         dbc.Col([
             dcc.Graph(id='graph')
@@ -226,7 +221,6 @@ app.layout = dbc.Container([
         ], width=5)
     ])
 ], fluid=True)
-
 
 @callback(
     Output('graph', 'figure'),
@@ -257,8 +251,7 @@ def display_choropleth(color_min, color_max):
     return fig
 
 if __name__ == '__main__':
-    app.run_server(debug=True)
-""",
+    app.run_server(debug=True)""",
         language="python",
         colorScheme="dark")
 
@@ -327,11 +320,15 @@ opt = [{'label':f'Porte {i+1}','value':alea[i]} for i in range(len(alea))]
 n_reset = []
 
 app.layout = html.Div([
+    
     html.H1("Jeu des Portes :"),
     
     dcc.RadioItems(id='radio', options=opt, value=None),
+    
     dbc.Button(id='button', children="Rejouer", n_clicks=None),
+    
     html.P(id='out')
+    
 ])
 
 @callback(

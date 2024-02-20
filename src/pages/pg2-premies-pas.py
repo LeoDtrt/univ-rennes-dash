@@ -197,7 +197,7 @@ app.layout = html.Div([
         columns=[{"name": i, "id": i} for i in df.columns],
         style_table={"borderStyle": "groove"},
         page_size=10
-)
+    )
     
 ])
 

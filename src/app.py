@@ -29,8 +29,7 @@ sidebar = html.Div([
 sidebar_closed = html.Div(id='sidebar', className='sidebarClose')
 
 content = html.Div([
-    
-    dbc.Button("llll", color = "primary", id = "closing-sidebar", n_clicks=0),
+    dbc.Button("llll", color = "primary", id = "closing-sidebar"),
     
     html.Div([
         page_container
@@ -40,6 +39,9 @@ content = html.Div([
 
 app.layout = html.Div([sidebar, content], id="app")
 
+sd_open = [[sidebar, content],"sidebar","body"]
+sd_close = [[sidebar_closed, content],"sidebarClose","bodyFull"]
+
 
 @callback(
     Output("app", "children"),
@@ -47,14 +49,16 @@ app.layout = html.Div([sidebar, content], id="app")
     Output("body", "className"),
     Input("closing-sidebar","n_clicks")
 )
-def closing_sidebar(click):
-    
-    n_clicks_closing_sidebar.append(click)    
-    
-    if len(n_clicks_closing_sidebar) % 2 == 0:
-        return [[sidebar, content],"sidebar","body"]
+def closing_sidebar(n_clicks):        
+    if n_clicks is None:
+        active = sd_open
     else:
-        return [[sidebar_closed, content],"sidebarClose","bodyFull"]
+        n_clicks_closing_sidebar.append(n_clicks)
+        if len(n_clicks_closing_sidebar) % 2 == 0:
+            active = sd_open 
+        else:
+            active = sd_close
+    return active            
 
 
 
