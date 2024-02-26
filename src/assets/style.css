@@ -1,20 +1,46 @@
 .logo {
-    width:80%;
+    width:70%;
 }
+
+.box-logo {
+    width: 16em;
+    height: 3.5em;
+    text-align: center;
+} 
+
+
+.btn-close-sidebar {
+    background-color: white;
+    color: #003366;
+    margin-left: 1em;
+    margin-top: 0.3em;
+    width: 3em;
+}
+
+.navbar {
+    background-color: #003366;
+    position: fixed;
+    height: 4em;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 16em 120px 2000px;
+    align-items: start;
+}
+
 
 .sidebar {
     position: fixed;
-    top: 0;
+    top: 4em;
     left: 0;
     bottom: 0;
-    width: 18em;
+    width: 16em;
     padding: 1rem 1rem;
     background-color: #f8f9fa;
 }
 
 .sidebarClose {
     position: fixed;
-    top: 0;
+    top: 4em;
     left: 0;
     bottom: 0;
     width: 0;
@@ -22,9 +48,10 @@
 
 .body {
     background-color:white;
-    margin-left: 18em;
+    top:4em;
+    margin-left: 16em;
     margin-right: 1rem;
-    padding: 1rem 1rem;
+    padding: 4em 1rem;
     height:100%;
     overflow-x: auto;
     overflow-y: auto;
@@ -32,8 +59,9 @@
 
 .bodyFull {
     background-color:white;
+    top:4em;
     margin-right: 1rem;
-    padding: 1rem 1rem;
+    padding: 4em 1rem;
     height:100%;
     overflow-x: auto;
     overflow-y: auto;

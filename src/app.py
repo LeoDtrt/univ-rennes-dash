@@ -11,8 +11,6 @@ n_clicks_closing_sidebar = []
 server = app.server
 
 sidebar = html.Div([
-    html.Div(children=[html.Img(src='assets/img/logo-univ-rennes.png', className="logo")]),
-    html.Hr(),
     dbc.Nav(
         children=[
             dbc.NavLink(
@@ -29,7 +27,6 @@ sidebar = html.Div([
 sidebar_closed = html.Div(id='sidebar', className='sidebarClose')
 
 content = html.Div([
-    dbc.Button("llll", color = "primary", id = "closing-sidebar"),
     
     html.Div([
         page_container
@@ -37,10 +34,17 @@ content = html.Div([
 ], id='body', className='body')
 
 
-app.layout = html.Div([sidebar, content], id="app")
 
-sd_open = [[sidebar, content],"sidebar","body"]
-sd_close = [[sidebar_closed, content],"sidebarClose","bodyFull"]
+navbar = html.Div([
+    html.Div([html.Img(src='assets/img/logo.png', className="logo")], className="box-logo"),
+    dbc.Button("llll", color = "primary", id = "closing-sidebar", className="btn-close-sidebar"),    
+    
+], className='navbar')
+
+app.layout = html.Div([navbar, sidebar, content], id="app", className="all")
+
+sd_open = [[navbar, sidebar, content],"sidebar","body"]
+sd_close = [[navbar, sidebar_closed, content],"sidebarClose","bodyFull"]
 
 
 @callback(
