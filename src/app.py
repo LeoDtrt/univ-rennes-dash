@@ -13,10 +13,10 @@ server = app.server
 sidebar = html.Div([
     dbc.Nav(
         children=[
-            dbc.NavLink(
-                children=[html.Div(page["name"], className="ms-6")],
+            dbc.Button(
+                children=[page["name"]],
                 href=page["path"],
-                active="exact"
+                className="btn-sdb"
             )
             for page in page_registry.values()
         ],
@@ -37,7 +37,8 @@ content = html.Div([
 
 navbar = html.Div([
     html.Div([html.Img(src='assets/img/logo.png', className="logo")], className="box-logo"),
-    dbc.Button("llll", color = "primary", id = "closing-sidebar", className="btn-close-sidebar"),    
+    dbc.Button("llll", color = "primary", id = "closing-sidebar", className="btn-close-sidebar"),
+    html.P(id="page-titre")
     
 ], className='navbar')
 
@@ -46,6 +47,15 @@ app.layout = html.Div([navbar, sidebar, content], id="app", className="all")
 sd_open = [[navbar, sidebar, content],"sidebar","body"]
 sd_close = [[navbar, sidebar_closed, content],"sidebarClose","bodyFull"]
 
+
+
+
+@callback(
+    Output("page-titre", "children"),
+    Input("sidebar","contentEditable")
+)
+def closing_sidebar(str):        
+    return "{}".format(str)
 
 @callback(
     Output("app", "children"),
