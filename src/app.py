@@ -11,13 +11,8 @@ n_clicks_closing_sidebar = []
 server = app.server
 
 sidebar = html.Div([
-    dbc.Nav(
-        children=[
-            dbc.Button(
-                children=[page["name"]],
-                href=page["path"],
-                className="btn-sdb"
-            )
+    dbc.Nav([
+            dbc.Button(page["name"], href=page["path"], className="btn-sdb")
             for page in page_registry.values()
         ],
         vertical=True,
@@ -26,12 +21,7 @@ sidebar = html.Div([
 
 sidebar_closed = html.Div(id='sidebar', className='sidebarClose')
 
-content = html.Div([
-    
-    html.Div([
-        page_container
-    ])
-], id='body', className='body')
+content = html.Div(page_container, id='body', className='body')
 
 
 
@@ -48,14 +38,6 @@ sd_open = [[navbar, sidebar, content],"sidebar","body"]
 sd_close = [[navbar, sidebar_closed, content],"sidebarClose","bodyFull"]
 
 
-
-
-@callback(
-    Output("page-titre", "children"),
-    Input("sidebar","contentEditable")
-)
-def closing_sidebar(str):        
-    return "{}".format(str)
 
 @callback(
     Output("app", "children"),

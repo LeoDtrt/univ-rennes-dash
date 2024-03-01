@@ -103,26 +103,24 @@ opt_log = [{'label': 'Activée', 'value': True}, {'label': 'Désactivée', 'valu
 # Content Exercice
 segmentation_exo = html.Div([
     
-    html.Div([
-        
-        html.P(["Objectif : En repartant de l’application créée lors de l’exercice de la section 3.4 RadioItems, placer les trois callbacks suivants dans une colonne à droite de la colonne du graphique :"]),
-
-        html.Ol([
-            html.Li(["La checklist contenant la sélection des continents"]),
-            html.Li(["Le radio-items permettant le transformation du PIB par tête en logarithme"]),
-            html.Li(["Le slider permettant de sélectionne l’année"])
-        ]),
-
-
-        html.P(["⚠ Remarque : Pour la réalisation de cet exercice on pourra :"]),
-        
-        html.Ul([
-            html.Li(["Placer le titre de l’application dans un header"]),
-            html.Li(["Créer une ligne et y insérer une colonne pour le graphique de largeur 7 et une colonne pour les composantes de sélection de largeur 4"]),
-            html.Li(["Dans la colonne des composantes de sélection, création de deux lignes. La première ligne contient 2 colonnes d’une largeur égale contenant respectivement la checklist du choix des continents et le radio item de la transformation du PIB par tête en logarithme. La seconde ligne contient la sélection de l’année"]),
-            html.Li(["Le titre de chaque composante de sélection est de type H6"])
+    dbc.Accordion([
+        dbc.AccordionItem(title="Objectif", children=[
+            html.P([
+                "En repartant de l’application créée lors de l’exercice de la section 3.4 RadioItems, placer les trois callbacks suivants dans une colonne à droite de la colonne du graphique :", html.Br(),
+                html.Ol([
+                    html.Li(["La checklist contenant la sélection des continents"]),
+                    html.Li(["Le radio-items permettant le transformation du PIB par tête en logarithme"]),
+                    html.Li(["Le slider permettant de sélectionne l’année"])
+                ]),
+                "⚠ Pour la réalisation de cet exercice on pourra :", html.Br(),
+                html.Li(["Placer le titre de l’application dans un header"]),
+                html.Li(["Créer une ligne et y insérer une colonne pour le graphique de largeur 7 et une colonne pour les composantes de sélection de largeur 4"]),
+                html.Li(["Dans la colonne des composantes de sélection, création de deux lignes. La première ligne contient 2 colonnes d’une largeur égale contenant respectivement la checklist du choix des continents et le radio item de la transformation du PIB par tête en logarithme. La seconde ligne contient la sélection de l’année"]),
+                html.Li(["Le titre de chaque composante de sélection est de type H6"])
+            ])
         ])
     ]),
+    
     
     html.H3('Gapminder dataset'),
     
@@ -400,16 +398,19 @@ if __name__ == '__main__':
 # Content Exercice
 accordion_exo = html.Div([
     
-    html.Div([
-        
-        html.P(["Objectif : En repartant de l’application créée lors de l’exercice de la section 3.4 RadioItems, placer les trois callbacks suivant dans des accordions:"]),
-
-        html.Ol([
-            html.Li(["La checklist contenant la sélection des continents"]),
-            html.Li(["Le radio-items permettant le transformation du PIB par tête en logarithme"]),
-            html.Li(["Le slider permettant de sélectionne l’année"])
+    dbc.Accordion([
+        dbc.AccordionItem(title="Objectif", children=[
+            html.P([
+                "En repartant de l’application créée lors de l’exercice de la section 3.4 RadioItems, placer les trois callbacks suivant dans des accordions:", html.Br(),
+                html.Ol([
+                html.Li(["La checklist contenant la sélection des continents"]),
+                html.Li(["Le radio-items permettant le transformation du PIB par tête en logarithme"]),
+                html.Li(["Le slider permettant de sélectionne l’année"])
+                ])
+            ])
         ])
     ]),
+    
     
     # Titre de l'application
     html.H3("Gapminder dataset : Checklist & Slider"),
@@ -482,7 +483,7 @@ app.layout = html.Div([
     # Titre de l'application
     html.H1("Gapminder dataset : Checklist & Slider"),
     
-        dbc.Accordion([
+    dbc.Accordion([
         dbc.AccordionItem(
             title="Sélection des continents", 
             children=[dcc.Checklist(id='checklist', options=opt_continent, value=opt_continent, inline=True)]
@@ -657,17 +658,19 @@ pg4_exo_tab3_content = dbc.Card(
 # Content Exercice
 tabs_exo = html.Div([
     
-    
-    html.Div([
-        
-        html.P(["Objectif : En repartant de l’application créée lors de l’exercice de la section 3.4 RadioItems, placer les trois callbacks suivant dans des tabs:"]),
-
-        html.Ol([
-            html.Li(["La checklist contenant la sélection des continents"]),
-            html.Li(["Le radio-items permettant le transformation du PIB par tête en logarithme"]),
-            html.Li(["Le slider permettant de sélectionne l’année"])
+    dbc.Accordion([
+        dbc.AccordionItem(title="Objectif", children=[
+            html.P([
+                "En repartant de l’application créée lors de l’exercice de la section 3.4 RadioItems, placer les trois callbacks suivant dans des tabs:", html.Br(),
+                html.Ol([
+                html.Li(["La checklist contenant la sélection des continents"]),
+                html.Li(["Le radio-items permettant le transformation du PIB par tête en logarithme"]),
+                html.Li(["Le slider permettant de sélectionne l’année"])
+                ])
+            ])
         ])
     ]),
+    
     
     # Titre de l'application
     html.H3("Gapminder dataset : Checklist & Slider"),
@@ -935,16 +938,17 @@ pg4_navlink_exo_content = html.Div([
 # Content Exercice
 navlink_exo = html.Div([
     
-    html.Div([
-        
-        html.P(["Objectif : Répliquer l'application ci-dessous en reprenant les deux graphiques réalisés dans la section 2.2 Graph. Créer un navlink avec trois composantes :"]),
-
-        html.Ol([
-            html.Li(["ENT Rennes 1 : lien vers l’ent de Rennes 1"]),
-            html.Li(["Iris Scatter Plot : lien dans l’application vers le titre du même nom"]),
-            html.Li(["Iris Parrallel Coordinates : lien dans l’application vers le titre du même nom"])
+    dbc.Accordion([
+        dbc.AccordionItem(title="Objectif", children=[
+            html.P([
+                "Répliquer l'application ci-dessous en reprenant les deux graphiques réalisés dans la section 2.2 Graph. Créer un navlink avec trois composantes :", html.Br(),
+                html.Li(["ENT Rennes 1 : lien vers l’ent de Rennes 1"]),
+                html.Li(["Iris Scatter Plot : lien dans l’application vers le titre du même nom"]),
+                html.Li(["Iris Parrallel Coordinates : lien dans l’application vers le titre du même nom"])
+            ])
         ])
     ]),
+
     
     # Titre de l'application
     html.Div([pg4_navlink_exo_navbar, pg4_navlink_exo_content])
@@ -1135,16 +1139,17 @@ pg4_nav_content = html.Div([
 # Content Exercice
 navbar_exo = html.Div([
     
-    html.Div([
-        
-        html.P(["Objectif : Répliquer l'application ci-dessous en reprenant les deux graphiques réalisés dans la section 2.2 Graph. Créer un navbar avec trois composantes :"]),
-
-        html.Ol([
-            html.Li(["Iris Scatter Plot : lien dans l’application vers le titre du même nom"]),
-            html.Li(["Iris Parrallel Coordinates : lien dans l’application vers le titre du même nom"]),
-            html.Li(["Un menu déroulant avec un lien vers l'ENT Rennes 1 et un lien vers Github"]),
+    dbc.Accordion([
+        dbc.AccordionItem(title="Objectif", children=[
+            html.P([
+                "Répliquer l'application ci-dessous en reprenant les deux graphiques réalisés dans la section 2.2 Graph. Créer un navbar avec trois composantes :", html.Br(),
+                html.Li(["Iris Scatter Plot : lien dans l’application vers le titre du même nom"]),
+                html.Li(["Iris Parrallel Coordinates : lien dans l’application vers le titre du même nom"]),
+                html.Li(["Un menu déroulant avec un lien vers l'ENT Rennes 1 et un lien vers Github"])
+            ])
         ])
     ]),
+    
     
     # Titre de l'application
     html.Div([pg4_nav_navbar, pg4_nav_content])
@@ -1436,41 +1441,16 @@ ps_code = html.Div([
 ])
 
 
-# Source Exercice
-
 
 # Content Exercice
 ps_exo = html.Div([
     
     html.Div([
         
-        html.P(["Objectif : Répliquer l'application ci-dessous en reprenant les deux graphiques réalisés dans la section 2.2 Graph. Créer un navbar avec trois composantes :"]),
-
-        html.Ol([
-            html.Li(["Iris Scatter Plot : lien dans l’application vers le titre du même nom"]),
-            html.Li(["Iris Parrallel Coordinates : lien dans l’application vers le titre du même nom"]),
-            html.Li(["Un menu déroulant avec un lien vers l'ENT Rennes 1 et un lien vers Github"]),
-        ])
-    ]),
-    
-    # Titre de l'application
-
+        html.P(["Objectif : Réaliser un projet en équipe."])
+        
+    ])
 ])
-
-
-
-# Content Correction
-ps_cor = html.Div([
-    
-    dmc.Prism(
-        children=
-"""
-""",
-        language="python",
-        colorScheme="dark")
-
-])
-
 
 
 #-----------------------------------------------------------------------#
@@ -1555,13 +1535,10 @@ layout = html.Div([
     
     html.H2("4.6 Project Structure"),
     
-    dcc.Input(type="password", debounce=True, placeholder="Pwd to get correction", id="pg4-input-pwd-ps-cor"),
-    
     dbc.Tabs([
             dbc.Tab(label="Exemple"   , tab_id="ps-ex"  , children=ps_ex  , className="tab"),
             dbc.Tab(label="Code"      , tab_id="ps-code", children=ps_code, className="tab"),
-            dbc.Tab(label="Exercice"  , tab_id="ps-exo" , children=ps_exo , className="tab"),
-            dbc.Tab(label="Correction", tab_id="ps-cor" , children=ps_cor , className="tab", id="pg4-pwd-ps-cor", disabled=True)
+            dbc.Tab(label="Projet"  , tab_id="ps-exo" , children=ps_exo , className="tab")
         ],
         id="ps",
         active_tab="ps-ex"

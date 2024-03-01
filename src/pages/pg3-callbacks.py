@@ -71,20 +71,16 @@ var = [{'label':s.replace('_',' ').capitalize(),'value':s}  for s in iris.column
 # Content Exercice
 dropdown_exo = html.Div([
     
-    html.Div([
-        
-        html.P(["Répliquez l'application ci-dessous à l’aide du dataset iris disponible dans le package plotly.express. L’idée est d’afficher un nuage de points en fonction des quatre premières colonnes du dataset iris :"]),
-        
-        html.Ul([
-            html.Li(["Petal length"]),
-            html.Li(["Petal width"]),
-            html.Li(["Sepal length"]),
-            html.Li(["Sepal width"]) 
-        ]),
-        
-        html.P(["Pour cela, on pourra créer deux dropdowns composés de ces quatre variables. Attention à l’affichage du nom des colonnes dans les dropdowns."])
-        
+    dbc.Accordion([
+        dbc.AccordionItem(title="Objectif", children=[
+            html.P([
+                "À l’aide du dataset ",html.Span("iris", className="ds")," disponible dans le package ", html.A("plotly.express", href="https://plotly.com/python/plotly-express/", target="_blank"), ", créer une application qui permet d'afficher le titre et le graphique ci-dessous.",html.Br(),
+                "Afficher un nuage de points qui se met à jour en fonction du choix des quatre premières colonnes de ",html.Span("iris", className="ds")," :", html.I(" Petal length"),",", html.I(" Petal width"),",", html.I(" Sepal length"),",", html.I(" Sepal width"),".",html.Br(),
+                "Pour cela, ", html.Span("créer deux dropdowns composés de ces quatre variables", className="h"),". ⚠ Gérer l’affichage du nom des colonnes dans les dropdowns."
+            ])
+        ])
     ]),
+
     
     html.H3(children='Dash: A web application framework for your data.'),
     
@@ -202,11 +198,16 @@ min_pop, max_pop = min(gp['pop']), max(gp['pop'])
 # Content Exercice
 slider_exo = html.Div([
     
-    html.Div([
-        html.P(["Répliquez l'application ci-dessous à l’aide du dataset gapminder disponible dans le package plotly.express. L’idée est d’afficher un nuage de points qui représente l’espérance de vie (life_exp) d’un pays en fonction de son PIB par tête (gdpPercap) et de sa population (pop). Pour cela, on pourra créer un range slider sur la variable pop du dataset."]),
-        html.P(["⚠ Remarque : En déplaçant le curseur gauche vers la droite, il ne doit pas être bloqué par le curseur de droite, sauf si le curseur de droite est positionné sur la valeur maximale du slider."])        
+    dbc.Accordion([
+        dbc.AccordionItem(title="Objectif", children=[
+            html.P([
+                "À l’aide du dataset ",html.Span("gapminder", className="ds")," disponible dans le package ", html.A("plotly.express", href="https://plotly.com/python/plotly-express/", target="_blank"), ", créer une application qui permet d'afficher le titre et le graphique ci-dessous.",html.Br(),
+                "Afficher un nuage de points qui représente l’espérance de vie d’un pays (",html.I("life_exp"),") en fonction de son PIB par tête (",html.I("gdpPercap"),") et de sa population (",html.I("pop"),").", html.Br(),
+                "Pour cela, ", html.Span(["créer un range slider sur la variable ",html.I("pop")], className="h"), ". ⚠ Le curseur gauche ne doit pas être bloqué par le curseur droit."
+            ])
+        ])
     ]),
-
+    
     html.H3("Gapminder dataset :"),   
     
     dcc.Graph(id='pg3-graph-gdp', figure={}),
@@ -276,17 +277,19 @@ continent = gp.continent.unique()
 # Content Exercice 2
 slider_exo2 = html.Div([
     
-    html.Div([
-        html.P(["Répliquez l'application ci-dessous à l’aide du dataset gapminder disponible dans le package plotly.express. L’idée est d’afficher un nuage de points qui représente l’espérance de vie (life_exp) d’un pays en fonction de son PIB par tête (gdpPercap) et de sa population (pop). L’application doit permettre de :"]),
-
-        html.Ul([
-            html.Li(["Sélectionner un ou plusieurs continents à l’aide d’un dropbox à choix multiple (tous les continents sont cochés par défaut)"]),
-            html.Li(["Sélectionner une année parmi toutes les années disponibles du dataset à l’aide d’un slider (l’année 1982 est sélectionnée par défaut)."])
-        ]),
-    
-        html.P(["⚠ Remarque : L’année du titre du graphique doit se mettre à jour automatiquement lors de la modification de la position du slider."])    
+    dbc.Accordion([
+        dbc.AccordionItem(title="Objectif", children=[
+            html.P([
+                "À l’aide du dataset ",html.Span("gapminder", className="ds")," disponible dans le package ", html.A("plotly.express", href="https://plotly.com/python/plotly-express/", target="_blank"), ", créer une application qui permet d'afficher le titre et le graphique ci-dessous.",html.Br(),
+                "Afficher un nuage de points qui représente l’espérance de vie d’un pays (",html.I("life_exp"),") en fonction de son PIB par tête (",html.I("gdpPercap"),") et de sa population (",html.I("pop"),").", html.Br(),
+                "L’application doit permettre de :",html.Br(),
+                html.Li("Sélectionner un ou plusieurs continents à l’aide d’un dropbown à choix multiple (tous les continents sont cochés par défaut)"),
+                html.Li("Sélectionner une année parmi toutes les années disponibles du dataset à l’aide d’un slider (l’année 1982 est sélectionnée par défaut)."),
+                "⚠ L’année du titre du graphique doit se mettre à jour automatiquement lors de la modification de la position du slider."
+            ])
+        ])
     ]),
-
+    
 
     # Titre de l'application
     html.H3("Gapminder dataset : Dropdown & Slider"),
@@ -450,17 +453,18 @@ continent_init = ['Asia']
 # Content Exercice
 checklist_exo = html.Div([
     
-    html.Div([
-        
-        html.P(["Répliquer l'application ci-dessous à partir de l’application de l’exercice 2 de la rubrique Slider. Même consignes mais cette fois il faut :"]),
-        
-        html.Ol([
-            html.Li(["Utiliser une checklist plutôt qu’un dropdown sur la variable continent"]),
-            html.Li(["Par défaut, lors du démarrage de l’application, seul le continent Asie doit être coché et l’année doit être la plus récente."]),
-            html.Li(["Fixer l’axe des abscisses de -5K à 50K (gdpPercap)"]),
-            html.Li(["Fixer l’axe des ordonnés de 0 à 100 (life_exp)"])
+    dbc.Accordion([
+        dbc.AccordionItem(title="Objectif", children=[
+            html.P([
+                "Répliquer l'application ci-dessous ",html.Span("à partir de l’application de l’exercice 2 de la rubrique Slider", className="h"),". Mêmes consignes mais cette fois il faut :",html.Br(),
+                html.Li(["Utiliser une checklist plutôt qu’un dropdown sur la variable ",html.I("continent")]),
+                html.Li(["Par défaut, lors du démarrage de l’application, seul le continent Asie doit être coché et l’année doit être la plus récente"]),
+                html.Li(["Fixer l’axe des abscisses de -5K à 50K (",html.I("gdpPercap"),")"]),
+                html.Li(["Fixer l’axe des ordonnés de 0 à 100 (",html.I("life_exp"),")"])
+            ])
         ])
     ]),
+    
 
     # Titre de l'application
     html.H3("Gapminder dataset : Checklist & Slider"),
@@ -631,16 +635,17 @@ opt_log = [{'label': 'Activée', 'value': True}, {'label': 'Désactivée', 'valu
 # Content Exercice
 radio_exo = html.Div([
     
-    html.Div([
-        
-        html.P(["Répliquer l'application ci-dessous à partir de l’application de l’exercice de la rubrique Checklist. Même consignes mais cette fois il faut ajouter un radio items qui permet d’activer la transformation en logarithme de l’axe des abscisses (gdpPercap)."]),
-        
-        html.Ol([
-            html.Li(["Lorsque l’axe des x est en logarithme, les limites vont de 100 à 100K"]),
-            html.Li(["Par défaut, lors du démarrage de l’application, tous les continents sont cochés, l’année doit être la plus récente et la transformation en logarithme est activée."])
+    dbc.Accordion([
+        dbc.AccordionItem(title="Objectif", children=[
+            html.P([
+                "Répliquer l'application ci-dessous ",html.Span("à partir de l’application de l’exercice de la rubrique Checklist", className="h"),". Mêmes consignes mais cette fois il faut :",html.Br(),
+                html.Li(["Ajouter un radio items qui permet d’activer la transformation en logarithme de l’axe des abscisses (",html.I("gdpPercap"),")"]),
+                html.Li(["Lorsque l’axe des x est en logarithme, les limites vont de 100 à 100K"]),
+                html.Li(["Par défaut, tous les continents sont cochés, l’année doit être la plus récente et la transformation en logarithme est activée"])
+            ])
         ])
-        
     ]),
+    
 
     # Titre de l'application
     html.H3("Gapminder dataset : Checklist & Slider"),
@@ -834,12 +839,15 @@ pg3_txt = []
 # Content Exercice
 input_exo = html.Div([
     
-    html.Div([
-        
-        html.P(["Objectif : Créer une application permettant de générer un texte, sans passer par l’écriture dans un fichier extérieur à l’application."]),
-        html.P(["L'idée est d'utiliser un input de texte et d'incrémenter un objet qui contiendra la liste à puces des n éléments textuels ajoutés."])        
-
+    dbc.Accordion([
+        dbc.AccordionItem(title="Objectif", children=[
+            html.P([
+                "Créer une application permettant de générer un texte, sans passer par l’écriture dans un fichier extérieur à l’application.",html.Br(),
+                "L'idée est d'utiliser un input de texte et d'incrémenter un objet qui contiendra la liste à puces des n éléments textuels ajoutés."
+            ])
+        ])
     ]),
+    
 
     html.H3("Ecriture d'un texte :"),
     
@@ -945,19 +953,19 @@ dnl_exo_n = []
 # Content Exercice
 download_exo = html.Div([
     
-    html.Div([
-        
-        html.P(["Objectif : En repartant de l’application créée lors de l’exercice de la section 3.5 Input, ajouter un bouton download permettant d’exporter dans un fichier .txt le texte qui est généré sur l’application."]),
-
-        html.Ol([
-            html.Li(["Utiliser un bouton download pour déclencher le téléchargement du fichier texte"]),
-            html.Li(["Ajouter un input texte pour permettre de saisir le nom du fichier texte"]),
-            html.Li(["Le séparateur dans le fichier texte doit être un saut de ligne codifié par “/n”"])
-        ]),
-
-        html.P(["⚠ Remarque : Lorsqu’on récupère le format du texte créé, on obtient une liste de dictionnaires où chaque dictionnaire correspond à un élément saisi. L’idée est donc dans un premier temps de voir quels sont les clés du dictionnaire à cibler pour récupérer le contenu des éléments textuels de chaque élément saisi."])
+    dbc.Accordion([
+        dbc.AccordionItem(title="Objectif", children=[
+            html.P([
+                "En repartant de l’application créée lors de l’exercice de la section 3.5 Input, ajouter un bouton download permettant d’exporter dans un fichier .txt le texte qui est généré sur l’application.", html.Br(),
+                html.Li(["Utiliser un bouton download pour déclencher le téléchargement du fichier texte"]),
+                html.Li(["Ajouter un input texte pour permettre de saisir le nom du fichier texte"]),
+                html.Li(["Le séparateur dans le fichier texte doit être un saut de ligne codifié par “/n”"]),
+                "⚠ Lorsqu’on récupère le format du texte créé, on obtient une liste de dictionnaires où chaque dictionnaire correspond à un élément saisi.", html.Br(),
+                "L’idée est donc dans un premier temps de voir quels sont les clés du dictionnaire à cibler pour récupérer le contenu des éléments textuels de chaque élément saisi."
+            ])
+        ])
     ]),
-
+    
     
     # Title
     html.H3("Application permettant la création et l'exportation d'un fichier txt :"),
@@ -1131,22 +1139,20 @@ upl_exo_n = []
 # Content Exercice
 upload_exo = html.Div([
     
-    html.Div([
-        
-        html.P(["Objectif : En repartant de l’application créée lors de l’exercice de la section 3.6 Dowload, ajouter un bouton upload permettant d’importer un fichier .txt qui aurait d’abord été téléchargé sur cette même application. L’idée globale de l’application est donc de pouvoir :"]),
-
-        html.Ol([
-            html.Li(["Créer un texte ligne par ligne"]),
-            html.Li(["Exporter le texte créé via un bouton download"]),
-            html.Li(["Importer un texte qui a précédemment été créé et exporté depuis l’application via un bouton upload"])
-        ]),
-
-        html.P(["⚠ Remarque : Pour la réalisation de cet exercice on pourra :"]),
-        
-        html.Ul([
-            html.Li(["Ajouter un callback qui prendra en input le contenu et le nom du fichier importé par le bouton upload et qui alimentera la liste des éléments textuels de l’objet texte"]),
-            html.Li(["Pour l’importation du fichier texte, il faut s’inspirer de l’exemple de cette rubrique et le répliquer non plus sur un fichier csv mais cette fois sur un fichier txt"]),
-            html.Li(["Les callbacks de création d’un texte et d’importation d’un texte doivent avoir le même output, donc il faudra ajouter une option pour accepter cette duplication dans la fonction Output() pour ces deux callbacks (allow_duplicate=True)"])
+    dbc.Accordion([
+        dbc.AccordionItem(title="Objectif", children=[
+            html.P([
+                "En repartant de l’application créée lors de l’exercice de la section 3.6 Dowload, ajouter un bouton upload permettant d’importer un fichier .txt qui aurait d’abord été téléchargé sur cette même application. L’idée globale de l’application est donc de pouvoir :", html.Br(),
+                html.Ol([
+                    html.Li(["Créer un texte ligne par ligne"]),
+                    html.Li(["Exporter le texte créé via un bouton download"]),
+                    html.Li(["Importer un texte qui a précédemment été créé et exporté depuis l’application via un bouton upload"])
+                ]),
+                "⚠ Pour la réalisation de cet exercice on pourra :", html.Br(),
+                html.Li(["Ajouter un callback qui prendra en input le contenu et le nom du fichier importé par le bouton upload et qui alimentera la liste des éléments textuels"]),
+                html.Li(["Pour l’importation du fichier texte, il faut s’inspirer de l’exemple de cette rubrique et le répliquer non plus sur un fichier csv mais cette fois sur un fichier txt"]),
+                html.Li(["Les callbacks de création d’un texte et d’importation d’un texte doivent avoir le même output, donc il faudra ajouter une option pour accepter cette duplication dans la fonction Output() pour ces deux callbacks (allow_duplicate=True)"])
+            ])
         ])
     ]),
 

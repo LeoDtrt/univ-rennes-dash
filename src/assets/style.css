@@ -105,13 +105,11 @@ h3 {
 
 .h {
     color: #003366;
-    font-family: Helvetica, Arial, sans-serif;
     font-weight: bold;
 }
   
 .w {
     color: #dd1515;
-    font-family: Helvetica, Arial, sans-serif;
     font-weight: bold;
 }
 
@@ -158,9 +156,29 @@ h3 {
     width: 50%;
 }
 
-p {
-    width: 70%;
+.ds {
+    color:#003366;
+    font-weight: bold;
+    font-style: italic;
 }
+
+a {
+    color:#003366;
+    font-weight: bold;
+}
+
+a:hover {
+    background-color:#003366;
+    color: white;
+    font-weight: bold;
+}
+
+nav:hover {
+    background-color:#003366;
+    color: white;
+    font-weight: bold;
+}
+
 
 t {
     color:red;

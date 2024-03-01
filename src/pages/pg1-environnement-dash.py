@@ -50,7 +50,7 @@ layout = html.Div([
     html.H2('1.4 Installation de VSCode'),   
     html.P("La page d’accueil de VSCode ressemble à ceci :"),
     html.Img(src="assets/img/vsc-accueil.png", className= "img"),
-    html.P(["Entrer le raccourci clavier ",html.B("CTRL+Shift+X")," sur Windows ou ",html.B("Cmd+Shift+X")," sur Mac puis installer python sur VSCode :"]),
+    html.P(["Entrer le raccourci clavier ", html.Span("CTRL+Shift+X", className="h")," sur Windows ou ", html.Span("Cmd+Shift+X", className="h")," sur Mac puis installer python sur VSCode :"]),
     html.Img(src="assets/img/vsc-install-python.png", className= "img"),
    
    
@@ -113,8 +113,8 @@ pip list""",
     html.P("Avant de pouvoir créer un environnement virtuel sous VSCode, il faut exécuter les tâches suivantes :"),
     html.Ol([
         html.Li(["Aller dans ", html.I("File > Preferences > Settings")]),
-        html.Li(["Entrer ", html.B("“venv path”")," dans la bar de recherche"]),
-        html.Li(["Puis saisir : ", html.B("“${workspaceFolder}/.venv”")]) 
+        html.Li(["Entrer ", html.Span("“venv path”", className="h")," dans la bar de recherche"]),
+        html.Li(["Puis saisir : ", html.Span("“${workspaceFolder}/.venv”", className="h")]) 
     ]),
     html.Img(src="assets/img/setting-venv.png", className= "img"),
     html.P(["⚠ ", html.U("Remarque :")," Les actions décrites ci-dessus permettent à VSCode d’activer un environnement contenu dans un dossier .venv à la racine du répertoire d’un projet."]),

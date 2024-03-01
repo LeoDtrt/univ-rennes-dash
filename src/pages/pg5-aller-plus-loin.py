@@ -120,10 +120,14 @@ picker_style = {"display":"inline-block", "margin":10}
 # Content Exercice
 carto_exo = html.Div([
     
-    html.Div([
-        
-        html.P(["Objectif : A l’aide du package dash-daq, utiliser deux color-pickers sur la thématique du nombre de mariages en France par département en 2018 pour obtenir l’application ci-dessous."])
+    dbc.Accordion([
+        dbc.AccordionItem(title="Objectif", children=[
+            html.P([
+                "A l’aide du package dash-daq, utiliser deux color-pickers sur la thématique du nombre de mariages en France par département en 2018 pour obtenir l’application ci-dessous."
+            ])
+        ])
     ]),
+    
     
 
     dbc.Container([
@@ -153,7 +157,7 @@ carto_exo = html.Div([
                                 style = picker_style,
                                 value=dict(kex='#1E347C'))
             
-            ], width=5)
+            ], width=7)
         ])
     ], fluid=True)
     
@@ -275,21 +279,20 @@ jdp_n_reset = []
 # Content Exercice
 jdp_exo = html.Div([
     
-    html.Div([
-        
-        html.P(["Objectif : Créer une application qui permet de simuler le jeu des portes. Dans ce jeu, il existe trois portes derrières lesquelles se trouvent:"]),
-
-        html.Ol([
-            html.Li(["Une voiture"]),
-            html.Li(["Une seconde chance"]),
-            html.Li(["Une pomme"])
-        ]),
-        
-        html.P(["L’objectif est de simuler le choix d’une de ces portes via un radio-item à trois possibilités qui représenteront les trois portes. Au clique d’une des possibilités, ce qui se cache derrière la porte sera dévoilé dans un objet html au dessous."]),
-        html.P(["Tant que l’un des choix n’est pas sélectionné, la personne qui utilise l’application est invitée à jouer. Après avoir joué une partie, une autre partie pourra être lancée par l’intermédiaire d’un bouton Rejouer."]),
-        html.P(["Au clique du bouton Rejouer, le choix précédemment sélectionné disparaît, ce qui se trouve derrière les portes est aléatoirement redistribué et le message qui d’invitation à jouer au jeu réapparaît."])
-        
+        dbc.Accordion([
+        dbc.AccordionItem(title="Objectif", children=[
+            html.P([
+                "Créer une application qui permet de simuler le jeu des portes. Dans ce jeu, il existe trois portes derrières lesquelles se trouvent :", html.Br(),
+                html.Li(["Une voiture"]),
+                html.Li(["Une seconde chance"]),
+                html.Li(["Une pomme"]),
+                "L’objectif est de simuler le choix d’une de ces portes via un radio-item à trois possibilités qui représenteront les trois portes. Au clique d’une des possibilités, ce qui se cache derrière la porte sera dévoilé dans un objet html au dessous.", html.Br(),
+                "Tant que l’un des choix n’est pas sélectionné, la personne qui utilise l’application est invitée à jouer. Après avoir joué une partie, une autre partie pourra être lancée par l’intermédiaire d’un bouton Rejouer.", html.Br(),
+                "Au clique du bouton Rejouer, le choix précédemment sélectionné disparaît, ce qui se trouve derrière les portes est aléatoirement redistribué et le message qui d’invitation à jouer au jeu réapparaît.", html.Br()
+            ])
+        ])
     ]),
+    
 
     html.H3("Jeu des Portes :"),
     

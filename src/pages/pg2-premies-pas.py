@@ -106,12 +106,13 @@ fig_graph_exo = px.parallel_coordinates(iris, color="species_id", labels=lab,
                     color_continuous_midpoint=2)
 
 # Content Exercice
+
 graph_exo = html.Div([
-    
-    html.P([
-        "Répliquez la capture d’écran ci-dessous à l’aide du dataset iris disponible dans le package plotly.express. N’hésitez pas à aller faire un tour dans la documentation de plotly.express pour vous aider à réaliser ce graphique : https://plotly.com/python/plotly-express/"
+    dbc.Accordion([
+        dbc.AccordionItem(title="Objectif", children=[
+            html.P(["À l’aide du dataset ",html.Span("iris", className="ds")," disponible dans le package ", html.A("plotly.express", href="https://plotly.com/python/plotly-express/", target="_blank"), ", créer une application qui permet d'afficher le titre et le graphique ci-dessous."])            
+        ])
     ]),
-    
     html.H3('Iris dataset : Parrallel coordinates'),
     dcc.Graph(id='pg2-parallel', figure=fig_graph_exo)
     
