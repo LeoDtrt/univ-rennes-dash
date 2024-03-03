@@ -78,7 +78,7 @@
 .tab {
     padding-top: 1rem;
     padding-bottom: 2rem;
-    height: 500px;
+    /*height: 500px;*/
     overflow-y: auto;
     z-index: 2;
 }

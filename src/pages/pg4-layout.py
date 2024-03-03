@@ -1043,28 +1043,18 @@ if __name__ == '__main__':
 
 # Content Example
 navbar_ex = html.Div([
+        dbc.Button(dbc.NavLink("Page 1", href="#")),
     
-    dbc.NavbarSimple(
-        children=[
-            dbc.NavItem(dbc.NavLink("Page 1", href="#")),
-            dbc.DropdownMenu(
+        dbc.DropdownMenu(
                 children=[
                     dbc.DropdownMenuItem("More pages", header=True),
                     dbc.DropdownMenuItem("Page 2", href="#"),
                     dbc.DropdownMenuItem("Page 3", href="#"),
                 ],
-                nav=True,
-                in_navbar=True,
-                label="More",
-            ),
-        ],
-        brand="NavbarSimple",
-        brand_href="#",
-        color="primary",
-        dark=True,
-    )
+                label="More"
+            )
     
-])
+], style={"display":"flex", "background-color":"#1E90FF"})
     
 
 # Content Code
@@ -1721,13 +1711,3 @@ def render_page_content(home,pg1,pg2):
         msg = "Content of page 2"
     return html.Div(msg)
 
-
-@callback(
-    Output("pg4-pwd-ps-cor", "disabled"),
-    Input("pg4-input-pwd-ps-cor","value")
-)
-def password(pwd):
-    if pwd=="mdp":
-        return(False)
-    else:
-        return(True)
