@@ -17,6 +17,9 @@ register_page(__name__,
 # Sources                                                               #
 #-----------------------------------------------------------------------#
 
+# Importation fichier geojson
+with open("assets/mdp/mdp.json") as f:
+    mdp = json.load(f)
 
 #---------------------------------------------------------#
 # 5.1 Cartographie                                        #
@@ -97,7 +100,7 @@ if __name__ == '__main__':
 ])
 
 # Source Exercice
-file1 = "assets/map/dep_fr.geojson"
+file1 = "assets/map/DEP_FR.geojson"
 file2 = "assets/map/FD_MAR_2018.csv"
 
 
@@ -123,8 +126,12 @@ carto_exo = html.Div([
     dbc.Accordion([
         dbc.AccordionItem(title="Objectif", children=[
             html.P([
-                "A l’aide du package dash-daq, utiliser deux color-pickers sur la thématique du nombre de mariages en France par département en 2018 pour obtenir l’application ci-dessous."
-            ])
+                "A l’aide du package ",html.A("dash-daq", href="https://dash.plotly.com/dash-daq",target="_blank", className="l"),", utiliser deux ",html.A("color-pickers", href="https://dash.plotly.com/dash-daq/colorpicker",target="_blank", className="l")," sur la thématique du nombre de mariages en France par département en 2018 pour obtenir l’application ci-dessous."
+            ]),
+            html.Button("FD_MAR_2018.csv", id="btn-mariage"),
+            dcc.Download(id="dnl-mariage"),
+            html.Button("DEP_FR.json", id="btn-geojson"),
+            dcc.Download(id="dnl-geojson")
         ])
     ]),
     
@@ -140,7 +147,7 @@ carto_exo = html.Div([
     
         dbc.Row([
             dbc.Col([
-                dcc.Graph(id='pg5-carto-graph')
+                dcc.Graph(id='pg5-carto-graph', responsive=True)
             ], width=7),
         
             dbc.Col([
@@ -157,7 +164,7 @@ carto_exo = html.Div([
                                 style = picker_style,
                                 value=dict(kex='#1E347C'))
             
-            ], width=7)
+            ], width=5)
         ])
     ], fluid=True)
     
@@ -286,9 +293,10 @@ jdp_exo = html.Div([
                 html.Li(["Une voiture"]),
                 html.Li(["Une seconde chance"]),
                 html.Li(["Une pomme"]),
-                "L’objectif est de simuler le choix d’une de ces portes via un radio-item à trois possibilités qui représenteront les trois portes. Au clique d’une des possibilités, ce qui se cache derrière la porte sera dévoilé dans un objet html au dessous.", html.Br(),
-                "Tant que l’un des choix n’est pas sélectionné, la personne qui utilise l’application est invitée à jouer. Après avoir joué une partie, une autre partie pourra être lancée par l’intermédiaire d’un bouton Rejouer.", html.Br(),
-                "Au clique du bouton Rejouer, le choix précédemment sélectionné disparaît, ce qui se trouve derrière les portes est aléatoirement redistribué et le message qui d’invitation à jouer au jeu réapparaît.", html.Br()
+                "L’objectif est de simuler le choix d’une de ces portes via un ",html.A("radio-item",href="https://dash.plotly.com/dash-core-components/radioitems",target="_blank", className="l")," à trois possibilités qui représenteront les trois portes. Au clique d’une des possibilités, ce qui se cache derrière la porte sera dévoilé dans un objet html au dessous.", html.Br(),
+                "Tant que l’un des choix n’est pas sélectionné, la personne qui utilise l’application est invitée à jouer.",html.Br(), 
+                "Après avoir joué une partie, une autre partie pourra être lancée par l’intermédiaire d’un bouton Rejouer.", html.Br(),
+                "Au clique du ",html.A("bouton", href="https://dash-bootstrap-components.opensource.faculty.ai/docs/components/button/",target="_blank", className="l")," Rejouer, le choix précédemment sélectionné disparaît, ce qui se trouve derrière les portes est aléatoirement redistribué et le message d’invitation à jouer au jeu réapparaît."
             ])
         ])
     ]),
@@ -383,7 +391,7 @@ layout = html.Div([
     
     html.H2("5.1 Cartographie"),
     
-    dcc.Input(type="password", debounce=True, placeholder="Pwd to get correction", id="pg5-input-pwd-carto-cor"),
+    dcc.Input(type="password", debounce=True, placeholder="Pwd to get correction", id="pg5-input-pwd-carto-cor", className="pwd"),
     
     dbc.Tabs([
             dbc.Tab(label="Exemple"   , tab_id="carto-ex"  , children=carto_ex  , className="tab"),
@@ -398,7 +406,7 @@ layout = html.Div([
     
     html.H2("5.2 Jeu des portes"),
     
-    dcc.Input(type="password", debounce=True, placeholder="Pwd to get correction", id="pg5-input-pwd-jdp-cor"),
+    dcc.Input(type="password", debounce=True, placeholder="Pwd to get correction", id="pg5-input-pwd-jdp-cor", className="pwd"),
     
     dbc.Tabs([
             dbc.Tab(label="Exercice"  , tab_id="jdp-exo" , children=jdp_exo , className="tab"),
@@ -418,6 +426,27 @@ layout = html.Div([
 #---------------------------------------------------------#
 # 5.1 Cartographie                                        #
 #---------------------------------------------------------#
+
+
+@callback(
+    Output("dnl-mariage", "data"),
+    Input("btn-mariage", "n_clicks"),
+    prevent_initial_call=True,
+)
+def func(n_clicks):
+    return dcc.send_data_frame(mariage.to_csv, "FD_MAR_2018.csv")
+
+
+
+@callback(
+    Output("dnl-geojson", "data"),
+    Input("btn-geojson", "n_clicks"),
+    prevent_initial_call=True,
+)
+def download(n_clicks):
+    if n_clicks is not None:
+        return dcc.Location(pathname='/download_geojson', id='download-link')
+
 
 # Example
 @callback(
@@ -473,7 +502,7 @@ def display_choropleth(color_min, color_max):
     Input("pg5-input-pwd-carto-cor","value")
 )
 def password(pwd):
-    if pwd=="mdp":
+    if pwd==mdp['exo_51']:
         return(False)
     else:
         return(True)
@@ -518,7 +547,7 @@ def update(opt, n, radio_value):
     Input("pg5-input-pwd-jdp-cor","value")
 )
 def password(pwd):
-    if pwd=="mdp":
+    if pwd==mdp['exo_52']:
         return(False)
     else:
         return(True)

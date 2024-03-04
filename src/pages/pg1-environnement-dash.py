@@ -38,12 +38,12 @@ layout = html.Div([
 
 
     html.H2('1.2 Installation de Python'),   
-    html.P([html.Span("Python", className="h")," est téléchargeable à l’adresse suivante : ",html.A("https://www.python.org/downloads/", href="https://www.python.org/downloads/", target='_blank')]),
+    html.P([html.Span("Python", className="h")," est téléchargeable à l’adresse suivante : ",html.A("https://www.python.org/downloads/", href="https://www.python.org/downloads/", target='_blank' , className="l")]),
     html.Img(src="assets/img/download-python.png", className= "img"),
  
  
     html.H2('1.3 Installation de VSCode'),   
-    html.P([html.Span("Visual Studio Code", className="h")," est téléchargeable à l’adresse suivante : ", html.A("https://code.visualstudio.com/download", href="https://code.visualstudio.com/download", target='_blank')]),
+    html.P([html.Span("Visual Studio Code", className="h")," est téléchargeable à l’adresse suivante : ", html.A("https://code.visualstudio.com/download", href="https://code.visualstudio.com/download", target='_blank', className="l")]),
     html.Img(src="assets/img/download-vsc.png", className= "img"),
 
 

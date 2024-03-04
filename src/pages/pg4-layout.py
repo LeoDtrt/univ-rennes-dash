@@ -3,6 +3,7 @@ import dash_bootstrap_components as dbc
 import dash_mantine_components as dmc
 import plotly.express as px
 import pandas as pd 
+import json
 
 
 register_page(__name__,
@@ -14,6 +15,9 @@ register_page(__name__,
 # Sources                                                               #
 #-----------------------------------------------------------------------#
 
+# Importation fichier geojson
+with open("assets/mdp/mdp.json") as f:
+    mdp = json.load(f)
 
 #---------------------------------------------------------#
 # 4.1 Segmentation                                        #
@@ -41,7 +45,7 @@ segmentation_ex = html.Div([
                 dbc.Col(html.Div("Zone F"), align="end"   , style={'backgroundColor':'orange'}, width=1),
             ], style={'height': '200px', 'borderStyle': 'double'})
     
-])
+], style={'width': '90%'})
 
 # Content Code
 segmentation_code = html.Div([
@@ -106,14 +110,14 @@ segmentation_exo = html.Div([
     dbc.Accordion([
         dbc.AccordionItem(title="Objectif", children=[
             html.P([
-                "En repartant de l’application créée lors de l’exercice de la section 3.4 RadioItems, placer les trois callbacks suivants dans une colonne à droite de la colonne du graphique :", html.Br(),
+                html.Span("En repartant de l’application créée lors de l’exercice de la section 3.4 RadioItems", className="h"),", placer les trois callbacks suivants dans une colonne à droite de la colonne du graphique :", html.Br(),
                 html.Ol([
-                    html.Li(["La checklist contenant la sélection des continents"]),
-                    html.Li(["Le radio-items permettant le transformation du PIB par tête en logarithme"]),
-                    html.Li(["Le slider permettant de sélectionne l’année"])
+                    html.Li(["La ",html.A("checklist", href="https://dash.plotly.com/dash-core-components/checklist", target="_blank", className="l")," contenant la sélection des continents"]),
+                    html.Li(["Le ",html.A("radio-items", href="https://dash.plotly.com/dash-core-components/radioitems", target="_blank", className="l")," permettant le transformation du PIB par tête en logarithme"]),
+                    html.Li(["Le ",html.A("slider", href="https://dash.plotly.com/dash-core-components/slider", target="_blank", className="l")," permettant de sélectionne l’année"])
                 ]),
-                "⚠ Pour la réalisation de cet exercice on pourra :", html.Br(),
-                html.Li(["Placer le titre de l’application dans un header"]),
+                "⚠ Pour la réalisation de cet exercice on pourra (",html.A("documentation",href="https://dash-bootstrap-components.opensource.faculty.ai/docs/components/layout/", target="_blank", className="l"),") :", html.Br(),
+                html.Li(["Placer le titre de l’application dans un ",html.A("header", href="https://dash.plotly.com/dash-html-components/header", target="_blank", className="l")]),
                 html.Li(["Créer une ligne et y insérer une colonne pour le graphique de largeur 7 et une colonne pour les composantes de sélection de largeur 4"]),
                 html.Li(["Dans la colonne des composantes de sélection, création de deux lignes. La première ligne contient 2 colonnes d’une largeur égale contenant respectivement la checklist du choix des continents et le radio item de la transformation du PIB par tête en logarithme. La seconde ligne contient la sélection de l’année"]),
                 html.Li(["Le titre de chaque composante de sélection est de type H6"])
@@ -401,11 +405,11 @@ accordion_exo = html.Div([
     dbc.Accordion([
         dbc.AccordionItem(title="Objectif", children=[
             html.P([
-                "En repartant de l’application créée lors de l’exercice de la section 3.4 RadioItems, placer les trois callbacks suivant dans des accordions:", html.Br(),
+                html.Span("En repartant de l’application créée lors de l’exercice de la section 3.4 RadioItems", className="h"),", placer les trois callbacks suivant dans des ",html.A("accordions", href="https://dash-bootstrap-components.opensource.faculty.ai/docs/components/accordion/",target="_blank", className="l")," :", html.Br(),
                 html.Ol([
-                html.Li(["La checklist contenant la sélection des continents"]),
-                html.Li(["Le radio-items permettant le transformation du PIB par tête en logarithme"]),
-                html.Li(["Le slider permettant de sélectionne l’année"])
+                    html.Li(["La ",html.A("checklist", href="https://dash.plotly.com/dash-core-components/checklist", target="_blank", className="l")," contenant la sélection des continents"]),
+                    html.Li(["Le ",html.A("radio-items", href="https://dash.plotly.com/dash-core-components/radioitems", target="_blank", className="l")," permettant le transformation du PIB par tête en logarithme"]),
+                    html.Li(["Le ",html.A("slider", href="https://dash.plotly.com/dash-core-components/slider", target="_blank", className="l")," permettant de sélectionne l’année"])
                 ])
             ])
         ])
@@ -661,11 +665,11 @@ tabs_exo = html.Div([
     dbc.Accordion([
         dbc.AccordionItem(title="Objectif", children=[
             html.P([
-                "En repartant de l’application créée lors de l’exercice de la section 3.4 RadioItems, placer les trois callbacks suivant dans des tabs:", html.Br(),
-                html.Ol([
-                html.Li(["La checklist contenant la sélection des continents"]),
-                html.Li(["Le radio-items permettant le transformation du PIB par tête en logarithme"]),
-                html.Li(["Le slider permettant de sélectionne l’année"])
+                html.Span("En repartant de l’application créée lors de l’exercice de la section 3.4 RadioItems", className="h"),", placer les trois callbacks suivant dans des ",html.A("tabs", href="https://dash-bootstrap-components.opensource.faculty.ai/docs/components/tabs/", target="_blank", className="l")," :", html.Br(),
+                    html.Ol([
+                    html.Li(["La ",html.A("checklist", href="https://dash.plotly.com/dash-core-components/checklist", target="_blank", className="l")," contenant la sélection des continents"]),
+                    html.Li(["Le ",html.A("radio-items", href="https://dash.plotly.com/dash-core-components/radioitems", target="_blank", className="l")," permettant le transformation du PIB par tête en logarithme"]),
+                    html.Li(["Le ",html.A("slider", href="https://dash.plotly.com/dash-core-components/slider", target="_blank", className="l")," permettant de sélectionne l’année"])
                 ])
             ])
         ])
@@ -819,13 +823,13 @@ if __name__ == '__main__':
 
 # Source Example
 pg4_navlink_nav = dbc.Nav([
-        dbc.NavItem(dbc.NavLink("Doc Dash", active=True, href="https://dash.plotly.com/")),
+        dbc.NavItem(dbc.NavLink("Doc Dash", active=True, href="https://dash.plotly.com/", target="_blank")),
         dbc.NavItem(dbc.NavLink("Target 1", href="#pg4-navlink-target1", external_link=True)),
         dbc.NavItem(dbc.NavLink("Target 2", href="#pg4-navlink-target2", external_link=True)),
         dbc.NavItem(dbc.NavLink("Disabled", disabled=True, href="#")),
         dbc.DropdownMenu(
-            [dbc.DropdownMenuItem("Github", href="https://github.com/"),
-             dbc.DropdownMenuItem("Gitlab", href="https://about.gitlab.com/")],
+            [dbc.DropdownMenuItem("Github", href="https://github.com/", target="_blank"),
+             dbc.DropdownMenuItem("Gitlab", href="https://about.gitlab.com/", target="_blank")],
             label="Dropdown",
             nav=True,
         ),
@@ -919,7 +923,7 @@ pg4_nav_fig2 = px.parallel_coordinates(iris, color="species_id", labels=lab,
                     color_continuous_midpoint=2)
 
 pg4_navlink_exo_navbar = dbc.Nav([
-        dbc.NavItem(dbc.NavLink("ENT Rennes 1", href="https://ent.univ-rennes1.fr")),
+        dbc.NavItem(dbc.NavLink("ENT Rennes 1", href="https://ent.univ-rennes1.fr", target="_blank")),
         dbc.NavItem(dbc.NavLink("Iris Scatter Plot", href="#pg4-navlink-exo-iris", external_link=True)),
         dbc.NavItem(dbc.NavLink("Iris Parrallel Coordinates", href="#pg4-navlink-exo-parrallel", external_link=True)),
 ])
@@ -941,7 +945,7 @@ navlink_exo = html.Div([
     dbc.Accordion([
         dbc.AccordionItem(title="Objectif", children=[
             html.P([
-                "Répliquer l'application ci-dessous en reprenant les deux graphiques réalisés dans la section 2.2 Graph. Créer un navlink avec trois composantes :", html.Br(),
+                "Répliquer l'application ci-dessous en reprenant les ",html.Span("deux graphiques réalisés dans la section 2.2 Graph", className="h"),". Créer un ",html.A("navlink",href="https://dash-bootstrap-components.opensource.faculty.ai/docs/components/nav/",target="_blank", className="l")," avec trois composantes :", html.Br(),
                 html.Li(["ENT Rennes 1 : lien vers l’ent de Rennes 1"]),
                 html.Li(["Iris Scatter Plot : lien dans l’application vers le titre du même nom"]),
                 html.Li(["Iris Parrallel Coordinates : lien dans l’application vers le titre du même nom"])
@@ -1100,8 +1104,8 @@ pg4_nav_navbar = dbc.NavbarSimple(
         dbc.NavItem(dbc.NavLink("Iris Parallel", href="#pg4-nav-exo-parrallel", external_link=True)),
         dbc.DropdownMenu(
             children=[
-                dbc.DropdownMenuItem("ENT Rennes 1", href="https://ent.univ-rennes1.fr"),
-                dbc.DropdownMenuItem("Github", href="https://github.com/"),
+                dbc.DropdownMenuItem("ENT Rennes 1", href="https://ent.univ-rennes1.fr", target="_blank"),
+                dbc.DropdownMenuItem("Github", href="https://github.com/", target="_blank"),
             ],
             nav=True,
             in_navbar=True,
@@ -1132,7 +1136,7 @@ navbar_exo = html.Div([
     dbc.Accordion([
         dbc.AccordionItem(title="Objectif", children=[
             html.P([
-                "Répliquer l'application ci-dessous en reprenant les deux graphiques réalisés dans la section 2.2 Graph. Créer un navbar avec trois composantes :", html.Br(),
+                "Répliquer l'application ci-dessous en reprenant les ",html.Span("deux graphiques réalisés dans la section 2.2 Graph", className="h"),". Créer un ",html.A("navbar",href="https://dash-bootstrap-components.opensource.faculty.ai/docs/components/navbar/",target="_blank", className="l")," avec trois composantes :", html.Br(),
                 html.Li(["Iris Scatter Plot : lien dans l’application vers le titre du même nom"]),
                 html.Li(["Iris Parrallel Coordinates : lien dans l’application vers le titre du même nom"]),
                 html.Li(["Un menu déroulant avec un lien vers l'ENT Rennes 1 et un lien vers Github"])
@@ -1454,7 +1458,7 @@ layout = html.Div([
     
     html.H2("4.1 Segmentation"),
     
-    dcc.Input(type="password", debounce=True, placeholder="Pwd to get correction", id="pg4-input-pwd-segmentation-cor"),
+    dcc.Input(type="password", debounce=True, placeholder="Pwd to get correction", id="pg4-input-pwd-segmentation-cor", className="pwd"),
     
     dbc.Tabs([
             dbc.Tab(label="Exemple"   , tab_id="segmentation-ex"  , children=segmentation_ex  , className="tab"),
@@ -1469,7 +1473,7 @@ layout = html.Div([
     
     html.H2("4.2 Accordion"),
     
-    dcc.Input(type="password", debounce=True, placeholder="Pwd to get correction", id="pg4-input-pwd-accordion-cor"),
+    dcc.Input(type="password", debounce=True, placeholder="Pwd to get correction", id="pg4-input-pwd-accordion-cor", className="pwd"),
     
     dbc.Tabs([
             dbc.Tab(label="Exemple"   , tab_id="accordion-ex"  , children=accordion_ex  , className="tab"),
@@ -1483,7 +1487,7 @@ layout = html.Div([
 
     html.H2("4.3 Tabs"),
     
-    dcc.Input(type="password", debounce=True, placeholder="Pwd to get correction", id="pg4-input-pwd-tabs-cor"),
+    dcc.Input(type="password", debounce=True, placeholder="Pwd to get correction", id="pg4-input-pwd-tabs-cor", className="pwd"),
     
     dbc.Tabs([
             dbc.Tab(label="Exemple"   , tab_id="tabs-ex"  , children=tabs_ex  , className="tab"),
@@ -1497,7 +1501,7 @@ layout = html.Div([
 
     html.H2("4.4 Navlink"),
     
-    dcc.Input(type="password", debounce=True, placeholder="Pwd to get correction", id="pg4-input-pwd-navlink-cor"),
+    dcc.Input(type="password", debounce=True, placeholder="Pwd to get correction", id="pg4-input-pwd-navlink-cor", className="pwd"),
     
     dbc.Tabs([
             dbc.Tab(label="Exemple"   , tab_id="navlink-ex"  , children=navlink_ex  , className="tab"),
@@ -1511,7 +1515,7 @@ layout = html.Div([
     
     html.H2("4.5 Navbar"),
     
-    dcc.Input(type="password", debounce=True, placeholder="Pwd to get correction", id="pg4-input-pwd-navbar-cor"),
+    dcc.Input(type="password", debounce=True, placeholder="Pwd to get correction", id="pg4-input-pwd-navbar-cor", className="pwd"),
     
     dbc.Tabs([
             dbc.Tab(label="Exemple"   , tab_id="navbar-ex"  , children=navbar_ex  , className="tab"),
@@ -1576,7 +1580,7 @@ def update_graph(year_value, continent_value, log_boolean):
     Input("pg4-input-pwd-segmentation-cor","value")
 )
 def password(pwd):
-    if pwd=="mdp":
+    if pwd==mdp['exo_41']:
         return(False)
     else:
         return(True)
@@ -1616,7 +1620,7 @@ def update_graph(year_value, continent_value, log_boolean):
     Input("pg4-input-pwd-accordion-cor","value")
 )
 def password(pwd):
-    if pwd=="mdp":
+    if pwd==mdp['exo_42']:
         return(False)
     else:
         return(True)
@@ -1656,7 +1660,7 @@ def update_graph(year_value, continent_value, log_boolean):
     Input("pg4-input-pwd-tabs-cor","value")
 )
 def password(pwd):
-    if pwd=="mdp":
+    if pwd==mdp['exo_43']:
         return(False)
     else:
         return(True)
@@ -1671,7 +1675,7 @@ def password(pwd):
     Input("pg4-input-pwd-navlink-cor","value")
 )
 def password(pwd):
-    if pwd=="mdp":
+    if pwd==mdp['exo_44']:
         return(False)
     else:
         return(True)
@@ -1685,7 +1689,7 @@ def password(pwd):
     Input("pg4-input-pwd-navbar-cor","value")
 )
 def password(pwd):
-    if pwd=="mdp":
+    if pwd==mdp['exo_45']:
         return(False)
     else:
         return(True)

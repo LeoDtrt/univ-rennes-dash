@@ -1,11 +1,11 @@
 .logo {
-    width:70%;
+    width:80%;
 }
 
 .box-logo {
     width: 16em;
     height: 3.5em;
-    text-align: center;
+    vertical-align: middle;
 } 
 
 
@@ -14,14 +14,20 @@
     color:white;
     text-align: left;
     margin: 0.2em;
-
 }
+
+.btn-sdb:hover {
+    background-color: #003366;
+    color:white;
+    text-align: left;
+    margin: 0.2em;
+    font-weight: bold;
+}
+
 
 .btn-close-sidebar {
     background-color: white;
     color: #003366;
-    margin-left: 1em;
-    margin-top: 0.3em;
     width: 3em;
 }
 
@@ -30,9 +36,9 @@
     position: fixed;
     height: 4em;
     display: grid;
-    grid-template-columns: 16em 120px 2000px;
-    align-items: start;
+    grid-template-columns: 16em 4em 4em 2000px;
     z-index: 1;
+    padding: 0;
 }
 
 
@@ -82,6 +88,7 @@
     overflow-y: auto;
     z-index: 2;
 }
+
 
 .code {
     padding-bottom: 2rem;
@@ -162,21 +169,49 @@ h3 {
     font-style: italic;
 }
 
-a {
-    color:#003366;
-    font-weight: bold;
-}
 
 a:hover {
-    background-color:#003366;
-    color: white;
     font-weight: bold;
+    background-color:#faf2cd;
 }
 
-nav:hover {
+.pwd {
+    margin: 0em 0.55em 0.55em 0.55em;
+    font-style: italic;
+}
+
+.cezane {
+    border-radius:50%;
+    width:3em;    
+    border:2px solid white;
+}
+
+.cezane:hover {
+    border-radius:50%;
+    width:3em;    
+    border:3px solid white;
+}
+
+.circle {
+    background:#003366;
+    border-radius:50%;
+    width:3em;
+    height:3em;
+    vertical-align:center;
+
+  }
+
+.l {
+    color:#003366;
+    font-weight: bold;
+    text-decoration:none;
+}
+
+.l:hover {
     background-color:#003366;
     color: white;
     font-weight: bold;
+    text-decoration:none;
 }
 
 

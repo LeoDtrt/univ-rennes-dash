@@ -3,6 +3,7 @@ import dash_bootstrap_components as dbc
 import dash_mantine_components as dmc
 import plotly.express as px
 import pandas as pd 
+import json
 
 
 register_page(__name__,
@@ -13,6 +14,10 @@ register_page(__name__,
 #-----------------------------------------------------------------------#
 # Sources                                                               #
 #-----------------------------------------------------------------------#
+
+# Importation fichier geojson
+with open("assets/mdp/mdp.json") as f:
+    mdp = json.load(f)
 
 
 #---------------------------------------------------------#
@@ -110,7 +115,7 @@ fig_graph_exo = px.parallel_coordinates(iris, color="species_id", labels=lab,
 graph_exo = html.Div([
     dbc.Accordion([
         dbc.AccordionItem(title="Objectif", children=[
-            html.P(["À l’aide du dataset ",html.Span("iris", className="ds")," disponible dans le package ", html.A("plotly.express", href="https://plotly.com/python/plotly-express/", target="_blank"), ", créer une application qui permet d'afficher le titre et le graphique ci-dessous."])            
+            html.P(["À l’aide du dataset ",html.Span("iris", className="ds")," disponible dans le package ", html.A("plotly.express", href="https://plotly.com/python/plotly-express/", target="_blank", className="l"), ", créer une application qui permet d'afficher le titre et le graphique ci-dessous."])            
         ])
     ]),
     html.H3('Iris dataset : Parrallel coordinates'),
@@ -480,7 +485,7 @@ layout = html.Div([
 
     html.H2("2.2 Graph"),
     
-    dcc.Input(type="password", debounce=True, placeholder="Pwd to get correction", id="pg2-input-pwd-graph-cor"),
+    dcc.Input(type="password", debounce=True, placeholder="Pwd to get correction", id="pg2-input-pwd-graph-cor", className="pwd"),
     
     dbc.Tabs([
             dbc.Tab(label="Exemple"   , tab_id="graph-ex"  , children=graph_ex  , className="tab"),
@@ -563,7 +568,7 @@ def update_objet_en_sortie(value):
     Input("pg2-input-pwd-graph-cor","value")
 )
 def password(pwd):
-    if pwd=="mdp":
+    if pwd==mdp['exo_22']:
         return(False)
     else:
         return(True)

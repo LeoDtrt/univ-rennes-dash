@@ -26,10 +26,9 @@ content = html.Div(page_container, id='body', className='body')
 
 
 navbar = html.Div([
-    html.Div([html.Img(src='assets/img/logo.png', className="logo")], className="box-logo"),
+    html.Div(html.Img(src='assets/img/logo.png', className="logo"), style={'text-align':"center"}),
     dbc.Button("llll", color = "primary", id = "closing-sidebar", className="btn-close-sidebar"),
-    html.P(id="page-titre")
-    
+    html.A(html.Img(src='assets/img/cezane.jpg', className="cezane"), className="circle", href="https://www.linkedin.com/in/leo-dutertre-laduree-502a5689/", target="_blank")
 ], className='navbar')
 
 app.layout = html.Div([navbar, sidebar, content], id="app", className="all")

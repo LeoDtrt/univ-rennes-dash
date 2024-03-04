@@ -5,6 +5,7 @@ import plotly.express as px
 import base64
 import datetime
 import io
+import json
 import pandas as pd
 
 register_page(__name__,
@@ -16,6 +17,9 @@ register_page(__name__,
 # Sources                                                               #
 #-----------------------------------------------------------------------#
 
+# Importation fichier geojson
+with open("assets/mdp/mdp.json") as f:
+    mdp = json.load(f)
 
 #---------------------------------------------------------#
 # 3.1 Dropdown                                            #
@@ -74,9 +78,9 @@ dropdown_exo = html.Div([
     dbc.Accordion([
         dbc.AccordionItem(title="Objectif", children=[
             html.P([
-                "À l’aide du dataset ",html.Span("iris", className="ds")," disponible dans le package ", html.A("plotly.express", href="https://plotly.com/python/plotly-express/", target="_blank"), ", créer une application qui permet d'afficher le titre et le graphique ci-dessous.",html.Br(),
+                "À l’aide du dataset ",html.Span("iris", className="ds")," disponible dans le package ", html.A("plotly.express", href="https://plotly.com/python/plotly-express/", target="_blank", className="l"), ", créer une application qui permet d'afficher le titre et le graphique ci-dessous.",html.Br(),
                 "Afficher un nuage de points qui se met à jour en fonction du choix des quatre premières colonnes de ",html.Span("iris", className="ds")," :", html.I(" Petal length"),",", html.I(" Petal width"),",", html.I(" Sepal length"),",", html.I(" Sepal width"),".",html.Br(),
-                "Pour cela, créer deux ",html.A("dropdowns",href="https://dash.plotly.com/dash-core-components/dropdown", target="_blank")," composés de ces quatre variables. ⚠ Gérer l’affichage du nom des colonnes dans les dropdowns."
+                "Pour cela, créer deux ",html.A("dropdowns",href="https://dash.plotly.com/dash-core-components/dropdown", target="_blank", className="l")," composés de ces quatre variables. ⚠ Gérer l’affichage du nom des colonnes dans les dropdowns."
             ])
         ])
     ]),
@@ -201,9 +205,9 @@ slider_exo = html.Div([
     dbc.Accordion([
         dbc.AccordionItem(title="Objectif", children=[
             html.P([
-                "À l’aide du dataset ",html.Span("gapminder", className="ds")," disponible dans le package ", html.A("plotly.express", href="https://plotly.com/python/plotly-express/", target="_blank"), ", créer une application qui permet d'afficher le titre et le graphique ci-dessous.",html.Br(),
+                "À l’aide du dataset ",html.Span("gapminder", className="ds")," disponible dans le package ", html.A("plotly.express", href="https://plotly.com/python/plotly-express/", target="_blank", className="l"), ", créer une application qui permet d'afficher le titre et le graphique ci-dessous.",html.Br(),
                 "Afficher un nuage de points qui représente l’espérance de vie d’un pays (",html.I("life_exp"),") en fonction de son PIB par tête (",html.I("gdpPercap"),") et de sa population (",html.I("pop"),").", html.Br(),
-                "Pour cela, créer un ",html.A("range slider",href="https://dash.plotly.com/dash-core-components/rangeslider", target="_blank")," sur la variable ",html.I("pop"), ". ⚠ Le curseur gauche ne doit pas être bloqué par le curseur droit."
+                "Pour cela, créer un ",html.A("range slider",href="https://dash.plotly.com/dash-core-components/rangeslider", target="_blank", className="l")," sur la variable ",html.I("pop"), ". ⚠ Le curseur gauche ne doit pas être bloqué par le curseur droit."
             ])
         ])
     ]),
@@ -280,12 +284,12 @@ slider_exo2 = html.Div([
     dbc.Accordion([
         dbc.AccordionItem(title="Objectif", children=[
             html.P([
-                "À l’aide du dataset ",html.Span("gapminder", className="ds")," disponible dans le package ", html.A("plotly.express", href="https://plotly.com/python/plotly-express/", target="_blank"), ", créer une application qui permet d'afficher le titre et le graphique ci-dessous.",html.Br(),
+                "À l’aide du dataset ",html.Span("gapminder", className="ds")," disponible dans le package ", html.A("plotly.express", href="https://plotly.com/python/plotly-express/", target="_blank", className="l"), ", créer une application qui permet d'afficher le titre et le graphique ci-dessous.",html.Br(),
                 "Afficher un nuage de points qui représente l’espérance de vie d’un pays (",html.I("life_exp"),") en fonction de son PIB par tête (",html.I("gdpPercap"),") et de sa population (",html.I("pop"),").", html.Br(),
                 "L’application doit permettre de :",html.Br(),
-                html.Li(["Sélectionner un ou plusieurs continents à l’aide d’un ",html.A("dropdown",href="https://dash.plotly.com/dash-core-components/dropdown", target="_blank")," à choix multiple (tous les continents sont cochés par défaut)"]),
-                html.Li(["Sélectionner une année parmi toutes les années disponibles du dataset à l’aide d’un ",html.A("slider",href="https://dash.plotly.com/dash-core-components/slider", target="_blank")," (l’année 1982 est sélectionnée par défaut)."]),
-                "⚠ L’année du titre du graphique doit se mettre à jour automatiquement lors de la modification de la position du ",html.A("slider",href="https://dash.plotly.com/dash-core-components/slider", target="_blank"),"."
+                html.Li(["Sélectionner un ou plusieurs continents à l’aide d’un ",html.A("dropdown",href="https://dash.plotly.com/dash-core-components/dropdown", target="_blank", className="l")," à choix multiple (tous les continents sont cochés par défaut)"]),
+                html.Li(["Sélectionner une année parmi toutes les années disponibles du dataset à l’aide d’un ",html.A("slider",href="https://dash.plotly.com/dash-core-components/slider", target="_blank", className="l")," (l’année 1982 est sélectionnée par défaut)."]),
+                "⚠ L’année du titre du graphique doit se mettre à jour automatiquement lors de la modification de la position du ",html.A("slider",href="https://dash.plotly.com/dash-core-components/slider", target="_blank", className="l"),"."
             ])
         ])
     ]),
@@ -456,8 +460,8 @@ checklist_exo = html.Div([
     dbc.Accordion([
         dbc.AccordionItem(title="Objectif", children=[
             html.P([
-                "Répliquer l'application ci-dessous ",html.Span("à partir de l’application de l’exercice 2 de la rubrique Slider", className="h"),". Mêmes consignes mais cette fois il faut :",html.Br(),
-                html.Li(["Utiliser une ",html.A("checklist",href="https://dash.plotly.com/dash-core-components/checklist", target="_blank")," plutôt qu’un ",html.A("dropdown",href="https://dash.plotly.com/dash-core-components/dropdown", target="_blank")," sur la variable ",html.I("continent")]),
+                "Répliquer l'application ci-dessous ",html.Span("à partir de l’application de l’exercice 2 de la section 3.2 Slider", className="h"),". Mêmes consignes mais cette fois il faut :",html.Br(),
+                html.Li(["Utiliser une ",html.A("checklist",href="https://dash.plotly.com/dash-core-components/checklist", target="_blank", className="l")," plutôt qu’un ",html.A("dropdown",href="https://dash.plotly.com/dash-core-components/dropdown", target="_blank", className="l")," sur la variable ",html.I("continent")]),
                 html.Li(["Par défaut, lors du démarrage de l’application, seul le continent Asie doit être coché et l’année doit être la plus récente"]),
                 html.Li(["Fixer l’axe des abscisses de -5K à 50K (",html.I("gdpPercap"),")"]),
                 html.Li(["Fixer l’axe des ordonnés de 0 à 100 (",html.I("life_exp"),")"])
@@ -638,8 +642,8 @@ radio_exo = html.Div([
     dbc.Accordion([
         dbc.AccordionItem(title="Objectif", children=[
             html.P([
-                "Répliquer l'application ci-dessous ",html.Span("à partir de l’application de l’exercice de la rubrique Checklist", className="h"),". Mêmes consignes mais cette fois il faut :",html.Br(),
-                html.Li(["Ajouter un ",html.A("radio items",href="https://dash.plotly.com/dash-core-components/radioitems", target="_blank")," qui permet d’activer la transformation en logarithme de l’axe des abscisses (",html.I("gdpPercap"),")"]),
+                "Répliquer l'application ci-dessous ",html.Span("à partir de l’application de l’exercice de la section 3.3 Checklist", className="h"),". Mêmes consignes mais cette fois il faut :",html.Br(),
+                html.Li(["Ajouter un ",html.A("radio items",href="https://dash.plotly.com/dash-core-components/radioitems", target="_blank", className="l")," qui permet d’activer la transformation en logarithme de l’axe des abscisses (",html.I("gdpPercap"),")"]),
                 html.Li(["Lorsque l’axe des x est en logarithme, les limites vont de 100 à 100K"]),
                 html.Li(["Par défaut, tous les continents sont cochés, l’année doit être la plus récente et la transformation en logarithme est activée"])
             ])
@@ -842,8 +846,8 @@ input_exo = html.Div([
     dbc.Accordion([
         dbc.AccordionItem(title="Objectif", children=[
             html.P([
-                "Créer une application permettant de générer un texte sans passer par l’écriture dans un fichier extérieur à l’application.",html.Br(),
-                "L'idée est d'utiliser un ",html.A("input",href="https://dash.plotly.com/dash-core-components/input", target="_blank")," de texte et d'incrémenter un objet qui contiendra la liste à puces des n éléments textuels ajoutés."
+                html.Span("Créer une application permettant de générer un texte", className="h")," sans passer par l’écriture dans un fichier extérieur à l’application.",html.Br(),
+                "L'idée est d'utiliser un ",html.A("input",href="https://dash.plotly.com/dash-core-components/input", target="_blank", className="l")," de texte et d'incrémenter un objet qui contiendra la liste à puces des n éléments textuels ajoutés."
             ])
         ])
     ]),
@@ -956,9 +960,9 @@ download_exo = html.Div([
     dbc.Accordion([
         dbc.AccordionItem(title="Objectif", children=[
             html.P([
-                "En repartant de l’application créée lors de l’exercice de la section 3.5 Input, ajouter un bouton ",html.A("download",href="https://dash.plotly.com/dash-core-components/download", target="_blank")," permettant d’exporter dans un fichier .txt le texte qui est généré sur l’application.", html.Br(),
-                html.Li(["Utiliser un bouton ",html.A("download",href="https://dash.plotly.com/dash-core-components/download", target="_blank")," pour déclencher le téléchargement du fichier texte"]),
-                html.Li(["Ajouter un ",html.A("input",href="https://dash.plotly.com/dash-core-components/input", target="_blank")," texte pour permettre de saisir le nom du fichier texte"]),
+                html.Span("En repartant de l’application créée lors de l’exercice de la section 3.5 Input", className="h"),", ajouter un bouton ",html.A("download",href="https://dash.plotly.com/dash-core-components/download", target="_blank", className="l")," permettant d’exporter dans un fichier .txt le texte qui est généré sur l’application.", html.Br(),
+                html.Li(["Utiliser un bouton ",html.A("download",href="https://dash.plotly.com/dash-core-components/download", target="_blank", className="l")," pour déclencher le téléchargement du fichier texte"]),
+                html.Li(["Ajouter un ",html.A("input",href="https://dash.plotly.com/dash-core-components/input", target="_blank", className="l")," texte pour permettre de saisir le nom du fichier texte"]),
                 html.Li(["Le séparateur dans le fichier texte doit être un saut de ligne codifié par “/n”"]),
                 "⚠ Lorsqu’on récupère le format du texte créé, on obtient une liste de dictionnaires où chaque dictionnaire correspond à un élément saisi.", html.Br(),
                 "L’idée est donc dans un premier temps de voir quels sont les clés du dictionnaire à cibler pour récupérer le contenu des éléments textuels de chaque élément saisi."
@@ -1142,14 +1146,14 @@ upload_exo = html.Div([
     dbc.Accordion([
         dbc.AccordionItem(title="Objectif", children=[
             html.P([
-                "En repartant de l’application créée lors de l’exercice de la section 3.6 Dowload, ajouter un bouton ",html.A("upload",href="https://dash.plotly.com/dash-core-components/upload", target="_blank")," permettant d’importer un fichier .txt qui aurait d’abord été téléchargé sur cette même application. L’idée globale de l’application est donc de pouvoir :", html.Br(),
+                html.Span("En repartant de l’application créée lors de l’exercice de la section 3.6 Dowload", className="h"),", ajouter un bouton ",html.A("upload",href="https://dash.plotly.com/dash-core-components/upload", target="_blank", className="l")," permettant d’importer un fichier .txt qui aurait d’abord été téléchargé sur cette même application. L’idée globale de l’application est donc de pouvoir :", html.Br(),
                 html.Ol([
                     html.Li(["Créer un texte ligne par ligne"]),
-                    html.Li(["Exporter le texte créé via un bouton ",html.A("download",href="https://dash.plotly.com/dash-core-components/download", target="_blank"),""]),
-                    html.Li(["Importer un texte qui a précédemment été créé et exporté depuis l’application via un bouton ",html.A("upload",href="https://dash.plotly.com/dash-core-components/upload", target="_blank")])
+                    html.Li(["Exporter le texte créé via un bouton ",html.A("download",href="https://dash.plotly.com/dash-core-components/download", target="_blank", className="l"),""]),
+                    html.Li(["Importer un texte qui a précédemment été créé et exporté depuis l’application via un bouton ",html.A("upload",href="https://dash.plotly.com/dash-core-components/upload", target="_blank", className="l")])
                 ]),
                 "⚠ Pour la réalisation de cet exercice on pourra :", html.Br(),
-                html.Li(["Ajouter un callback qui prendra en input le contenu et le nom du fichier importé par le bouton ",html.A("upload",href="https://dash.plotly.com/dash-core-components/upload", target="_blank")," et qui alimentera la liste des éléments textuels"]),
+                html.Li(["Ajouter un callback qui prendra en input le contenu et le nom du fichier importé par le bouton ",html.A("upload",href="https://dash.plotly.com/dash-core-components/upload", target="_blank", className="l")," et qui alimentera la liste des éléments textuels"]),
                 html.Li(["Pour l’importation du fichier texte, il faut s’inspirer de l’exemple de cette rubrique et le répliquer non plus sur un fichier csv mais cette fois sur un fichier txt"]),
                 html.Li(["Les callbacks de création d’un texte et d’importation d’un texte doivent avoir le même output, donc il faudra ajouter une option pour accepter cette duplication dans la fonction Output() pour ces deux callbacks (allow_duplicate=True)"])
             ])
@@ -1313,7 +1317,7 @@ layout = html.Div([
     
     html.H2("3.1 Dropdown"),
     
-    dcc.Input(type="password", debounce=True, placeholder="Pwd to get correction", id="pg3-input-pwd-dropdown-cor"),
+    dcc.Input(type="password", debounce=True, placeholder="Pwd to get correction", id="pg3-input-pwd-dropdown-cor", className="pwd"),
     
     dbc.Tabs([
             dbc.Tab(label="Exemple"   , tab_id="dropdown-ex"  , children=dropdown_ex  , className="tab"),
@@ -1329,9 +1333,9 @@ layout = html.Div([
     
     html.H2("3.2 Slider"),
     
-    dcc.Input(type="password", debounce=True, placeholder="Pwd to get correction 1", id="pg3-input-pwd-slider-cor"),
+    dcc.Input(type="password", debounce=True, placeholder="Pwd to get correction 1", id="pg3-input-pwd-slider-cor", className="pwd"),
     
-    dcc.Input(type="password", debounce=True, placeholder="Pwd to get correction 2", id="pg3-input-pwd-slider-cor2"),
+    dcc.Input(type="password", debounce=True, placeholder="Pwd to get correction 2", id="pg3-input-pwd-slider-cor2", className="pwd"),
     
     dbc.Tabs([
             dbc.Tab(label="Exemple"     , tab_id="slider-ex"   , children=slider_ex   , className="tab"),
@@ -1348,7 +1352,7 @@ layout = html.Div([
     
     html.H2("3.3 Checklist"),
     
-    dcc.Input(type="password", debounce=True, placeholder="Pwd to get correction", id="pg3-input-pwd-checklist-cor"),
+    dcc.Input(type="password", debounce=True, placeholder="Pwd to get correction", id="pg3-input-pwd-checklist-cor", className="pwd"),
         
     dbc.Tabs([
             dbc.Tab(label="Exemple"     , tab_id="checklist-ex"   , children=checklist_ex   , className="tab"),
@@ -1363,7 +1367,7 @@ layout = html.Div([
 
     html.H2("3.4 Radio Items"),
     
-    dcc.Input(type="password", debounce=True, placeholder="Pwd to get correction", id="pg3-input-pwd-radio-cor"),
+    dcc.Input(type="password", debounce=True, placeholder="Pwd to get correction", id="pg3-input-pwd-radio-cor", className="pwd"),
     
     dbc.Tabs([
             dbc.Tab(label="Exemple"     , tab_id="radio-ex"   , children=radio_ex   , className="tab"),
@@ -1378,7 +1382,7 @@ layout = html.Div([
     
     html.H2("3.5 Input"),
     
-    dcc.Input(type="password", debounce=True, placeholder="Pwd to get correction", id="pg3-input-pwd-input-cor"),
+    dcc.Input(type="password", debounce=True, placeholder="Pwd to get correction", id="pg3-input-pwd-input-cor", className="pwd"),
     
     dbc.Tabs([
             dbc.Tab(label="Exemple"     , tab_id="input-ex"   , children=input_ex   , className="tab"),
@@ -1393,7 +1397,7 @@ layout = html.Div([
     
     html.H2("3.6 Download"),
     
-    dcc.Input(type="password", debounce=True, placeholder="Pwd to get correction", id="pg3-input-pwd-download-cor"),
+    dcc.Input(type="password", debounce=True, placeholder="Pwd to get correction", id="pg3-input-pwd-download-cor", className="pwd"),
     
     dbc.Tabs([
             dbc.Tab(label="Exemple"     , tab_id="download-ex"   , children=download_ex   , className="tab"),
@@ -1408,7 +1412,7 @@ layout = html.Div([
     
     html.H2("3.7 Upload"),
     
-    dcc.Input(type="password", debounce=True, placeholder="Pwd to get correction", id="pg3-input-pwd-upload-cor"),
+    dcc.Input(type="password", debounce=True, placeholder="Pwd to get correction", id="pg3-input-pwd-upload-cor", className="pwd"),
     
     dbc.Tabs([
             dbc.Tab(label="Exemple"     , tab_id="upload-ex"   , children=upload_ex   , className="tab"),
@@ -1452,7 +1456,7 @@ def update_graph(x, y):
     Input("pg3-input-pwd-dropdown-cor","value")
 )
 def password(pwd):
-    if pwd=="mdp":
+    if pwd==mdp['exo_31']:
         return(False)
     else:
         return(True)
@@ -1501,7 +1505,7 @@ def update_graph(year_value, continent_value):
     Input("pg3-input-pwd-slider-cor","value")
 )
 def password(pwd):
-    if pwd=="mdp":
+    if pwd==mdp['exo_321']:
         return(False)
     else:
         return(True)
@@ -1511,7 +1515,7 @@ def password(pwd):
     Input("pg3-input-pwd-slider-cor2","value")
 )
 def password(pwd):
-    if pwd=="mdp":
+    if pwd==mdp['exo_322']:
         return(False)
     else:
         return(True)
@@ -1554,7 +1558,7 @@ def update_graph(year_value, continent_value):
     Input("pg3-input-pwd-checklist-cor","value")
 )
 def password(pwd):
-    if pwd=="mdp":
+    if pwd==mdp['exo_33']:
         return(False)
     else:
         return(True)
@@ -1606,7 +1610,7 @@ def update_graph(year_value, continent_value, log_boolean):
     Input("pg3-input-pwd-radio-cor","value")
 )
 def password(pwd):
-    if pwd=="mdp":
+    if pwd==mdp['exo_34']:
         return(False)
     else:
         return(True)
@@ -1640,7 +1644,7 @@ def create_txt(value):
     Input("pg3-input-pwd-input-cor","value")
 )
 def password(pwd):
-    if pwd=="mdp":
+    if pwd==mdp['exo_35']:
         return(False)
     else:
         return(True)
@@ -1693,7 +1697,7 @@ def download_txt(n_clicks, text, filename):
     Input("pg3-input-pwd-download-cor","value")
 )
 def password(pwd):
-    if pwd=="mdp":
+    if pwd==mdp['exo_36']:
         return(False)
     else:
         return(True)            
@@ -1778,7 +1782,7 @@ def upload_txt(c,n):
     Input("pg3-input-pwd-upload-cor","value")
 )
 def password(pwd):
-    if pwd=="mdp":
+    if pwd==mdp['exo_37']:
         return(False)
     else:
         return(True)
