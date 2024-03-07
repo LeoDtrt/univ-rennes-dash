@@ -7,6 +7,5 @@ gunicorn
 dash-tools
 dash_daq==0.5.0
 requests
-re
 json
 random
