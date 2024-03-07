@@ -6,6 +6,8 @@ import pandas as pd
 import json
 import dash_daq as daq
 from random import sample
+import requests
+import re
 
 
 register_page(__name__,
@@ -33,7 +35,7 @@ election_geojson = px.data.election_geojson()
 # Content Example
 carto_ex = html.Div([
     
-    html.H3('Polotical candidate voting pool analysis'),
+    html.H3('Political candidate voting pool analysis'),
     
     html.P("Select a candidate:"),
     
@@ -63,7 +65,7 @@ geojson = px.data.election_geojson()
 
 app.layout = html.Div([
     
-    html.H4('Polotical candidate voting pool analysis'),
+    html.H4('Political candidate voting pool analysis'),
     
     html.P("Select a candidate:"),
     
@@ -103,18 +105,14 @@ if __name__ == '__main__':
 file1 = "assets/map/DEP_FR.geojson"
 file2 = "assets/map/FD_MAR_2018.csv"
 
-
 # Importation fichier geojson
 with open(file1) as f:
     dep_fr_geo = json.load(f)
     
 
 # Importation du dataframe 
-mariage = pd.read_csv(file2, sep=";", low_memory=False)
-mariage = mariage.groupby(['DEPMAR'])['DEPMAR'].count()
-mariage = pd.DataFrame(mariage)
-mariage.rename(columns={'DEPMAR':'NBMAR'}, inplace=True)
-mariage.reset_index(inplace=True)
+mariage = pd.read_csv(file2, sep=",", low_memory=False)
+
 
 # Definition du style du color-picker
 picker_style = {"display":"inline-block", "margin":10}
@@ -183,7 +181,7 @@ import json
 import dash_daq as daq
 import dash_bootstrap_components as dbc
 
-file1 = "./dep_fr.geojson"
+file1 = "./DEP_FR.geojson"
 file2 = "./FD_MAR_2018.csv"
 
 # Importation fichier geojson
@@ -191,14 +189,10 @@ with open(file1) as f:
     geo = json.load(f)
 
 # Importation du dataframe 
-df = pd.read_csv(file2, sep=";", low_memory=False) 
-df = df.groupby(['DEPMAR'])['DEPMAR'].count()
-df = pd.DataFrame(df)
-df.rename(columns={'DEPMAR':'NBMAR'}, inplace=True)
-df.reset_index(inplace=True)
+df = pd.read_csv(file2, sep=",", low_memory=False)
 
 # Initialisation de l'app
-app = Dash(__name__, external_stylesheets=dbc.themes.CERULEAN)
+app = Dash(__name__, external_stylesheets=[dbc.themes.CERULEAN])
 
 # Definition du style du color-picker
 picker_style = {"display":"inline-block", "margin":10}
@@ -389,7 +383,7 @@ layout = html.Div([
     
     html.H1("5. Aller plus loin"),
     
-    html.H2("5.1 Cartographie"),
+    html.H2("5.1 Cartographie", className="h2s"),
     
     dcc.Input(type="password", debounce=True, placeholder="Pwd to get correction", id="pg5-input-pwd-carto-cor", className="pwd"),
     
@@ -404,7 +398,7 @@ layout = html.Div([
     ),
     
     
-    html.H2("5.2 Jeu des portes"),
+    html.H2("5.2 Jeu des portes", className="h2s"),
     
     dcc.Input(type="password", debounce=True, placeholder="Pwd to get correction", id="pg5-input-pwd-jdp-cor", className="pwd"),
     
@@ -434,18 +428,31 @@ layout = html.Div([
     prevent_initial_call=True,
 )
 def func(n_clicks):
-    return dcc.send_data_frame(mariage.to_csv, "FD_MAR_2018.csv")
-
+    return dcc.send_data_frame(mariage.to_csv, "FD_MAR_2018.csv", index=False, sep=";")
 
 
 @callback(
-    Output("dnl-geojson", "data"),
-    Input("btn-geojson", "n_clicks"),
+     Output("dnl-geojson", "data"),
+     Input("btn-geojson", "n_clicks"),
     prevent_initial_call=True,
 )
-def download(n_clicks):
-    if n_clicks is not None:
-        return dcc.Location(pathname='/download_geojson', id='download-link')
+def download_json_file(n_clicks):
+    URL = "https://github.com/LeoDtrt/univ-rennes-dash/blob/main/src/assets/map/dep_fr.geojson"
+    response = requests.get(URL)
+    data = response.content.decode("utf-8")
+    data = json.loads(data)
+    data = data["payload"]["blob"]["rawLines"][0]
+    data = json.loads(data)
+    data = re.sub("\'\d{1,4}\':","", str(data))
+    data = data.replace(": ",":")
+    data = data.replace(", ",",")
+    data = data.replace("\'FeatureCollection\', ","")
+    data = data.replace("\'",'\"')
+    data = data.replace('{ "FeatureCollection"}','"FeatureCollection"')  
+    data = data.replace('"features":{ {','"features":[{')    
+    data = data.replace('}}}}','}}]}')
+    data = data.replace('-d"',"-d'")
+    return dict(content=data, filename="DEP_FR.geojson")
 
 
 # Example

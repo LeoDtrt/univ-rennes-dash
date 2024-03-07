@@ -98,10 +98,13 @@
 
 h1 {
     color: #5A7B9C;
+    margin-top: 0.5rem;
 }
 
-h2 {
+.h2s {
     margin-top: 1rem;
+    padding-left: 0.3rem;
+    padding-bottom: 0.3rem;
     background-color: #faf2cd;
     color:  #003366;
 }

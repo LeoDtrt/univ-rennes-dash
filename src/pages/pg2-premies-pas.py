@@ -472,7 +472,7 @@ layout = html.Div([
     
     html.H1("2. Premiers Pas"),
     
-    html.H2("2.1 Begin"),
+    html.H2("2.1 Begin", className="h2s"),
     
     dbc.Tabs([
             dbc.Tab(label="Exemple" , tab_id="begin-ex"  , children=begin_ex  , className="tab"),
@@ -483,7 +483,7 @@ layout = html.Div([
     ),
 
 
-    html.H2("2.2 Graph"),
+    html.H2("2.2 Graph", className="h2s"),
     
     dcc.Input(type="password", debounce=True, placeholder="Pwd to get correction", id="pg2-input-pwd-graph-cor", className="pwd"),
     
@@ -498,7 +498,7 @@ layout = html.Div([
     ),
 
 
-    html.H2("2.3 DataTable"),
+    html.H2("2.3 DataTable", className="h2s"),
     
     dbc.Tabs([
             dbc.Tab(label="Exemple"   , tab_id="dt-ex"  , children=dt_ex  , className="tab"),
@@ -509,7 +509,7 @@ layout = html.Div([
     ),
     
 
-    html.H2("2.4 Composantes HTML"),
+    html.H2("2.4 Composantes HTML", className="h2s"),
     
     dbc.Tabs([
             dbc.Tab(label="Exemple"   , tab_id="html-ex"  , children=html_ex  , className="tab"),
@@ -520,7 +520,7 @@ layout = html.Div([
     ),
     
 
-    html.H2("2.5 Activation CSS"),
+    html.H2("2.5 Activation CSS", className="h2s"),
     
     dbc.Tabs([
             dbc.Tab(label="Exemple"   , tab_id="css-ex"  , children=css_ex  , className="tab"),
@@ -531,7 +531,7 @@ layout = html.Div([
     ),
     
     
-    html.H2("2.6 Callback"),
+    html.H2("2.6 Callback", className="h2s"),
     
     dbc.Tabs([
             dbc.Tab(label="Présentation", tab_id="callback-pres", children=callback_pres, className="presentation"),

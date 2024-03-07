@@ -1315,7 +1315,7 @@ layout = html.Div([
     
     html.H1("3. Callbacks"),
     
-    html.H2("3.1 Dropdown"),
+    html.H2("3.1 Dropdown", className="h2s"),
     
     dcc.Input(type="password", debounce=True, placeholder="Pwd to get correction", id="pg3-input-pwd-dropdown-cor", className="pwd"),
     
@@ -1331,7 +1331,7 @@ layout = html.Div([
     ),
     
     
-    html.H2("3.2 Slider"),
+    html.H2("3.2 Slider", className="h2s"),
     
     dcc.Input(type="password", debounce=True, placeholder="Pwd to get correction 1", id="pg3-input-pwd-slider-cor", className="pwd"),
     
@@ -1350,7 +1350,7 @@ layout = html.Div([
     ),
     
     
-    html.H2("3.3 Checklist"),
+    html.H2("3.3 Checklist", className="h2s"),
     
     dcc.Input(type="password", debounce=True, placeholder="Pwd to get correction", id="pg3-input-pwd-checklist-cor", className="pwd"),
         
@@ -1365,7 +1365,7 @@ layout = html.Div([
     ),
 
 
-    html.H2("3.4 Radio Items"),
+    html.H2("3.4 Radio Items", className="h2s"),
     
     dcc.Input(type="password", debounce=True, placeholder="Pwd to get correction", id="pg3-input-pwd-radio-cor", className="pwd"),
     
@@ -1380,7 +1380,7 @@ layout = html.Div([
     ),
     
     
-    html.H2("3.5 Input"),
+    html.H2("3.5 Input", className="h2s"),
     
     dcc.Input(type="password", debounce=True, placeholder="Pwd to get correction", id="pg3-input-pwd-input-cor", className="pwd"),
     
@@ -1395,7 +1395,7 @@ layout = html.Div([
     ),
     
     
-    html.H2("3.6 Download"),
+    html.H2("3.6 Download", className="h2s"),
     
     dcc.Input(type="password", debounce=True, placeholder="Pwd to get correction", id="pg3-input-pwd-download-cor", className="pwd"),
     
@@ -1410,7 +1410,7 @@ layout = html.Div([
     ),
     
     
-    html.H2("3.7 Upload"),
+    html.H2("3.7 Upload", className="h2s"),
     
     dcc.Input(type="password", debounce=True, placeholder="Pwd to get correction", id="pg3-input-pwd-upload-cor", className="pwd"),
     

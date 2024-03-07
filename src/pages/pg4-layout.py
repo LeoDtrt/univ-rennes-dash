@@ -1116,7 +1116,7 @@ pg4_nav_navbar = dbc.NavbarSimple(
     brand_href="#pg4-nav-exo-scatter",
     brand_external_link=True,
     color="primary",
-    dark=True,
+    dark=True
 )
 
 
@@ -1146,7 +1146,7 @@ navbar_exo = html.Div([
     
     
     # Titre de l'application
-    html.Div([pg4_nav_navbar, pg4_nav_content])
+    html.Div([pg4_nav_navbar, pg4_nav_content], style={"display":"flex"})
         
 ])
 
@@ -1456,7 +1456,7 @@ layout = html.Div([
     
     html.H1("4. Layout"),
     
-    html.H2("4.1 Segmentation"),
+    html.H2("4.1 Segmentation", className="h2s"),
     
     dcc.Input(type="password", debounce=True, placeholder="Pwd to get correction", id="pg4-input-pwd-segmentation-cor", className="pwd"),
     
@@ -1471,7 +1471,7 @@ layout = html.Div([
     ),
     
     
-    html.H2("4.2 Accordion"),
+    html.H2("4.2 Accordion", className="h2s"),
     
     dcc.Input(type="password", debounce=True, placeholder="Pwd to get correction", id="pg4-input-pwd-accordion-cor", className="pwd"),
     
@@ -1485,7 +1485,7 @@ layout = html.Div([
         active_tab="accordion-ex"
     ),
 
-    html.H2("4.3 Tabs"),
+    html.H2("4.3 Tabs", className="h2s"),
     
     dcc.Input(type="password", debounce=True, placeholder="Pwd to get correction", id="pg4-input-pwd-tabs-cor", className="pwd"),
     
@@ -1499,7 +1499,7 @@ layout = html.Div([
         active_tab="tabs-ex"
     ),
 
-    html.H2("4.4 Navlink"),
+    html.H2("4.4 Navlink", className="h2s"),
     
     dcc.Input(type="password", debounce=True, placeholder="Pwd to get correction", id="pg4-input-pwd-navlink-cor", className="pwd"),
     
@@ -1513,7 +1513,7 @@ layout = html.Div([
         active_tab="navlink-ex"
     ),    
     
-    html.H2("4.5 Navbar"),
+    html.H2("4.5 Navbar", className="h2s"),
     
     dcc.Input(type="password", debounce=True, placeholder="Pwd to get correction", id="pg4-input-pwd-navbar-cor", className="pwd"),
     
@@ -1527,7 +1527,7 @@ layout = html.Div([
         active_tab="navbar-ex"
     ),
     
-    html.H2("4.6 Project Structure"),
+    html.H2("4.6 Project Structure", className="h2s"),
     
     dbc.Tabs([
             dbc.Tab(label="Exemple"   , tab_id="ps-ex"  , children=ps_ex  , className="tab"),
