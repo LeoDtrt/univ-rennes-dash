@@ -437,7 +437,7 @@ def func(n_clicks):
     prevent_initial_call=True,
 )
 def download_json_file(n_clicks):
-    URL = "https://github.com/LeoDtrt/univ-rennes-dash/blob/main/src/assets/map/dep_fr.geojson"
+    URL = "https://github.com/LeoDtrt/univ-rennes-dash/blob/main/src/assets/map/DEP_FR.geojson"
     response = requests.get(URL)
     data = response.content.decode("utf-8")
     data = json.loads(data)
