@@ -1,6 +1,6 @@
-from dash import Dash, html, dcc, callback, Input, Output, register_page, dash_table
+from dash import html, dcc, callback, Input, Output, register_page, dash_table
 import dash_bootstrap_components as dbc
-import dash_mantine_components as dmc
+from assets.pkg.util import *
 import plotly.express as px
 import pandas as pd 
 import json
@@ -28,10 +28,7 @@ with open("assets/mdp/mdp.json") as f:
 begin_ex = html.Div(html.H3('My first app with Dash'))
 
 # Content code
-begin_code = html.Div([
-    dmc.Prism(
-        children=
-"""from dash import Dash, html
+code = """from dash import Dash, html
 
 app = Dash(__name__)
 
@@ -39,11 +36,8 @@ app.layout = html.Div([
     html.H1('My first app with Dash')
 ])
 
-app.run(debug=True)""",
-        language="python",
-        colorScheme="dark")
-    
-])
+app.run(debug=True)"""
+begin_code = boxCode('begin', code)
 
 
 #---------------------------------------------------------#
@@ -69,11 +63,7 @@ graph_ex = html.Div([
 ])
 
 # Content Code
-graph_code = html.Div([
-    
-    dmc.Prism(
-        children=
-"""from dash import Dash, html, dcc
+code = """from dash import Dash, html, dcc
 import plotly.express as px
 
 app = Dash(__name__)
@@ -93,11 +83,8 @@ app.layout = html.Div(children=[
 ])
 
 if __name__ == '__main__':
-    app.run(debug=True)""",
-        language="python",
-        colorScheme="dark")
-
-])
+    app.run(debug=True)"""
+graph_code = boxCode('graph', code)
 
 # Source Exercice
 lab = {"species_id"   : "Species"       ,
@@ -124,11 +111,7 @@ graph_exo = html.Div([
 ])
 
 # Content Correction
-graph_cor = html.Div([
-    
-    dmc.Prism(
-        children=
-"""from dash import Dash, html, dcc
+code = """from dash import Dash, html, dcc
 import plotly.express as px
 
 app = Dash(__name__)
@@ -153,11 +136,8 @@ app.layout = html.Div([
 ])
 
 if __name__ == '__main__':
-    app.run(debug=True)""",
-        language="python",
-        colorScheme="dark")
-
-])
+    app.run(debug=True)"""
+graph_cor = boxCode('graph-cor', code)
 
 
 #---------------------------------------------------------#
@@ -183,10 +163,7 @@ dt_ex = html.Div([
 ])
 
 # Content Code
-dt_code = html.Div([
-    dmc.Prism(
-        children=
-"""from dash import Dash, html, dash_table
+code = """from dash import Dash, html, dash_table
 import plotly.express as px
 import pandas as pd
 
@@ -208,11 +185,8 @@ app.layout = html.Div([
 ])
 
 if __name__ == '__main__':
-    app.run(debug=True)""",
-        language="python",
-        colorScheme="dark")
-    
-])
+    app.run(debug=True)"""
+dt_code = boxCode('dt', code)
 
 
 #---------------------------------------------------------#
@@ -247,10 +221,7 @@ html_ex = html.Div([
 ])
 
 # Content Code
-html_code = html.Div([
-    dmc.Prism(
-        children=
-"""from dash import Dash, html
+code = """from dash import Dash, html
 
 app = Dash(__name__)
 
@@ -279,11 +250,8 @@ app.layout = html.Div([
 ])
 
 if __name__ == '__main__':
-    app.run(debug=True)""",
-        language="python",
-        colorScheme="dark")
-    
-])
+    app.run(debug=True)"""
+html_code = boxCode('html', code)
 
 
 #---------------------------------------------------------#
@@ -317,10 +285,7 @@ css_ex = html.Div([
 ])
 
 # Content Code
-css_code = html.Div([
-    dmc.Prism(
-        children=
-"""from dash import Dash, html
+code = """from dash import Dash, html
 
 app = Dash(__name__)
 
@@ -349,11 +314,8 @@ app.layout = html.Div([
 ])
 
 if __name__ == '__main__':
-    app.run(debug=True)""",
-        language="python",
-        colorScheme="dark")
-    
-])
+    app.run(debug=True)"""
+css_code = boxCode('css', code)
 
   
 #---------------------------------------------------------#
@@ -419,10 +381,7 @@ callback_ex = html.Div([
 
 
 # Content Code
-callback_code = html.Div([
-    dmc.Prism(
-        children=
-"""from dash import Dash, html, callback, Input, Output, dcc
+code = """from dash import Dash, html, callback, Input, Output, dcc
 
 # Initialisation de l'application
 app = Dash(__name__)
@@ -456,11 +415,8 @@ def update_objet_en_sortie(value):
 
 # Code permettant de run l'application
 if __name__ == "__main__":
-    app.run(debug=True)""",
-        language="python",
-        colorScheme="dark")
-    
-])
+    app.run(debug=True)"""
+callback_code = boxCode('callback', code)
 
 
 #-----------------------------------------------------------------------#

@@ -1,8 +1,7 @@
-from dash import Dash, html, dcc, callback, Input, Output, register_page, dash_table, ctx
+from dash import html, dcc, callback, Input, Output, register_page, ctx
 import dash_bootstrap_components as dbc
-import dash_mantine_components as dmc
+from assets.pkg.util import *
 import plotly.express as px
-import pandas as pd 
 import json
 
 
@@ -48,11 +47,7 @@ segmentation_ex = html.Div([
 ], style={'width': '90%'})
 
 # Content Code
-segmentation_code = html.Div([
-    
-    dmc.Prism(
-        children=
-"""from dash import Dash, html
+code = """from dash import Dash, html
 import dash_bootstrap_components as dbc
 
 app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
@@ -78,11 +73,8 @@ app.layout = html.Div([
 ])
 
 if __name__ == '__main__':
-    app.run(debug=True)""",
-        language="python",
-        colorScheme="dark")
-
-])
+    app.run(debug=True)"""
+segmentation_code = boxCode('segmentation', code)
 
 
 # Source Exercice
@@ -187,11 +179,7 @@ segmentation_exo = html.Div([
 
 
 # Content Correction
-segmentation_cor = html.Div([
-    
-    dmc.Prism(
-        children=
-"""from dash import Dash, html, dcc, callback, Input, Output
+code = """from dash import Dash, html, dcc, callback, Input, Output
 import dash_bootstrap_components as dbc
 import plotly.express as px
 
@@ -313,11 +301,8 @@ def update_graph(year_value, continent_value, log_boolean):
 #-----------------------------------------------------------------------#
 
 if __name__ == '__main__':
-    app.run(debug=True)""",
-        language="python",
-        colorScheme="dark")
-
-])
+    app.run(debug=True)"""
+segmentation_cor = boxCode('segmentation-cor', code)
 
 
 #---------------------------------------------------------#
@@ -354,11 +339,7 @@ accordion_ex = html.Div([
 ])
 
 # Content Code
-accordion_code = html.Div([
-    
-    dmc.Prism(
-        children=
-"""from dash import Dash, html
+code = """from dash import Dash, html
 import dash_bootstrap_components as dbc
 
 app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
@@ -392,11 +373,8 @@ app.layout = html.Div([
 ])
 
 if __name__ == '__main__':
-    app.run(debug=True)""",
-        language="python",
-        colorScheme="dark")
-
-])
+    app.run(debug=True)"""
+accordion_code = boxCode('accordion', code)
 
 
 # Content Exercice
@@ -444,11 +422,7 @@ accordion_exo = html.Div([
 
 
 # Content Correction
-accordion_cor = html.Div([
-    
-    dmc.Prism(
-        children=
-"""from dash import Dash, html, dcc, callback, Input, Output
+code = """from dash import Dash, html, dcc, callback, Input, Output
 import dash_bootstrap_components as dbc
 import plotly.express as px
 
@@ -544,12 +518,9 @@ def update_graph(year_value, continent_value, log_boolean):
 #-----------------------------------------------------------------------#
 
 if __name__ == '__main__':
-    app.run(debug=True)""",
-        language="python",
-        colorScheme="dark")
+    app.run(debug=True)"""
+accordion_cor = boxCode('accordion-cor', code)
 
-])
-  
   
 #---------------------------------------------------------#
 # 4.3 Tabs                                                #
@@ -591,11 +562,7 @@ tabs_ex = html.Div([
 
 
 # Content Code
-tabs_code = html.Div([
-    
-    dmc.Prism(
-        children=
-"""import dash_bootstrap_components as dbc
+code = """import dash_bootstrap_components as dbc
 from dash import Dash, html
 
 app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
@@ -627,11 +594,8 @@ app.layout = html.Div([
 ])
 
 if __name__ == '__main__':
-    app.run(debug=True)""",
-        language="python",
-        colorScheme="dark")
-
-])
+    app.run(debug=True)"""
+tabs_code = boxCode('tabs', code)
 
 
 # Source Exercice
@@ -697,13 +661,8 @@ tabs_exo = html.Div([
 ])
 
 
-
 # Content Correction
-tabs_cor = html.Div([
-    
-    dmc.Prism(
-        children=
-"""from dash import Dash, html, dcc, callback, Input, Output
+code = """from dash import Dash, html, dcc, callback, Input, Output
 import dash_bootstrap_components as dbc
 import plotly.express as px
 
@@ -808,12 +767,8 @@ def update_graph(year_value, continent_value, log_boolean):
 #-----------------------------------------------------------------------#
 
 if __name__ == '__main__':
-    app.run(debug=True)""",
-        language="python",
-        colorScheme="dark")
-
-])  
-
+    app.run(debug=True)"""
+tabs_cor = boxCode('tabs-cor', code)
 
 
 #---------------------------------------------------------#
@@ -847,11 +802,7 @@ navlink_ex = html.Div([pg4_navlink_nav, pg4_navlink_content])
 
 
 # Content Code
-navlink_code = html.Div([
-    
-    dmc.Prism(
-        children=
-"""from dash import Dash, html
+code = """from dash import Dash, html
 import dash_bootstrap_components as dbc
 
 app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
@@ -900,11 +851,8 @@ content = html.Div([
 app.layout = html.Div([nav, content])
 
 if __name__ == '__main__':
-    app.run(debug=True)""",
-        language="python",
-        colorScheme="dark")
-
-])
+    app.run(debug=True)"""
+navlink_code = boxCode('navlink', code)
 
 
 # Source Exercice
@@ -961,11 +909,7 @@ navlink_exo = html.Div([
 
 
 # Content Correction
-navlink_cor = html.Div([
-    
-    dmc.Prism(
-        children=
-"""from dash import Dash, html, dcc
+code = """from dash import Dash, html, dcc
 import dash_bootstrap_components as dbc
 import plotly.express as px
 
@@ -1033,11 +977,8 @@ app.layout = html.Div([nav, content])
 #-----------------------------------------------------------------------#
 
 if __name__ == '__main__':
-    app.run(debug=True)""",
-        language="python",
-        colorScheme="dark")
-
-])
+    app.run(debug=True)"""
+navlink_cor = boxCode('navlink-cor', code)
 
 
 #---------------------------------------------------------#
@@ -1062,11 +1003,7 @@ navbar_ex = html.Div([
     
 
 # Content Code
-navbar_code = html.Div([
-    
-    dmc.Prism(
-        children=
-"""from dash import Dash, html
+code = """from dash import Dash, html
 import dash_bootstrap_components as dbc
 
 app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
@@ -1090,11 +1027,8 @@ app.layout = html.Div([
 ])
 
 if __name__ == '__main__':
-    app.run(debug=True)""",
-        language="python",
-        colorScheme="dark")
-
-])
+    app.run(debug=True)"""
+navbar_code = boxCode('navbar', code)
 
 
 # Source Exercice
@@ -1151,13 +1085,8 @@ navbar_exo = html.Div([
 ])
 
 
-
 # Content Correction
-navbar_cor = html.Div([
-    
-    dmc.Prism(
-        children=
-"""from dash import Dash, html, dcc
+code = """from dash import Dash, html, dcc
 import dash_bootstrap_components as dbc
 import plotly.express as px
 
@@ -1235,19 +1164,13 @@ app.layout = html.Div([navbar, content])
 #-----------------------------------------------------------------------#
 
 if __name__ == '__main__':
-    app.run(debug=True)""",
-        language="python",
-        colorScheme="dark")
-
-])
-
+    app.run(debug=True)"""
+navbar_cor = boxCode('navbar-cor', code)
 
 
 #---------------------------------------------------------#
 # 4.6 Project Structure                                   #
 #---------------------------------------------------------#
-
-
 
 
 ps_SIDEBAR_STYLE = {
@@ -1298,10 +1221,7 @@ ps_ex_home = html.Div("Home page.",id="ps-ex-page-content", style=ps_CONTENT_STY
 # Content Example
 ps_ex = html.Div([ps_ex_sidebar, ps_ex_home], style={"display":"flex"})
 
-
-ps_st = dmc.Prism(
-        children=
-"""PROJECT STRUCTURE
+code = """PROJECT STRUCTURE
 app.py
 assets/
     - img/logo.png
@@ -1309,13 +1229,11 @@ assets/
 pages/
     - home.py
     - page1.py
-    - page2.py""",
-        language="python",
-        colorScheme="dark")
+    - page2.py"""
+ps_st = boxCode('ps-st', code)
 
-ps_ap = dmc.Prism(
-        children=
-"""from dash import html, Dash, page_registry, page_container
+
+code = """from dash import html, Dash, page_registry, page_container
 import dash_bootstrap_components as dbc
 
 app = Dash(__name__,
@@ -1342,13 +1260,10 @@ content = html.Div(page_container, className='body')
 app.layout = html.Div([sidebar, content])
 
 if __name__ == "__main__":
-    app.run(debug=True)""",
-        language="python",
-        colorScheme="dark")
+    app.run(debug=True)"""
+ps_ap = boxCode('ps-ap', code)
 
-ps_hm = dmc.Prism(
-        children=
-"""from dash import html, register_page
+code = """from dash import html, register_page
 
 register_page(__name__, path='/', name='Home')
 
@@ -1356,13 +1271,10 @@ layout = html.Div([
     
     html.P('Home page')
     
-])""",
-        language="python",
-        colorScheme="dark")
+])"""
+ps_hm = boxCode('ps-hm', code)
 
-ps_p1 = dmc.Prism(
-        children=
-"""from dash import html, register_page
+code = """from dash import html, register_page
 
 register_page(__name__, name='Page 1')
 
@@ -1370,13 +1282,10 @@ layout = html.Div([
     
     html.P('Content of page 1')
     
-])""",
-        language="python",
-        colorScheme="dark")
+])"""
+ps_p1 = boxCode('ps-p1', code)
 
-ps_p2 = dmc.Prism(
-        children=
-"""from dash import html, register_page
+code = """from dash import html, register_page
 
 register_page(__name__, name='Page 2')
 
@@ -1384,14 +1293,10 @@ layout = html.Div([
     
     html.P('Content of page 2')
     
-])""",
-        language="python",
-        colorScheme="dark")
+])"""
+ps_p2 = boxCode('ps-p2', code)
 
-
-ps_cs = dmc.Prism(
-        children=
-""".sidebar {
+code = """.sidebar {
     position: fixed;
     top: 0;
     left: 0;
@@ -1413,9 +1318,8 @@ ps_cs = dmc.Prism(
 
 .logo {
     width:80%;
-}""",
-        language="python",
-        colorScheme="dark")
+}"""
+ps_cs = boxCode('ps-cs', code)
 
 # Content Code
 ps_code = html.Div([
@@ -1433,7 +1337,6 @@ ps_code = html.Div([
     )
 
 ])
-
 
 
 # Content Exercice

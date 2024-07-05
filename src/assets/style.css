@@ -267,3 +267,77 @@ t {
     width:20%
 }
 
+.code-container {
+    border: 1px solid #333;
+    padding: 10px;
+    background-color: #1e1e1e;
+    border-radius: 5px;
+    overflow-x: auto;
+    overflow-y: auto;
+    white-space: pre-wrap;
+    color: #ffffff;
+    font-family: monospace;
+}
+
+.hljs {
+    display: block;
+    overflow-x: auto;
+    padding: 0.5em;
+    background: #1e1e1e;
+    color: #dcdcdc;
+}
+
+.hljs-keyword, .hljs-selector-tag, .hljs-subst {
+    color: #569cd6;
+}
+
+.hljs-literal, .hljs-section, .hljs-link {
+    color: #4ec9b0;
+}
+
+.hljs-function, .hljs-title, .hljs-name {
+    color: #dcdcaa;
+}
+
+.hljs-string, .hljs-meta, .hljs-template-tag, .hljs-template-variable, .hljs-regexp {
+    color: #ce9178;
+}
+
+.hljs-attr, .hljs-attribute, .hljs-builtin-name, .hljs-variable {
+    color: #9cdcfe;
+}
+
+.hljs-comment, .hljs-quote {
+    color: #6a9955;
+    font-style: italic;
+}
+
+
+.copy-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 3px;
+    font-size: 12px;
+}
+
+.copy-button:hover {
+    background-color: #45a049;
+}
+
+.hidden-textarea {
+    opacity: 0;
+    position: absolute;
+    z-index: -1;
+}
+
+.box-code {
+    width: 100%;
+    /*height: 200px;*/
+    position: relative
+}

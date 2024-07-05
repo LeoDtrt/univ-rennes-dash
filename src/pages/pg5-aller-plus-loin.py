@@ -1,6 +1,6 @@
-from dash import Dash, html, dcc, callback, Input, Output, register_page, dash_table
+from dash import html, dcc, callback, Input, Output, register_page
 import dash_bootstrap_components as dbc
-import dash_mantine_components as dmc
+from assets.pkg.util import *
 import plotly.express as px
 import pandas as pd 
 import json
@@ -51,11 +51,7 @@ carto_ex = html.Div([
 ])
 
 # Content Code
-carto_code = html.Div([
-    
-    dmc.Prism(
-        children=
-"""from dash import Dash, dcc, html, Input, Output, callback
+code = """from dash import Dash, dcc, html, Input, Output, callback
 import plotly.express as px
 
 app = Dash(__name__)
@@ -95,11 +91,8 @@ def display_choropleth(candidate):
     return fig
 
 if __name__ == '__main__':
-    app.run(debug=True)""",
-        language="python",
-        colorScheme="dark")
-
-])
+    app.run(debug=True)"""
+carto_code = boxCode('carto', code)
 
 # Source Exercice
 file1 = "assets/map/DEP_FR.geojson"
@@ -133,8 +126,6 @@ carto_exo = html.Div([
         ])
     ]),
     
-    
-
     dbc.Container([
     
         dbc.Row([
@@ -170,11 +161,7 @@ carto_exo = html.Div([
 
 
 # Content Correction
-carto_cor = html.Div([
-    
-    dmc.Prism(
-        children=
-"""from dash import Dash, dcc, html, Input, Output, callback
+code = """from dash import Dash, dcc, html, Input, Output, callback
 import plotly_express as px
 import pandas as pd
 import json
@@ -256,11 +243,8 @@ def display_choropleth(color_min, color_max):
     return fig
 
 if __name__ == '__main__':
-    app.run_server(debug=True)""",
-        language="python",
-        colorScheme="dark")
-
-])
+    app.run_server(debug=True)"""
+carto_cor = boxCode('carto-cor', code)
 
 
 #---------------------------------------------------------#
@@ -306,11 +290,7 @@ jdp_exo = html.Div([
 
 
 # Content Correction
-jdp_cor = html.Div([
-    
-    dmc.Prism(
-        children=
-"""from dash import Dash, dcc, html, callback, Output, Input
+code = """from dash import Dash, dcc, html, callback, Output, Input
 import dash_bootstrap_components as dbc
 from random import sample
 
@@ -367,11 +347,8 @@ def update(opt, n, radio_value):
         return opt, radio_value
 
 if __name__ == '__main__':
-    app.run(debug=True)""",
-        language="python",
-        colorScheme="dark")
-
-])
+    app.run(debug=True)"""
+jdp_cor = boxCode('jdp-cor', code)
   
 
 #-----------------------------------------------------------------------#

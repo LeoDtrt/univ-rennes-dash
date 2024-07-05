@@ -1,6 +1,6 @@
 from dash import Dash, html, dcc, callback, Input, Output, register_page, dash_table, State
 import dash_bootstrap_components as dbc
-import dash_mantine_components as dmc
+from assets.pkg.util import *
 import plotly.express as px
 import base64
 import datetime
@@ -42,10 +42,7 @@ dropdown_ex = html.Div([
 ])
 
 # Content code
-dropdown_code = html.Div([
-    dmc.Prism(
-        children=
-"""from dash import Dash, html, callback, Input, Output, dcc
+code = """from dash import Dash, html, callback, Input, Output, dcc
 
 app = Dash(__name__)
 
@@ -62,11 +59,8 @@ app.layout = html.Div([
 ])
 
 if __name__ == "__main__":
-    app.run(debug=True)""",
-        language="python",
-        colorScheme="dark")
-    
-])
+    app.run(debug=True)"""
+dropdown_code = boxCode('dropdown', code)
 
 # Source Exercice
 iris = px.data.iris()
@@ -99,11 +93,7 @@ dropdown_exo = html.Div([
 
 
 # Content Correction
-dropdown_cor = html.Div([
-    
-    dmc.Prism(
-        children=
-"""from dash import Dash, html, dcc, callback, Output, Input
+code = """from dash import Dash, html, dcc, callback, Output, Input
 import plotly.express as px
 
 app = Dash(__name__)
@@ -141,11 +131,8 @@ def update_graph(x, y):
     return fig
 
 if __name__ == '__main__':
-    app.run(debug=True)""",
-        language="python",
-        colorScheme="dark")
-
-])
+    app.run(debug=True)"""
+dropdown_cor = boxCode('dropdown-cor', code)
 
 
 #---------------------------------------------------------#
@@ -168,10 +155,7 @@ slider_ex = html.Div([
 ])
 
 # Content Code
-slider_code = html.Div([
-    dmc.Prism(
-        children=
-"""from dash import Dash, html, dcc, callback, Input, Output
+code = """from dash import Dash, html, dcc, callback, Input, Output
 
 app = Dash(__name__)
 
@@ -189,11 +173,8 @@ app.layout = html.Div([
 ])
 
 if __name__ == "__main__":
-    app.run(debug=True)""",
-        language="python",
-        colorScheme="dark")
-    
-])
+    app.run(debug=True)"""
+slider_code = boxCode('slider', code)
 
 # Source Exercice
 gp = px.data.gapminder()
@@ -222,11 +203,7 @@ slider_exo = html.Div([
 
 
 # Content Correction
-slider_cor = html.Div([
-    
-    dmc.Prism(
-        children=
-"""from dash import Dash, html, dcc, callback, Input, Output
+code = """from dash import Dash, html, dcc, callback, Input, Output
 import plotly.express as px
 
 df = px.data.gapminder()
@@ -261,11 +238,8 @@ def update_graph(value):
     return fig
 
 if __name__ == '__main__':
-    app.run(debug=True)""",
-        language="python",
-        colorScheme="dark")
-
-])
+    app.run(debug=True)"""
+slider_cor = boxCode('slider-cor', code)
 
 # Source Exercice 2
 # Recuperation du minimum et du maximum des annees disponibles
@@ -312,11 +286,7 @@ slider_exo2 = html.Div([
 
 
 # Content Correction 2
-slider_cor2 = html.Div([
-    
-    dmc.Prism(
-        children=
-"""from dash import Dash, html, dcc, callback, Input, Output
+code = """from dash import Dash, html, dcc, callback, Input, Output
 import plotly.express as px
 
 #-----------------------------------------------------------------------#
@@ -388,11 +358,8 @@ def update_graph(year_value, continent_value):
 #-----------------------------------------------------------------------#
 
 if __name__ == '__main__':
-    app.run(debug=True)""",
-        language="python",
-        colorScheme="dark")
-
-])
+    app.run(debug=True)"""
+slider_cor2 = boxCode('slider-cor2', code)
 
 
 #---------------------------------------------------------#
@@ -415,10 +382,7 @@ checklist_ex = html.Div([
 ])
 
 # Content Code
-checklist_code = html.Div([
-    dmc.Prism(
-        children=
-"""from dash import Dash, html, dcc, callback, Output, Input
+code = """from dash import Dash, html, dcc, callback, Output, Input
 
 app = Dash(__name__)
 
@@ -444,11 +408,8 @@ def update_state(values):
     return [html.Li(val) for val in values]
 
 if __name__ == '__main__':
-    app.run(debug=True)""",
-        language="python",
-        colorScheme="dark")
-    
-])
+    app.run(debug=True)"""
+checklist_code = boxCode('checklist', code)
 
 # Source Exercice
 # Definition de l'etat initial de la checklist
@@ -487,11 +448,7 @@ checklist_exo = html.Div([
 
 
 # Content Correction
-checklist_cor = html.Div([
-    
-    dmc.Prism(
-        children=
-"""from dash import Dash, html, dcc, callback, Input, Output
+code = """from dash import Dash, html, dcc, callback, Input, Output
 import plotly.express as px
 
 #-----------------------------------------------------------------------#
@@ -568,11 +525,8 @@ def update_graph(year_value, continent_value):
 #-----------------------------------------------------------------------#
 
 if __name__ == '__main__':
-    app.run(debug=True)""",
-        language="python",
-        colorScheme="dark")
-
-])
+    app.run(debug=True)"""
+checklist_cor = boxCode('checklist-cor', code)
 
 
 #---------------------------------------------------------#
@@ -595,10 +549,7 @@ radio_ex = html.Div([
 
 
 # Content Code
-radio_code = html.Div([
-    dmc.Prism(
-        children=
-"""from dash import Dash, html, dcc, callback, Output, Input
+code = """from dash import Dash, html, dcc, callback, Output, Input
 
 app = Dash(__name__)
 
@@ -626,11 +577,8 @@ def update(value):
     return(txt)
 
 if __name__ == '__main__':
-    app.run(debug=True)""",
-        language="python",
-        colorScheme="dark")
-    
-])
+    app.run(debug=True)"""
+radio_code = boxCode('radio', code)
 
 # Source Exercice
 # Creation des options du radio items pour l'activation du logarithme sur l'axe des x
@@ -673,11 +621,7 @@ radio_exo = html.Div([
 
 
 # Content Correction
-radio_cor = html.Div([
-    
-    dmc.Prism(
-        children=
-"""from dash import Dash, html, dcc, callback, Input, Output
+code = """from dash import Dash, html, dcc, callback, Input, Output
 import plotly.express as px
 
 #-----------------------------------------------------------------------#
@@ -766,11 +710,8 @@ def update_graph(year_value, continent_value, log_boolean):
 #-----------------------------------------------------------------------#
 
 if __name__ == '__main__':
-    app.run(debug=True)""",
-        language="python",
-        colorScheme="dark")
-
-])
+    app.run(debug=True)"""
+radio_cor = boxCode('radio-cor', code)
 
 
 #---------------------------------------------------------#
@@ -798,10 +739,7 @@ input_ex = html.Div([
 
 
 # Content Code
-input_code = html.Div([
-    dmc.Prism(
-        children=
-"""from dash import Dash, dcc, html, Input, Output, callback
+code = """from dash import Dash, dcc, html, Input, Output, callback
 
 app = Dash(__name__)
 
@@ -831,11 +769,8 @@ def cb_render(*vals):
     return " | ".join((str(val) for val in vals if val))
 
 if __name__ == "__main__":
-    app.run(debug=True)""",
-        language="python",
-        colorScheme="dark")
-    
-])
+    app.run(debug=True)"""
+input_code = boxCode('input', code)
 
 # Source Exercice
 pg3_txt = []
@@ -863,11 +798,7 @@ input_exo = html.Div([
 
 
 # Content Correction
-input_cor = html.Div([
-    
-    dmc.Prism(
-        children=
-"""from dash import Dash, dcc, html, callback, Input, Output
+code = """from dash import Dash, dcc, html, callback, Input, Output
 
 app = Dash(__name__)
 
@@ -893,11 +824,8 @@ def create_txt(value):
         return txt
 
 if __name__ == '__main__':
-    app.run(debug=True)""",
-        language="python",
-        colorScheme="dark")
-
-])
+    app.run(debug=True)"""
+input_cor = boxCode('input-cor', code)
 
 
 #---------------------------------------------------------#
@@ -918,10 +846,7 @@ download_ex = html.Div([
 
 
 # Content Code
-download_code = html.Div([
-    dmc.Prism(
-        children=
-"""from dash import Dash, dcc, html, Input, Output, callback
+code = """from dash import Dash, dcc, html, Input, Output, callback
 
 app = Dash(__name__)
 
@@ -944,11 +869,8 @@ def func(n_clicks):
     return dict(content='Hello world!', filename="hello.txt")
 
 if __name__ == '__main__':
-    app.run(debug=True)""",
-        language="python",
-        colorScheme="dark")
-    
-])
+    app.run(debug=True)"""
+download_code = boxCode('download', code)
 
 # Source Exercice
 dnl_exo_txt = []
@@ -990,11 +912,7 @@ download_exo = html.Div([
 
 
 # Content Correction
-download_cor = html.Div([
-    
-    dmc.Prism(
-        children=
-"""from dash import Dash, dcc, html, callback, Input, Output
+code = """from dash import Dash, dcc, html, callback, Input, Output
 
 #------------------------------------------------------------#
 # 1. INITIALISATION                                          #
@@ -1061,14 +979,8 @@ def download_txt(n_clicks, text, filename):
                 return dict(content=txt, filename=filename+".txt")
 
 if __name__ == '__main__':
-    app.run(debug=True)
-
-""",
-        language="python",
-        colorScheme="dark")
-
-])
-
+    app.run(debug=True)"""
+download_cor = boxCode('download-cor', code)
 
 
 #---------------------------------------------------------#
@@ -1078,7 +990,6 @@ if __name__ == '__main__':
 
 # Content Example
 upload_ex = html.Div([
-
 
     html.H3("Upload data csv example:"),
     
@@ -1090,10 +1001,8 @@ upload_ex = html.Div([
 
 
 # Content Code
-upload_code = html.Div([
-    dmc.Prism(
-        children=
-"""from dash import Dash, html, dcc, callback, Input, Output, State, dash_table
+upload_code = boxCode('upload', code)
+code = """from dash import Dash, html, dcc, callback, Input, Output, State, dash_table
 import base64
 import datetime
 import io
@@ -1128,13 +1037,8 @@ def update(c,n,d):
                 )])
 
 if __name__ == '__main__':
-    app.run(debug=True)
-
-""",
-        language="python",
-        colorScheme="dark")
-    
-])
+    app.run(debug=True)"""
+upload_code = boxCode('upload', code)
 
 # Source Exercice
 upl_exo_txt = []
@@ -1188,11 +1092,7 @@ upload_exo = html.Div([
 
 
 # Content Correction
-upload_cor = html.Div([
-    
-    dmc.Prism(
-        children=
-"""from dash import Dash, dcc, html, callback, Input, Output, State
+code = """from dash import Dash, dcc, html, callback, Input, Output, State
 import base64
 import io
 import pandas as pd
@@ -1291,19 +1191,8 @@ def upload_txt(c,n):
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
-
-""",
-        language="python",
-        colorScheme="dark")
-
-])
-
-
-
-
-    
-
+    app.run(debug=True)"""
+upload_cor = boxCode('upload-cor', code)
 
 
 #-----------------------------------------------------------------------#
