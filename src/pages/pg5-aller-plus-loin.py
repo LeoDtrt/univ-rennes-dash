@@ -95,7 +95,7 @@ if __name__ == '__main__':
 carto_code = boxCode('carto', code)
 
 # Source Exercice
-file1 = "assets/map/DEP_FR.geojson"
+file1 = "assets/map/departements.geojson"
 file2 = "assets/map/FD_MAR_2018.csv"
 
 # Importation fichier geojson
@@ -104,7 +104,7 @@ with open(file1) as f:
     
 
 # Importation du dataframe 
-mariage = pd.read_csv(file2, sep=",", low_memory=False)
+mariage = pd.read_csv(file2, sep=';', low_memory=False)
 
 
 # Definition du style du color-picker
@@ -121,8 +121,7 @@ carto_exo = html.Div([
             ]),
             html.Button("FD_MAR_2018.csv", id="btn-mariage"),
             dcc.Download(id="dnl-mariage"),
-            html.Button("DEP_FR.json", id="btn-geojson"),
-            dcc.Download(id="dnl-geojson")
+            html.Button(html.A("Départements FR", href="https://france-geojson.gregoiredavid.fr/",target="_blank", className="l")),
         ])
     ]),
     
@@ -168,7 +167,7 @@ import json
 import dash_daq as daq
 import dash_bootstrap_components as dbc
 
-file1 = "./DEP_FR.geojson"
+file1 = "./departements.geojson"
 file2 = "./FD_MAR_2018.csv"
 
 # Importation fichier geojson
@@ -176,7 +175,7 @@ with open(file1) as f:
     geo = json.load(f)
 
 # Importation du dataframe 
-df = pd.read_csv(file2, sep=",", low_memory=False)
+df = pd.read_csv(file2, sep=';', low_memory=False)
 
 # Initialisation de l'app
 app = Dash(__name__, external_stylesheets=[dbc.themes.CERULEAN])
@@ -406,30 +405,6 @@ layout = html.Div([
 )
 def func(n_clicks):
     return dcc.send_data_frame(mariage.to_csv, "FD_MAR_2018.csv", index=False, sep=";")
-
-
-@callback(
-     Output("dnl-geojson", "data"),
-     Input("btn-geojson", "n_clicks"),
-    prevent_initial_call=True,
-)
-def download_json_file(n_clicks):
-    URL = "https://github.com/LeoDtrt/univ-rennes-dash/blob/main/src/assets/map/DEP_FR.geojson"
-    response = requests.get(URL)
-    data = response.content.decode("utf-8")
-    data = json.loads(data)
-    data = data["payload"]["blob"]["rawLines"][0]
-    data = json.loads(data)
-    data = re.sub("\'\d{1,4}\':","", str(data))
-    data = data.replace(": ",":")
-    data = data.replace(", ",",")
-    data = data.replace("\'FeatureCollection\', ","")
-    data = data.replace("\'",'\"')
-    data = data.replace('{ "FeatureCollection"}','"FeatureCollection"')  
-    data = data.replace('"features":{ {','"features":[{')    
-    data = data.replace('}}}}','}}]}')
-    data = data.replace('-d"',"-d'")
-    return dict(content=data, filename="DEP_FR.geojson")
 
 
 # Example
