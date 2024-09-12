@@ -14,7 +14,8 @@ server = app.server
 
 link_footer = {
     'color':'white',
-    'fontWeight': 'normal'
+    'fontWeight': 'normal',
+    'fontSize':'14px'
 }
 
 
@@ -38,7 +39,7 @@ footer = html.Div([
     
     html.Div([
         html.Img(src='assets/img/calendar.png', style={'width':'34px'}),
-        html.Div(datetime.today().strftime('%d %B %Y'))        
+        html.Div(datetime.today().strftime('%d %B %Y'), className='l', style = link_footer)        
     ], style={'display':'flex', 'alignItems':'center'}),
     
 
