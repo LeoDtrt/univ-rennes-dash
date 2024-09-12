@@ -329,26 +329,26 @@ callback_pres = html.Div([
     html.P("Une application dash est composée de deux éléments :"),
     
     html.Ol([
-        html.Li("Interface : Partie permettant la mise en forme de l’application"),
-        html.Li("Serveur : Partie permettant de rendre l’application dynamique")
+        html.Li([html.Span("Interface :", className="l")," Partie permettant la mise en forme de l’application"]),
+        html.Li([html.Span("Serveur :", className="l")," Partie permettant de rendre l’application dynamique"])
     ]),
     
-    html.P("L’interface et le serveur sont en inter-dépendance :"),
+    html.P(["L’interface et le serveur sont en ", html.Span('inter-dépendance :', className='l')," :"]),
     
     html.Ul([
-        html.Li("Activation d’une composante de l’interface comme un radio button"),
-        html.Li("Déclenchement du callback, récupération du nouvel état du radio button et mise à jour d’un objet via une fonction"),
-        html.Li("Envoi du nouvel état de l’objet dans l’interface")
+        html.Li([html.Span('Activation d’une composante de l’interface', className='l')," comme un radio button"]),
+        html.Li([html.Span('Déclenchement du callback', className='l'),", récupération du nouvel état du radio button et mise à jour d’un objet via une fonction"]),
+        html.Li([html.Span('Envoi du nouvel état', className='l')," de l’objet dans l’interface"])
     ]),
     
-    html.P("L’input d’un callback prend en paramètre :"),
+    html.P(["L’", html.Span('input d’un callback', className='l')," prend en paramètre :"]),
     
     html.Ol([
         html.Li("component_id : L’id de l’objet en input (dash core component)"),
         html.Li("component_property : La propriété cible de l’objet en input. S’il n’y a pas de propriété cible, alors la valeur par défaut est children")
     ]),
- 
-    html.P("L’output d’un callback prend en paramètre :"),
+
+    html.P(["L’", html.Span('output d’un callback', className='l')," prend en paramètre :"]),
     
     html.Ol([
         html.Li("component_id : L’id de l’objet cible à mettre à jour dans l’application"),
