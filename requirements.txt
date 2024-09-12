@@ -6,3 +6,4 @@ gunicorn
 dash-tools
 dash_daq==0.5.0
 pip==24.2
+docopt==0.6.2
