@@ -10,13 +10,22 @@ n_clicks_closing_sidebar = []
 
 server = app.server
 
+
+footer = html.Div([
+    html.Div(html.Img(src='assets/img/mailto.png')),
+    html.Div('lala')
+    
+    ], className='footer')
+
 sidebar = html.Div([
     dbc.Nav([
             dbc.Button(page["name"], href=page["path"], className="btn-sdb")
             for page in page_registry.values()
         ],
         vertical=True,
-        pills=True)
+        pills=True),
+    
+    footer
 ], id='sidebar', className='sidebar')
 
 sidebar_closed = html.Div(id='sidebar', className='sidebarClose')

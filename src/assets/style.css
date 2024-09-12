@@ -60,6 +60,17 @@
     width: 0;
 }
 
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 16em;
+    height: 8em;
+    padding: 1rem 1rem;
+    background-color:#003366;
+    color:white;
+}
+
 .body {
     background-color:white;
     top:4em;
