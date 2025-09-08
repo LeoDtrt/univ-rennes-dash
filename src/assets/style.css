@@ -1,3 +1,10 @@
+:root {
+    --color-theme-1:#003366;
+    --color-theme-2:#fafce6;
+    --color-theme-3:#5A7B9C;
+}
+
+
 .logo {
     width:80%;
 }
@@ -10,14 +17,14 @@
 
 
 .btn-sdb {
-    background-color: #003366;
+    background-color: var(--color-theme-1);
     color:white;
     text-align: left;
     margin: 0.2em;
 }
 
 .btn-sdb:hover {
-    background-color: #003366;
+    background-color: var(--color-theme-1);
     color:white;
     text-align: left;
     margin: 0.2em;
@@ -27,12 +34,12 @@
 
 .btn-close-sidebar {
     background-color: white;
-    color: #003366;
+    color: var(--color-theme-1);
     width: 3em;
 }
 
 .navbar {
-    background-color: #003366;
+    background-color: var(--color-theme-1);
     position: fixed;
     height: 4em;
     display: grid;
@@ -49,7 +56,7 @@
     bottom: 0;
     width: 16em;
     padding: 1rem 1rem;
-    background-color:#fff2f3;
+    background-color:var(--color-theme-2);
 }
 
 .sidebarClose {
@@ -67,7 +74,7 @@
     width: 16em;
     height: 8em;
     padding: 0.6rem 0.3rem;
-    background-color:#003366;
+    background-color:var(--color-theme-1);
     color:white;
 }
 
@@ -108,7 +115,7 @@
 
 
 h1 {
-    color: #5A7B9C;
+    color: var(--color-theme-3);
     margin-top: 0.5rem;
 }
 
@@ -116,7 +123,7 @@ h1 {
     margin-top: 1rem;
     padding-left: 0.3rem;
     padding-bottom: 0.3rem;
-    background-color: #003366;
+    background-color: var(--color-theme-1);
     color: white;
 }
 
@@ -125,7 +132,7 @@ h3 {
 }
 
 .h {
-    color: #003366;
+    color: var(--color-theme-1);
     font-weight: bold;
 }
   
@@ -178,7 +185,7 @@ h3 {
 }
 
 .ds {
-    color:#003366;
+    color:var(--color-theme-1);
     font-weight: bold;
     font-style: italic;
 }
@@ -186,7 +193,7 @@ h3 {
 
 a:hover {
     font-weight: bold;
-    background-color:#fff2f3;
+    background-color:var(--color-theme-2);
 }
 
 .pwd {
@@ -207,7 +214,7 @@ a:hover {
 }
 
 .circle {
-    background:#003366;
+    background:var(--color-theme-1);
     border-radius:50%;
     width:3em;
     height:3em;
@@ -216,13 +223,13 @@ a:hover {
   }
 
 .l {
-    color:#003366;
+    color:var(--color-theme-1);
     font-weight: bold;
     text-decoration:none;
 }
 
 .l:hover {
-    background-color:#003366;
+    background-color:var(--color-theme-1);
     color: white;
     font-weight: bold;
     text-decoration:none;

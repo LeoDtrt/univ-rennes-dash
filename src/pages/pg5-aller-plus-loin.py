@@ -242,7 +242,7 @@ def display_choropleth(color_min, color_max):
     return fig
 
 if __name__ == '__main__':
-    app.run_server(debug=True)"""
+    app.run(debug=True)"""
 carto_cor = boxCode('carto-cor', code)
 
 
