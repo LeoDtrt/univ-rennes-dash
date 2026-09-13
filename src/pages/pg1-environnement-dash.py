@@ -1,6 +1,7 @@
 from dash import Dash, html, dcc, callback, Input, Output, register_page
 import dash_bootstrap_components as dbc
 import dash_mantine_components as dmc
+from assets.pkg.util import *
 import plotly.express as px
 
 
@@ -14,7 +15,63 @@ register_page(__name__,
 # Sources                                                               #
 #-----------------------------------------------------------------------#
 
+virtualenv_windows_code = """# Installer virtualenv sur VSCode
+pip install virtualenv
 
+# Créer un environnement virtuel .venv
+py -m venv .venv
+
+# Se déplacer dans le répertoire Scripts
+cd .venv/Scripts
+
+# Activer l'environnement virtuel
+.\\activate
+
+# Désactiver l'environnement
+deactivate"""
+
+
+virtualenv_mac_code = """
+# Installer virtualenv sur VSCode
+pip install virtualenv
+
+# Créer un environnement virtuel .venv
+py -m venv .venv
+
+# Activer l'environnement virtuel
+source .venv/bin/activate
+
+# Désactiver l'environnement
+deactivate"""
+
+pip_install_code = """
+pip install dash
+pip install jupyter-dash
+pip install pandas
+pip install plotly.express
+pip install dash-bootstrap-components
+pip list"""
+
+active_env_code = """
+# Sur Windows
+cd .venv/Scripts
+.\\activate
+            
+# Sur Mac
+source bin/activate
+            
+# Pour désactiver un environnement
+deactivate"""
+
+racine_code = """
+# Créer le répertoire projet à la racine
+mkdir projet
+
+# Changer de direction en entrant dans le répertoire projet
+cd projet
+
+# Revenir d'un pas en arrière et sortir du répertoire projet
+cd .."""
 
 #-----------------------------------------------------------------------#
 # Interface                                                             #
@@ -56,58 +113,17 @@ layout = html.Div([
    
     html.H2('1.5 Créer un environnement virtuel via le terminal', className="h2s"),
     html.P(["Création et activation de l’environnement virtuel ",html.Span(".venv sur Windows",className="h")," :"]),
-    dmc.Prism(
-        children=
-"""# Installer virtualenv sur VSCode
-pip install virtualenv
 
-# Créer un environnement virtuel .venv
-py -m venv .venv
+    boxCode('virtualenv-windows',virtualenv_windows_code),
 
-# Se déplacer dans le répertoire Scripts
-cd .venv/Scripts
-
-# Activer l'environnement virtuel
-.\\activate
-
-# Désactiver l'environnement
-deactivate""",
-        language="python",
-        colorScheme="dark",
-        className="code"),
     html.P(["Création et activation de l’environnement virtuel ",html.Span(".venv sur Mac",className="h")," :"]),
-    dmc.Prism(
-        children=
-"""# Installer virtualenv sur VSCode
-pip install virtualenv
+    boxCode('virtualenv-mac',virtualenv_mac_code),
 
-# Créer un environnement virtuel .venv
-py -m venv .venv
-
-# Activer l'environnement virtuel
-source .venv/bin/activate
-
-# Désactiver l'environnement
-deactivate""",
-        language="python",
-        colorScheme="dark",
-        className="code"),
     html.P(["Liste non exhaustive des packages à installer pour l’utilisation de ",html.Span("Dash", className="h")," :"]),
-    dmc.Prism(
-        children=
-"""pip install dash
-pip install jupyter-dash
-pip install pandas
-pip install plotly.express
-pip install dash-bootstrap-components
-pip install dash-mantine-components
-pip list""",
-        language="python",
-        colorScheme="dark",
-        className="code"),
+
     html.Img(src="assets/img/pip-list.png", className="img-pip-list"),
     html.P(["⚠ ", html.U("Remarque :")," Il est nécessaire d’activer un environnement virtuel pour pouvoir ensuite y installer des librairies."]),
-
+    boxCode('pip-install',pip_install_code),
    
     html.H2("1.6 Automatiser la création d'un environnement virtuel", className="h2s"),   
     html.P("Avant de pouvoir créer un environnement virtuel sous VSCode, il faut exécuter les tâches suivantes :"),
@@ -134,20 +150,7 @@ pip list""",
             html.Li("Un dossier .venv s’est créé à la racine de votre répertoire courant"),
             html.Img(src="assets/img/vsc-create-venv-3.png", className= "img"),
             html.Li("Pour activer l'environnement virtuel il faut ensuite ouvrir un Terminal puis taper les lignes suivantes :"),
-            dmc.Prism(
-        children=
-"""# Sur Windows
-cd .venv/Scripts
-.\\activate
-            
-# Sur Mac
-source bin/activate
-            
-# Pour désactiver un environnement
-deactivate""",
-        language="python",
-        colorScheme="dark",
-        className="code")
+            boxCode("active-env", active_env_code),
         ])
     ),
 
@@ -157,43 +160,13 @@ deactivate""",
 
    html.Ol([
         html.Li("Se placer à la racine de l’application dans un terminal"),
-        dmc.Prism(
-            children=
-"""# Créer le répertoire projet à la racine
-mkdir projet
+        boxCode("racine", racine_code),
 
-# Changer de direction en entrant dans le répertoire projet
-cd projet
-
-# Revenir d'un pas en arrière et sortir du répertoire projet
-cd ..""",
-            language="python",
-            colorScheme="dark",
-            className="code"),
         html.Li("Activer un environnement virtuel python avec toutes les librairies nécessaires au lancement de l’application"),
         html.Li("Taper la commande suivante dans le terminal pour lancer l'application app.py :"),
-        dmc.Prism(
-            children="""python app.py""",
-            language="python",
-            colorScheme="dark",
-            className="code"),
+        boxCode("app", """python app.py"""),
         html.Img(src="assets/img/run-app.png", className= "img-run-app"),
     ]),
-   
-   
-   
-   
-   
-
-
-
-
-
-
-
-
-
-
  
 ])
 
