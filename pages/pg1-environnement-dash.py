@@ -163,9 +163,11 @@ layout = html.Div([
             html.Img(src="assets/img/vsc-create-venv-3.png", className= "img"),
             html.Li("Pour activer l'environnement virtuel il faut ensuite ouvrir un Terminal puis taper les lignes suivantes :"),
             boxCode("active-env-windows", active_env_windows_code),
+            html.Br(),
             boxCode("active-env-mac", active_env_mac_code),
             html.Li("Pour désactiver l'environnement virtuel :"),
             boxCode("deactive-env-windows", deactive_env_windows_code),
+            html.Br(),
             boxCode("deactive-env-mac", deactive_env_mac_code),
         ])
     ),
@@ -181,6 +183,7 @@ layout = html.Div([
         html.Li("Activer un environnement virtuel python avec toutes les librairies nécessaires au lancement de l’application"),
         html.Li("Taper la commande suivante dans le terminal pour lancer l'application app.py :"),
         boxCode("app", """python app.py"""),
+        html.Br(),
         html.Img(src="assets/img/run-app.png", className= "img-run-app"),
     ]),
  
