@@ -364,10 +364,10 @@ layout = html.Div([
     dcc.Input(type="password", debounce=True, placeholder="Pwd to get correction", id="pg5-input-pwd-carto-cor", className="pwd"),
     
     dbc.Tabs([
-            dbc.Tab(label="Exemple"   , tab_id="carto-ex"  , children=carto_ex  , className="tab"),
-            dbc.Tab(label="Code"      , tab_id="carto-code", children=carto_code, className="tab"),
-            dbc.Tab(label="Exercice"  , tab_id="carto-exo" , children=carto_exo , className="tab"),
-            dbc.Tab(label="Correction", tab_id="carto-cor" , children=carto_cor , className="tab", id="pg5-pwd-carto-cor", disabled=True)
+            dbc.Tab(label="Exemple"   , tab_id="carto-ex"  , children=carto_ex  , className="pg-tab"),
+            dbc.Tab(label="Code"      , tab_id="carto-code", children=carto_code, className="pg-tab"),
+            dbc.Tab(label="Exercice"  , tab_id="carto-exo" , children=carto_exo , className="pg-tab"),
+            dbc.Tab(label="Correction", tab_id="carto-cor" , children=carto_cor , className="pg-tab", id="pg5-pwd-carto-cor", disabled=True)
         ],
         id="carto",
         active_tab="carto-ex"
@@ -379,8 +379,8 @@ layout = html.Div([
     dcc.Input(type="password", debounce=True, placeholder="Pwd to get correction", id="pg5-input-pwd-jdp-cor", className="pwd"),
     
     dbc.Tabs([
-            dbc.Tab(label="Exercice"  , tab_id="jdp-exo" , children=jdp_exo , className="tab"),
-            dbc.Tab(label="Correction", tab_id="jdp-cor" , children=jdp_cor , className="tab", id="pg5-pwd-jdp-cor", disabled=True)
+            dbc.Tab(label="Exercice"  , tab_id="jdp-exo" , children=jdp_exo , className="pg-tab"),
+            dbc.Tab(label="Correction", tab_id="jdp-cor" , children=jdp_cor , className="pg-tab", id="pg5-pwd-jdp-cor", disabled=True)
         ],
         id="jdp",
         active_tab="jdp-exo"

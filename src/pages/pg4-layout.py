@@ -1325,12 +1325,12 @@ ps_cs = boxCode('ps-cs', code)
 ps_code = html.Div([
     
         dbc.Tabs([
-            dbc.Tab(label="Structure"       , tab_id="ps-st", children=ps_st, className="tab"),
-            dbc.Tab(label="app.py"          , tab_id="ps-ap", children=ps_ap, className="tab"),
-            dbc.Tab(label="pages/home.py"   , tab_id="ps-hm", children=ps_hm, className="tab"),
-            dbc.Tab(label="pages/page1.py"  , tab_id="ps-p1", children=ps_p1, className="tab"),
-            dbc.Tab(label="pages/page2.py"  , tab_id="ps-p2", children=ps_p2, className="tab"),
-            dbc.Tab(label="assets/style.css", tab_id="ps-cs", children=ps_cs, className="tab")
+            dbc.Tab(label="Structure"       , tab_id="ps-st", children=ps_st, className="pg-tab"),
+            dbc.Tab(label="app.py"          , tab_id="ps-ap", children=ps_ap, className="pg-tab"),
+            dbc.Tab(label="pages/home.py"   , tab_id="ps-hm", children=ps_hm, className="pg-tab"),
+            dbc.Tab(label="pages/page1.py"  , tab_id="ps-p1", children=ps_p1, className="pg-tab"),
+            dbc.Tab(label="pages/page2.py"  , tab_id="ps-p2", children=ps_p2, className="pg-tab"),
+            dbc.Tab(label="assets/style.css", tab_id="ps-cs", children=ps_cs, className="pg-tab")
         ],
         id="ps-tab",
         active_tab="ps-st"
@@ -1364,10 +1364,10 @@ layout = html.Div([
     dcc.Input(type="password", debounce=True, placeholder="Pwd to get correction", id="pg4-input-pwd-segmentation-cor", className="pwd"),
     
     dbc.Tabs([
-            dbc.Tab(label="Exemple"   , tab_id="segmentation-ex"  , children=segmentation_ex  , className="tab"),
-            dbc.Tab(label="Code"      , tab_id="segmentation-code", children=segmentation_code, className="tab"),
-            dbc.Tab(label="Exercice"  , tab_id="segmentation-exo" , children=segmentation_exo , className="tab"),
-            dbc.Tab(label="Correction", tab_id="segmentation-cor" , children=segmentation_cor , className="tab", id="pg4-pwd-segmentation-cor", disabled=True)
+            dbc.Tab(label="Exemple"   , tab_id="segmentation-ex"  , children=segmentation_ex  , className="pg-tab"),
+            dbc.Tab(label="Code"      , tab_id="segmentation-code", children=segmentation_code, className="pg-tab"),
+            dbc.Tab(label="Exercice"  , tab_id="segmentation-exo" , children=segmentation_exo , className="pg-tab"),
+            dbc.Tab(label="Correction", tab_id="segmentation-cor" , children=segmentation_cor , className="pg-tab", id="pg4-pwd-segmentation-cor", disabled=True)
         ],
         id="segmentation",
         active_tab="segmentation-ex"
@@ -1379,10 +1379,10 @@ layout = html.Div([
     dcc.Input(type="password", debounce=True, placeholder="Pwd to get correction", id="pg4-input-pwd-accordion-cor", className="pwd"),
     
     dbc.Tabs([
-            dbc.Tab(label="Exemple"   , tab_id="accordion-ex"  , children=accordion_ex  , className="tab"),
-            dbc.Tab(label="Code"      , tab_id="accordion-code", children=accordion_code, className="tab"),
-            dbc.Tab(label="Exercice"  , tab_id="accordion-exo" , children=accordion_exo , className="tab"),
-            dbc.Tab(label="Correction", tab_id="accordion-cor" , children=accordion_cor , className="tab", id="pg4-pwd-accordion-cor", disabled=True)
+            dbc.Tab(label="Exemple"   , tab_id="accordion-ex"  , children=accordion_ex  , className="pg-tab"),
+            dbc.Tab(label="Code"      , tab_id="accordion-code", children=accordion_code, className="pg-tab"),
+            dbc.Tab(label="Exercice"  , tab_id="accordion-exo" , children=accordion_exo , className="pg-tab"),
+            dbc.Tab(label="Correction", tab_id="accordion-cor" , children=accordion_cor , className="pg-tab", id="pg4-pwd-accordion-cor", disabled=True)
         ],
         id="accordion",
         active_tab="accordion-ex"
@@ -1393,10 +1393,10 @@ layout = html.Div([
     dcc.Input(type="password", debounce=True, placeholder="Pwd to get correction", id="pg4-input-pwd-tabs-cor", className="pwd"),
     
     dbc.Tabs([
-            dbc.Tab(label="Exemple"   , tab_id="tabs-ex"  , children=tabs_ex  , className="tab"),
-            dbc.Tab(label="Code"      , tab_id="tabs-code", children=tabs_code, className="tab"),
-            dbc.Tab(label="Exercice"  , tab_id="tabs-exo" , children=tabs_exo , className="tab"),
-            dbc.Tab(label="Correction", tab_id="tabs-cor" , children=tabs_cor , className="tab", id="pg4-pwd-tabs-cor", disabled=True)
+            dbc.Tab(label="Exemple"   , tab_id="tabs-ex"  , children=tabs_ex  , className="pg-tab"),
+            dbc.Tab(label="Code"      , tab_id="tabs-code", children=tabs_code, className="pg-tab"),
+            dbc.Tab(label="Exercice"  , tab_id="tabs-exo" , children=tabs_exo , className="pg-tab"),
+            dbc.Tab(label="Correction", tab_id="tabs-cor" , children=tabs_cor , className="pg-tab", id="pg4-pwd-tabs-cor", disabled=True)
         ],
         id="tabs",
         active_tab="tabs-ex"
@@ -1407,10 +1407,10 @@ layout = html.Div([
     dcc.Input(type="password", debounce=True, placeholder="Pwd to get correction", id="pg4-input-pwd-navlink-cor", className="pwd"),
     
     dbc.Tabs([
-            dbc.Tab(label="Exemple"   , tab_id="navlink-ex"  , children=navlink_ex  , className="tab"),
-            dbc.Tab(label="Code"      , tab_id="navlink-code", children=navlink_code, className="tab"),
-            dbc.Tab(label="Exercice"  , tab_id="navlink-exo" , children=navlink_exo , className="tab"),
-            dbc.Tab(label="Correction", tab_id="navlink-cor" , children=navlink_cor , className="tab", id="pg4-pwd-navlink-cor", disabled=True)
+            dbc.Tab(label="Exemple"   , tab_id="navlink-ex"  , children=navlink_ex  , className="pg-tab"),
+            dbc.Tab(label="Code"      , tab_id="navlink-code", children=navlink_code, className="pg-tab"),
+            dbc.Tab(label="Exercice"  , tab_id="navlink-exo" , children=navlink_exo , className="pg-tab"),
+            dbc.Tab(label="Correction", tab_id="navlink-cor" , children=navlink_cor , className="pg-tab", id="pg4-pwd-navlink-cor", disabled=True)
         ],
         id="navlink",
         active_tab="navlink-ex"
@@ -1421,10 +1421,10 @@ layout = html.Div([
     dcc.Input(type="password", debounce=True, placeholder="Pwd to get correction", id="pg4-input-pwd-navbar-cor", className="pwd"),
     
     dbc.Tabs([
-            dbc.Tab(label="Exemple"   , tab_id="navbar-ex"  , children=navbar_ex  , className="tab"),
-            dbc.Tab(label="Code"      , tab_id="navbar-code", children=navbar_code, className="tab"),
-            dbc.Tab(label="Exercice"  , tab_id="navbar-exo" , children=navbar_exo , className="tab"),
-            dbc.Tab(label="Correction", tab_id="navbar-cor" , children=navbar_cor , className="tab", id="pg4-pwd-navbar-cor", disabled=True)
+            dbc.Tab(label="Exemple"   , tab_id="navbar-ex"  , children=navbar_ex  , className="pg-tab"),
+            dbc.Tab(label="Code"      , tab_id="navbar-code", children=navbar_code, className="pg-tab"),
+            dbc.Tab(label="Exercice"  , tab_id="navbar-exo" , children=navbar_exo , className="pg-tab"),
+            dbc.Tab(label="Correction", tab_id="navbar-cor" , children=navbar_cor , className="pg-tab", id="pg4-pwd-navbar-cor", disabled=True)
         ],
         id="navbar",
         active_tab="navbar-ex"
@@ -1433,9 +1433,9 @@ layout = html.Div([
     html.H2("4.6 Project Structure", className="h2s"),
     
     dbc.Tabs([
-            dbc.Tab(label="Exemple"   , tab_id="ps-ex"  , children=ps_ex  , className="tab"),
-            dbc.Tab(label="Code"      , tab_id="ps-code", children=ps_code, className="tab"),
-            dbc.Tab(label="Projet"  , tab_id="ps-exo" , children=ps_exo , className="tab")
+            dbc.Tab(label="Exemple"   , tab_id="ps-ex"  , children=ps_ex  , className="pg-tab"),
+            dbc.Tab(label="Code"      , tab_id="ps-code", children=ps_code, className="pg-tab"),
+            dbc.Tab(label="Projet"  , tab_id="ps-exo" , children=ps_exo , className="pg-tab")
         ],
         id="ps",
         active_tab="ps-ex"

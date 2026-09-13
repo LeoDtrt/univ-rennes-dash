@@ -89,8 +89,7 @@ layout = html.Div([
         html.Li("Effectuer des tâches sur une interface en clique bouton"),
         html.Li("Automatisation des processus de traitement de données via une interface web"),
         html.Li("Alternative simplifiée pour faire du développement web: pas de javascript"),
-        html.Li("La librairie Dash est une librairie équivalente à R Shiny mais en Python"),
-        html.Li([html.Span("Dash", className="h")," c’est beaucoup trop ", html.I("cool")])
+        html.Li("La librairie Dash est une librairie équivalente à R Shiny mais en Python")
     ]),
 
 
