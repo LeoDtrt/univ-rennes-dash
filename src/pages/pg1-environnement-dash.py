@@ -1,6 +1,5 @@
 from dash import Dash, html, dcc, callback, Input, Output, register_page
 import dash_bootstrap_components as dbc
-import dash_mantine_components as dmc
 from assets.pkg.util import *
 import plotly.express as px
 
