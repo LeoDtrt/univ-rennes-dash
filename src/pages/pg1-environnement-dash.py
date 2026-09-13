@@ -51,7 +51,7 @@ pip install plotly.express
 pip install dash-bootstrap-components
 pip list"""
 
-active_env_code = """
+active_env_windows_code = """
 # Sur Windows
 cd .venv/Scripts
 .\\activate
@@ -60,6 +60,20 @@ cd .venv/Scripts
 source bin/activate
             
 # Pour désactiver un environnement
+deactivate"""
+
+active_env_mac_code = """
+# Sur Mac
+source .venv/bin/activate"""
+
+deactive_env_windows_code = """
+# Sur Windows
+cd .venv/Scripts
+deactivate"""
+
+deactive_env_mac_code = """
+# Sur Mac
+cd .venv/bin
 deactivate"""
 
 racine_code = """
@@ -148,7 +162,11 @@ layout = html.Div([
             html.Li("Un dossier .venv s’est créé à la racine de votre répertoire courant"),
             html.Img(src="assets/img/vsc-create-venv-3.png", className= "img"),
             html.Li("Pour activer l'environnement virtuel il faut ensuite ouvrir un Terminal puis taper les lignes suivantes :"),
-            boxCode("active-env", active_env_code),
+            boxCode("active-env-windows", active_env_windows_code),
+            boxCode("active-env-mac", active_env_mac_code),
+            html.Li("Pour désactiver l'environnement virtuel :"),
+            boxCode("deactive-env-windows", deactive_env_windows_code),
+            boxCode("deactive-env-mac", deactive_env_mac_code),
         ])
     ),
 
