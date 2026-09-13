@@ -15,10 +15,10 @@ register_page(__name__,
 #-----------------------------------------------------------------------#
 
 virtualenv_windows_code = """# Installer virtualenv sur VSCode
-pip install virtualenv
+pip3 install virtualenv
 
 # Créer un environnement virtuel .venv
-py -m venv .venv
+python3 -m venv .venv
 
 # Se déplacer dans le répertoire Scripts
 cd .venv/Scripts
@@ -32,10 +32,10 @@ deactivate"""
 
 virtualenv_mac_code = """
 # Installer virtualenv sur VSCode
-pip install virtualenv
+pip3 install virtualenv
 
 # Créer un environnement virtuel .venv
-py -m venv .venv
+python3 -m venv .venv
 
 # Activer l'environnement virtuel
 source .venv/bin/activate
