@@ -431,8 +431,8 @@ layout = html.Div([
     html.H2("2.1 Begin", className="h2s"),
     
     dbc.Tabs([
-            dbc.Tab(label="Exemple" , tab_id="begin-ex"  , children=begin_ex  , className="tab"),
-            dbc.Tab(label="Code"    , tab_id="begin-code", children=begin_code, className="tab")
+            dbc.Tab(label="Exemple" , tab_id="begin-ex"  , children=begin_ex  , className="pg-tab"),
+            dbc.Tab(label="Code"    , tab_id="begin-code", children=begin_code, className="pg-tab")
         ],
         id="begin",
         active_tab="begin-ex"
@@ -444,10 +444,10 @@ layout = html.Div([
     dcc.Input(type="password", debounce=True, placeholder="Pwd to get correction", id="pg2-input-pwd-graph-cor", className="pwd"),
     
     dbc.Tabs([
-            dbc.Tab(label="Exemple"   , tab_id="graph-ex"  , children=graph_ex  , className="tab"),
-            dbc.Tab(label="Code"      , tab_id="graph-code", children=graph_code, className="tab"),
-            dbc.Tab(label="Exercice"  , tab_id="graph-exo" , children=graph_exo , className="tab"),
-            dbc.Tab(label="Correction", tab_id="graph-cor" , children=graph_cor , className="tab", id="pg2-pwd-graph-cor", disabled=True)
+            dbc.Tab(label="Exemple"   , tab_id="graph-ex"  , children=graph_ex  , className="pg-tab"),
+            dbc.Tab(label="Code"      , tab_id="graph-code", children=graph_code, className="pg-tab"),
+            dbc.Tab(label="Exercice"  , tab_id="graph-exo" , children=graph_exo , className="pg-tab"),
+            dbc.Tab(label="Correction", tab_id="graph-cor" , children=graph_cor , className="pg-tab", id="pg2-pwd-graph-cor", disabled=True)
         ],
         id="graph",
         active_tab="graph-ex"
@@ -457,8 +457,8 @@ layout = html.Div([
     html.H2("2.3 DataTable", className="h2s"),
     
     dbc.Tabs([
-            dbc.Tab(label="Exemple"   , tab_id="dt-ex"  , children=dt_ex  , className="tab"),
-            dbc.Tab(label="Code"      , tab_id="dt-code", children=dt_code, className="tab")
+            dbc.Tab(label="Exemple"   , tab_id="dt-ex"  , children=dt_ex  , className="pg-tab"),
+            dbc.Tab(label="Code"      , tab_id="dt-code", children=dt_code, className="pg-tab")
         ],
         id="dt",
         active_tab="dt-ex"
@@ -468,8 +468,8 @@ layout = html.Div([
     html.H2("2.4 Composantes HTML", className="h2s"),
     
     dbc.Tabs([
-            dbc.Tab(label="Exemple"   , tab_id="html-ex"  , children=html_ex  , className="tab"),
-            dbc.Tab(label="Code"      , tab_id="html-code", children=html_code, className="tab")
+            dbc.Tab(label="Exemple"   , tab_id="html-ex"  , children=html_ex  , className="pg-tab"),
+            dbc.Tab(label="Code"      , tab_id="html-code", children=html_code, className="pg-tab")
         ],
         id="html",
         active_tab="html-ex"
@@ -479,8 +479,8 @@ layout = html.Div([
     html.H2("2.5 Activation CSS", className="h2s"),
     
     dbc.Tabs([
-            dbc.Tab(label="Exemple"   , tab_id="css-ex"  , children=css_ex  , className="tab"),
-            dbc.Tab(label="Code"      , tab_id="css-code", children=css_code, className="tab")
+            dbc.Tab(label="Exemple"   , tab_id="css-ex"  , children=css_ex  , className="pg-tab"),
+            dbc.Tab(label="Code"      , tab_id="css-code", children=css_code, className="pg-tab")
         ],
         id="css",
         active_tab="css-ex"
@@ -491,8 +491,8 @@ layout = html.Div([
     
     dbc.Tabs([
             dbc.Tab(label="Présentation", tab_id="callback-pres", children=callback_pres, className="presentation"),
-            dbc.Tab(label="Exemple"     , tab_id="callback-ex"  , children=callback_ex  , className="tab"),
-            dbc.Tab(label="Code"        , tab_id="callback-code", children=callback_code, className="tab")
+            dbc.Tab(label="Exemple"     , tab_id="callback-ex"  , children=callback_ex  , className="pg-tab"),
+            dbc.Tab(label="Code"        , tab_id="callback-code", children=callback_code, className="pg-tab")
         ],
         id="callback",
         active_tab="callback-pres",

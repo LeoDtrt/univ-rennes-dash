@@ -1209,10 +1209,10 @@ layout = html.Div([
     dcc.Input(type="password", debounce=True, placeholder="Pwd to get correction", id="pg3-input-pwd-dropdown-cor", className="pwd"),
     
     dbc.Tabs([
-            dbc.Tab(label="Exemple"   , tab_id="dropdown-ex"  , children=dropdown_ex  , className="tab"),
-            dbc.Tab(label="Code"      , tab_id="dropdown-code", children=dropdown_code, className="tab"),
-            dbc.Tab(label="Exercice"  , tab_id="dropdown-exo" , children=dropdown_exo , className="tab"),
-            dbc.Tab(label="Correction", tab_id="dropdown-cor" , children=dropdown_cor , className="tab", id="pg3-pwd-dropdown-cor", disabled=True)
+            dbc.Tab(label="Exemple"   , tab_id="dropdown-ex"  , children=dropdown_ex  , className="pg-tab"),
+            dbc.Tab(label="Code"      , tab_id="dropdown-code", children=dropdown_code, className="pg-tab"),
+            dbc.Tab(label="Exercice"  , tab_id="dropdown-exo" , children=dropdown_exo , className="pg-tab"),
+            dbc.Tab(label="Correction", tab_id="dropdown-cor" , children=dropdown_cor , className="pg-tab", id="pg3-pwd-dropdown-cor", disabled=True)
 
         ],
         id="dropdown",
@@ -1227,12 +1227,12 @@ layout = html.Div([
     dcc.Input(type="password", debounce=True, placeholder="Pwd to get correction 2", id="pg3-input-pwd-slider-cor2", className="pwd"),
     
     dbc.Tabs([
-            dbc.Tab(label="Exemple"     , tab_id="slider-ex"   , children=slider_ex   , className="tab"),
-            dbc.Tab(label="Code"        , tab_id="slider-code" , children=slider_code , className="tab"),
-            dbc.Tab(label="Exercice"    , tab_id="slider-exo"  , children=slider_exo  , className="tab"),
-            dbc.Tab(label="Correction"  , tab_id="slider-cor"  , children=slider_cor  , className="tab", id="pg3-pwd-slider-cor", disabled=True),
-            dbc.Tab(label="Exercice 2"  , tab_id="slider-exo2" , children=slider_exo2 , className="tab"),
-            dbc.Tab(label="Correction 2", tab_id="slider-cor2" , children=slider_cor2 , className="tab", id="pg3-pwd-slider-cor2", disabled=True)
+            dbc.Tab(label="Exemple"     , tab_id="slider-ex"   , children=slider_ex   , className="pg-tab"),
+            dbc.Tab(label="Code"        , tab_id="slider-code" , children=slider_code , className="pg-tab"),
+            dbc.Tab(label="Exercice"    , tab_id="slider-exo"  , children=slider_exo  , className="pg-tab"),
+            dbc.Tab(label="Correction"  , tab_id="slider-cor"  , children=slider_cor  , className="pg-tab", id="pg3-pwd-slider-cor", disabled=True),
+            dbc.Tab(label="Exercice 2"  , tab_id="slider-exo2" , children=slider_exo2 , className="pg-tab"),
+            dbc.Tab(label="Correction 2", tab_id="slider-cor2" , children=slider_cor2 , className="pg-tab", id="pg3-pwd-slider-cor2", disabled=True)
         ],
         id="slider",
         active_tab="slider-ex"
@@ -1244,10 +1244,10 @@ layout = html.Div([
     dcc.Input(type="password", debounce=True, placeholder="Pwd to get correction", id="pg3-input-pwd-checklist-cor", className="pwd"),
         
     dbc.Tabs([
-            dbc.Tab(label="Exemple"     , tab_id="checklist-ex"   , children=checklist_ex   , className="tab"),
-            dbc.Tab(label="Code"        , tab_id="checklist-code" , children=checklist_code , className="tab"),
-            dbc.Tab(label="Exercice"    , tab_id="checklist-exo"  , children=checklist_exo  , className="tab"),
-            dbc.Tab(label="Correction"  , tab_id="checklist-cor"  , children=checklist_cor  , className="tab", id="pg3-pwd-checklist-cor", disabled=True)
+            dbc.Tab(label="Exemple"     , tab_id="checklist-ex"   , children=checklist_ex   , className="pg-tab"),
+            dbc.Tab(label="Code"        , tab_id="checklist-code" , children=checklist_code , className="pg-tab"),
+            dbc.Tab(label="Exercice"    , tab_id="checklist-exo"  , children=checklist_exo  , className="pg-tab"),
+            dbc.Tab(label="Correction"  , tab_id="checklist-cor"  , children=checklist_cor  , className="pg-tab", id="pg3-pwd-checklist-cor", disabled=True)
         ],
         id="checklist",
         active_tab="checklist-ex"
@@ -1259,10 +1259,10 @@ layout = html.Div([
     dcc.Input(type="password", debounce=True, placeholder="Pwd to get correction", id="pg3-input-pwd-radio-cor", className="pwd"),
     
     dbc.Tabs([
-            dbc.Tab(label="Exemple"     , tab_id="radio-ex"   , children=radio_ex   , className="tab"),
-            dbc.Tab(label="Code"        , tab_id="radio-code" , children=radio_code , className="tab"),
-            dbc.Tab(label="Exercice"    , tab_id="radio-exo"  , children=radio_exo  , className="tab"),
-            dbc.Tab(label="Correction"  , tab_id="radio-cor"  , children=radio_cor  , className="tab", id="pg3-pwd-radio-cor", disabled=True)
+            dbc.Tab(label="Exemple"     , tab_id="radio-ex"   , children=radio_ex   , className="pg-tab"),
+            dbc.Tab(label="Code"        , tab_id="radio-code" , children=radio_code , className="pg-tab"),
+            dbc.Tab(label="Exercice"    , tab_id="radio-exo"  , children=radio_exo  , className="pg-tab"),
+            dbc.Tab(label="Correction"  , tab_id="radio-cor"  , children=radio_cor  , className="pg-tab", id="pg3-pwd-radio-cor", disabled=True)
         ],
         id="radio",
         active_tab="radio-ex"
@@ -1274,10 +1274,10 @@ layout = html.Div([
     dcc.Input(type="password", debounce=True, placeholder="Pwd to get correction", id="pg3-input-pwd-input-cor", className="pwd"),
     
     dbc.Tabs([
-            dbc.Tab(label="Exemple"     , tab_id="input-ex"   , children=input_ex   , className="tab"),
-            dbc.Tab(label="Code"        , tab_id="input-code" , children=input_code , className="tab"),
-            dbc.Tab(label="Exercice"    , tab_id="input-exo"  , children=input_exo  , className="tab"),
-            dbc.Tab(label="Correction"  , tab_id="input-cor"  , children=input_cor  , className="tab", id="pg3-pwd-input-cor", disabled=True)
+            dbc.Tab(label="Exemple"     , tab_id="input-ex"   , children=input_ex   , className="pg-tab"),
+            dbc.Tab(label="Code"        , tab_id="input-code" , children=input_code , className="pg-tab"),
+            dbc.Tab(label="Exercice"    , tab_id="input-exo"  , children=input_exo  , className="pg-tab"),
+            dbc.Tab(label="Correction"  , tab_id="input-cor"  , children=input_cor  , className="pg-tab", id="pg3-pwd-input-cor", disabled=True)
         ],
         id="input",
         active_tab="input-ex"
@@ -1289,10 +1289,10 @@ layout = html.Div([
     dcc.Input(type="password", debounce=True, placeholder="Pwd to get correction", id="pg3-input-pwd-download-cor", className="pwd"),
     
     dbc.Tabs([
-            dbc.Tab(label="Exemple"     , tab_id="download-ex"   , children=download_ex   , className="tab"),
-            dbc.Tab(label="Code"        , tab_id="download-code" , children=download_code , className="tab"),
-            dbc.Tab(label="Exercice"    , tab_id="download-exo"  , children=download_exo  , className="tab"),
-            dbc.Tab(label="Correction"  , tab_id="download-cor"  , children=download_cor  , className="tab", id="pg3-pwd-download-cor", disabled=True)
+            dbc.Tab(label="Exemple"     , tab_id="download-ex"   , children=download_ex   , className="pg-tab"),
+            dbc.Tab(label="Code"        , tab_id="download-code" , children=download_code , className="pg-tab"),
+            dbc.Tab(label="Exercice"    , tab_id="download-exo"  , children=download_exo  , className="pg-tab"),
+            dbc.Tab(label="Correction"  , tab_id="download-cor"  , children=download_cor  , className="pg-tab", id="pg3-pwd-download-cor", disabled=True)
         ],
         id="download",
         active_tab="download-ex"
@@ -1304,10 +1304,10 @@ layout = html.Div([
     dcc.Input(type="password", debounce=True, placeholder="Pwd to get correction", id="pg3-input-pwd-upload-cor", className="pwd"),
     
     dbc.Tabs([
-            dbc.Tab(label="Exemple"     , tab_id="upload-ex"   , children=upload_ex   , className="tab"),
-            dbc.Tab(label="Code"        , tab_id="upload-code" , children=upload_code , className="tab"),
-            dbc.Tab(label="Exercice"    , tab_id="upload-exo"  , children=upload_exo  , className="tab"),
-            dbc.Tab(label="Correction"  , tab_id="upload-cor"  , children=upload_cor  , className="tab", id="pg3-pwd-upload-cor", disabled=True)
+            dbc.Tab(label="Exemple"     , tab_id="upload-ex"   , children=upload_ex   , className="pg-tab"),
+            dbc.Tab(label="Code"        , tab_id="upload-code" , children=upload_code , className="pg-tab"),
+            dbc.Tab(label="Exercice"    , tab_id="upload-exo"  , children=upload_exo  , className="pg-tab"),
+            dbc.Tab(label="Correction"  , tab_id="upload-cor"  , children=upload_cor  , className="pg-tab", id="pg3-pwd-upload-cor", disabled=True)
         ],
         id="upload",
         active_tab="upload-ex"
