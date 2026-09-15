@@ -24,11 +24,14 @@ python3 -m venv .venv
 cd .venv/Scripts
 
 # Activer l'environnement virtuel
-.\\activate
+.\\activate"""
+
+deact_virtualenv_windows_code = """
+# Se déplacer dans le répertoire Scripts
+cd .venv/Scripts
 
 # Désactiver l'environnement
 deactivate"""
-
 
 virtualenv_mac_code = """
 # Installer virtualenv sur VSCode
@@ -38,7 +41,11 @@ brew install virtualenv
 python3 -m venv .venv
 
 # Activer l'environnement virtuel
-source .venv/bin/activate
+source .venv/bin/activate"""
+
+deact_virtualenv_mac_code = """
+# Se placer dans bin
+cd .venv/bin
 
 # Désactiver l'environnement
 deactivate"""
@@ -124,18 +131,28 @@ layout = html.Div([
    
    
     html.H2('1.5 Créer un environnement virtuel via le terminal', className="h2s"),
+
     html.P(["Création et activation de l’environnement virtuel ",html.Span(".venv sur Windows",className="h")," :"]),
-
     boxCode('virtualenv-windows',virtualenv_windows_code),
-
+    html.Br(),
+    html.P(["Pour désactiver l'environnement virtuel sur windows :"]),
+    boxCode('deactivate-virtualenv-windows',deact_virtualenv_windows_code),
+    html.Br(),
     html.P(["Création et activation de l’environnement virtuel ",html.Span(".venv sur Mac",className="h")," :"]),
     boxCode('virtualenv-mac',virtualenv_mac_code),
-
+    html.Br(),
+    html.P(["Pour désactiver l'environnement virtuel sur Mac :"]),
+    boxCode('deactivate-virtualenv-mac',deact_virtualenv_mac_code),
+    html.Br(),
     html.P(["Liste non exhaustive des packages à installer pour l’utilisation de ",html.Span("Dash", className="h")," :"]),
 
     html.Img(src="assets/img/pip-list.png", className="img-pip-list"),
     html.P(["⚠ ", html.U("Remarque :")," Il est nécessaire d’activer un environnement virtuel pour pouvoir ensuite y installer des librairies."]),
     boxCode('pip-install',pip_install_code),
+    html.Br(),
+
+    html.P(["En cas de message d'erreur sur Windows lors de l'activation du venv, tester la commande suivante puis relancer l'activation :"]),
+    boxCode('bypass',"""Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process"""),
    
     html.H2("1.6 Automatiser la création d'un environnement virtuel", className="h2s"),   
     html.P("Avant de pouvoir créer un environnement virtuel sous VSCode, il faut exécuter les tâches suivantes :"),
@@ -185,6 +202,7 @@ layout = html.Div([
         boxCode("app", """python app.py"""),
         html.Br(),
         html.Img(src="assets/img/run-app.png", className= "img-run-app"),
+        html.Li(["Pour killer la session en cours, taper ", html.Span("CTRL+C",className='h')," sur le terminal"]),
     ]),
  
 ])
