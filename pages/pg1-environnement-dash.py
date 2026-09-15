@@ -32,7 +32,7 @@ deactivate"""
 
 virtualenv_mac_code = """
 # Installer virtualenv sur VSCode
-pip3 install virtualenv
+brew install virtualenv
 
 # Créer un environnement virtuel .venv
 python3 -m venv .venv
